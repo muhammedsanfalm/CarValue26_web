@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ===================================== -->
+    <!-- Basic Meta -->
+    <!-- ===================================== -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===================================== -->
+    <!-- SEO -->
+    <!-- ===================================== -->
+
+    <title>{% block title %}CarValue26{% endblock %}</title>
+
+    <meta name="description"
+        content="AI Powered Used Car Valuation Platform">
+
+    <meta name="keywords"
+        content="CarValue26, Used Cars, AI Car Price Prediction, Car Valuation">
+
+    <meta name="author"
+        content="CarValue26">
+
+    <!-- ===================================== -->
+    <!-- Google Fonts -->
+    <!-- ===================================== -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- ===================================== -->
+    <!-- Font Awesome -->
+    <!-- ===================================== -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- ===================================== -->
+    <!-- Global CSS -->
+    <!-- ===================================== -->
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/navbar.css') }}">
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/footer.css') }}">
+
+    <!-- ===================================== -->
+    <!-- Extra CSS -->
+    <!-- ===================================== -->
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <!-- =============================== -->
+    <!-- Navigation -->
+    <!-- =============================== -->
+
+    {% include 'components/navbar.html' %}
+
+    <!-- =============================== -->
+    <!-- Main Content -->
+    <!-- =============================== -->
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <!-- =============================== -->
+    <!-- Footer -->
+    <!-- =============================== -->
+
+    {% include 'components/footer.html' %}
+
+    <!-- =============================== -->
+    <!-- Global JS -->
+    <!-- =============================== -->
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+
+    <!-- =============================== -->
+    <!-- Extra JS -->
+    <!-- =============================== -->
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<nav class="navbar">
+
+    <!-- Logo -->
+    <a href="/" class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}"
+             alt="CarValue26 Logo">
+    </a>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#market">Market</a></li>
+        <li><a href="#compare">Compare</a></li>
+        <li><a href="#assistant">AI Assistant</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Right Side -->
+    <div class="nav-right">
+
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                placeholder="Search any car..."
+            >
+        </div>
+
+        <button class="login-btn">
+            Login
+        </button>
+
+        <button class="register-btn">
+            Register
+        </button>
+
+    </div>
+
+</nav>

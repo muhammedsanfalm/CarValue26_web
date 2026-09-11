@@ -1,0 +1,269 @@
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    width: 100%;
+    min-height: 90vh;
+
+    background-image: url("../images/hero-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 7%;
+}
+
+
+
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.hero-left {
+    width: 55%;
+    max-width: 780px;
+}
+
+
+/* =========================
+   TAG
+========================= */
+
+.tag {
+    display: inline-block;
+
+    padding: 12px 20px;
+    margin-bottom: 30px;
+
+    background: rgba(230, 248, 238, 0.9);
+    color: #119b55;
+
+    border-radius: 30px;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.hero h1 {
+    margin: 0 0 25px;
+
+    font-size: 64px;
+    line-height: 1.12;
+
+    font-weight: 750;
+    letter-spacing: -2px;
+
+    color: #101820;
+}
+
+.hero h1 span {
+    color: #10a65a;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.hero-left > p {
+    max-width: 650px;
+
+    margin-bottom: 35px;
+
+    font-size: 19px;
+    line-height: 1.7;
+
+    color: #5f6b78;
+}
+
+
+/* =========================
+   SEARCH BOX
+========================= */
+
+.hero-search {
+    width: 100%;
+    max-width: 630px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+
+    background: white;
+
+    border-radius: 40px;
+
+    overflow: hidden;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Search icon */
+
+.search-icon {
+    margin-left: 25px;
+
+    font-size: 34px;
+    color: #647180;
+}
+
+
+/* Input */
+
+.hero-search input {
+    flex: 1;
+
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    padding: 0 18px;
+
+    font-size: 17px;
+    color: #333;
+}
+
+.hero-search input::placeholder {
+    color: #8994a2;
+}
+
+
+/* Button */
+
+.hero-search button {
+    height: 100%;
+
+    padding: 0 35px;
+
+    border: none;
+
+    background: #10a65a;
+    color: white;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.hero-search button:hover {
+    background: #078d4a;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.hero-stats {
+    display: flex;
+    gap: 70px;
+
+    margin-top: 50px;
+}
+
+.hero-stats > div {
+    text-align: center;
+}
+
+.hero-stats h3 {
+    margin: 0 0 5px;
+
+    font-size: 30px;
+
+    color: #10a65a;
+}
+
+.hero-stats p {
+    margin: 0;
+
+    font-size: 15px;
+
+    color: #202a33;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+    .hero {
+        min-height: auto;
+
+        padding: 60px 5%;
+
+        background-position: center;
+    }
+
+    .hero-left {
+        width: 65%;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero-left > p {
+        font-size: 17px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .hero {
+        min-height: 100vh;
+
+        padding: 50px 6%;
+
+        background-position: center;
+    }
+
+    .hero-left {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+        letter-spacing: -1px;
+    }
+
+    .hero-search {
+        height: 60px;
+    }
+
+    .hero-search button {
+        padding: 0 20px;
+        font-size: 14px;
+    }
+
+    .hero-stats {
+        gap: 25px;
+        justify-content: space-between;
+    }
+
+    .hero-stats h3 {
+        font-size: 24px;
+    }
+
+    .hero-stats p {
+        font-size: 13px;
+    }
+}
