@@ -1,0 +1,469 @@
+{% extends "layout.html" %}
+
+{% block title %}Features - CarValue26{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/features.css') }}">
+
+<div class="features-page">
+
+    <!-- HERO -->
+    <section class="features-hero">
+
+        <div class="hero-content">
+
+            <span class="hero-label">CARVALUE26 PLATFORM</span>
+
+            <h1>
+                Everything You Need to
+                <span>Understand Your Car's Value</span>
+            </h1>
+
+            <p>
+                Discover a smarter way to estimate, compare, and understand
+                used-car values with data-driven tools built into CarValue26.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="{{ url_for('predict') }}" class="primary-btn">
+                    Estimate Your Car
+                    <span>→</span>
+                </a>
+
+                <a href="#features-grid" class="secondary-btn">
+                    Explore Features
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="visual-glow"></div>
+
+            <div class="floating-card prediction-card">
+
+                <div class="mini-icon">₹</div>
+
+                <div>
+                    <small>Estimated Value</small>
+                    <strong>₹ 8.45 Lakh</strong>
+                </div>
+
+                <div class="trend-up">↗</div>
+
+            </div>
+
+            <div class="car-display">
+                <div class="car-top"></div>
+                <div class="car-body"></div>
+                <div class="wheel wheel-left"></div>
+                <div class="wheel wheel-right"></div>
+            </div>
+
+            <div class="floating-card data-card">
+
+                <div class="data-bars">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div>
+                    <small>Data Analysis</small>
+                    <strong>Smart Insights</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURE INTRO -->
+    <section class="feature-intro">
+
+        <span class="section-label">POWERFUL TOOLS</span>
+
+        <h2>
+            Built Around Your
+            <span>Car Valuation Journey</span>
+        </h2>
+
+        <p>
+            From price prediction to market insights, CarValue26 brings
+            essential car valuation tools together in one place.
+        </p>
+
+    </section>
+
+
+    <!-- FEATURES GRID -->
+    <section class="features-grid" id="features-grid">
+
+        <!-- FEATURE 1 -->
+        <article class="feature-card feature-large">
+
+            <div class="feature-top">
+                <div class="feature-icon green-icon">₹</div>
+                <span class="feature-number">01</span>
+            </div>
+
+            <div class="feature-content">
+
+                <span class="feature-tag">MACHINE LEARNING</span>
+
+                <h3>AI Car Price Prediction</h3>
+
+                <p>
+                    Estimate the market value of a used car by entering
+                    important vehicle specifications. CarValue26 analyzes
+                    the data and produces an estimated selling price.
+                </p>
+
+                <a href="{{ url_for('predict') }}" class="feature-link">
+                    Try Price Prediction →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- FEATURE 2 -->
+        <article class="feature-card">
+
+            <div class="feature-top">
+                <div class="feature-icon blue-icon">◈</div>
+                <span class="feature-number">02</span>
+            </div>
+
+            <span class="feature-tag">DATA ANALYSIS</span>
+
+            <h3>Smart Car Valuation</h3>
+
+            <p>
+                Your valuation considers vehicle age, kilometers, mileage,
+                engine, power, fuel type, transmission and other factors.
+            </p>
+
+        </article>
+
+
+        <!-- FEATURE 3 -->
+        <article class="feature-card">
+
+            <div class="feature-top">
+                <div class="feature-icon purple-icon">⇄</div>
+                <span class="feature-number">03</span>
+            </div>
+
+            <span class="feature-tag">DECISION SUPPORT</span>
+
+            <h3>Compare Cars</h3>
+
+            <p>
+                Compare important specifications and estimated values
+                to understand the differences between vehicles.
+            </p>
+
+            <a href="{{ url_for('compare') }}" class="feature-link">
+                Compare Cars →
+            </a>
+
+        </article>
+
+
+        <!-- FEATURE 4 -->
+        <article class="feature-card">
+
+            <div class="feature-top">
+                <div class="feature-icon orange-icon">◷</div>
+                <span class="feature-number">04</span>
+            </div>
+
+            <span class="feature-tag">PERSONALIZED</span>
+
+            <h3>Prediction History</h3>
+
+            <p>
+                Keep track of your previous car valuations and revisit
+                your estimates whenever you need them.
+            </p>
+
+            <a href="{{ url_for('history') }}" class="feature-link">
+                View History →
+            </a>
+
+        </article>
+
+
+        <!-- FEATURE 5 -->
+        <article class="feature-card feature-wide">
+
+            <div class="feature-top">
+                <div class="feature-icon cyan-icon">↗</div>
+                <span class="feature-number">05</span>
+            </div>
+
+            <div class="wide-content">
+
+                <div>
+                    <span class="feature-tag">MARKET INTELLIGENCE</span>
+
+                    <h3>Market Insights</h3>
+
+                    <p>
+                        Explore useful patterns in used-car data, including
+                        pricing trends, fuel types, vehicle age, mileage and
+                        other market-related information.
+                    </p>
+                </div>
+
+                <div class="insight-preview">
+
+                    <div class="preview-header">
+                        <span>Market Overview</span>
+                        <span class="live-dot">● Live Data</span>
+                    </div>
+
+                    <div class="mini-chart">
+
+                        <div class="chart-line">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- FEATURE 6 -->
+        <article class="feature-card">
+
+            <div class="feature-top">
+                <div class="feature-icon red-icon">✦</div>
+                <span class="feature-number">06</span>
+            </div>
+
+            <span class="feature-tag">AI ASSISTANT</span>
+
+            <h3>CarValue AI Assistant</h3>
+
+            <p>
+                Get quick assistance with car specifications, valuation
+                concepts and questions about the platform.
+            </p>
+
+            <a href="{{ url_for('ai_assistant') }}" class="feature-link">
+                Meet AI Assistant →
+            </a>
+
+        </article>
+
+
+        <!-- FEATURE 7 -->
+        <article class="feature-card">
+
+            <div class="feature-top">
+                <div class="feature-icon teal-icon">✓</div>
+                <span class="feature-number">07</span>
+            </div>
+
+            <span class="feature-tag">ACCOUNT</span>
+
+            <h3>Secure User Experience</h3>
+
+            <p>
+                Create an account, sign in securely and access your
+                personalized CarValue26 experience.
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section">
+
+        <div class="how-heading">
+
+            <div>
+                <span class="section-label">HOW IT WORKS</span>
+
+                <h2>
+                    From Car Details
+                    <span>to Estimated Value</span>
+                </h2>
+            </div>
+
+            <p>
+                A simple three-step process turns your vehicle information
+                into a data-driven price estimate.
+            </p>
+
+        </div>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">01</div>
+
+                <div class="step-icon">🚗</div>
+
+                <h3>Enter Car Details</h3>
+
+                <p>
+                    Provide the specifications and usage information
+                    of the vehicle you want to evaluate.
+                </p>
+
+            </div>
+
+
+            <div class="step-connector">→</div>
+
+
+            <div class="step">
+
+                <div class="step-number">02</div>
+
+                <div class="step-icon">◉</div>
+
+                <h3>AI Analysis</h3>
+
+                <p>
+                    The prediction system processes the vehicle features
+                    and analyzes the available data.
+                </p>
+
+            </div>
+
+
+            <div class="step-connector">→</div>
+
+
+            <div class="step">
+
+                <div class="step-number">03</div>
+
+                <div class="step-icon">₹</div>
+
+                <h3>Get Your Estimate</h3>
+
+                <p>
+                    Receive an estimated selling price and review
+                    the information behind your valuation.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DATA POINTS -->
+    <section class="data-section">
+
+        <div class="data-heading">
+
+            <span class="section-label">DATA-DRIVEN VALUATION</span>
+
+            <h2>
+                Your Car's Value Depends
+                <span>on More Than One Number</span>
+            </h2>
+
+            <p>
+                CarValue26 considers multiple vehicle characteristics
+                when generating an estimated value.
+            </p>
+
+        </div>
+
+
+        <div class="data-points">
+
+            <div class="data-point">
+                <strong>01</strong>
+                <span>Vehicle Age</span>
+            </div>
+
+            <div class="data-point">
+                <strong>02</strong>
+                <span>Kilometers Driven</span>
+            </div>
+
+            <div class="data-point">
+                <strong>03</strong>
+                <span>Fuel Type</span>
+            </div>
+
+            <div class="data-point">
+                <strong>04</strong>
+                <span>Transmission</span>
+            </div>
+
+            <div class="data-point">
+                <strong>05</strong>
+                <span>Mileage</span>
+            </div>
+
+            <div class="data-point">
+                <strong>06</strong>
+                <span>Engine & Power</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="features-cta">
+
+        <div class="cta-content">
+
+            <span class="section-label">READY TO START?</span>
+
+            <h2>
+                Discover What Your
+                <span>Car Could Be Worth</span>
+            </h2>
+
+            <p>
+                Enter your vehicle details and get a data-driven
+                estimate in just a few steps.
+            </p>
+
+            <a href="{{ url_for('predict') }}" class="cta-button">
+                Estimate Your Car
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

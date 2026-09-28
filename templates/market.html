@@ -1,0 +1,586 @@
+{% extends "layout.html" %}
+
+{% block title %}Market Insights - CarValue26{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/market.css') }}">
+
+<div class="market-page">
+
+    <!-- =========================================
+         PAGE HEADER
+    ========================================== -->
+
+    <section class="market-header">
+
+        <div>
+            <span class="market-label">CAR MARKET ANALYTICS</span>
+
+            <h1>Used Car Market Insights</h1>
+
+            <p>
+                Explore used-car trends, pricing patterns, popular fuel types,
+                and vehicle characteristics.
+            </p>
+        </div>
+
+        <div class="market-status">
+            <span class="status-dot"></span>
+            Dataset Insights
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         MARKET OVERVIEW
+    ========================================== -->
+
+    <section class="overview-grid">
+
+        <div class="overview-card">
+
+            <div class="overview-icon green">
+                ₹
+            </div>
+
+            <div>
+                <span>Average Car Price</span>
+                <strong>₹8.42 L</strong>
+                <small>Illustrative value</small>
+            </div>
+
+        </div>
+
+
+        <div class="overview-card">
+
+            <div class="overview-icon blue">
+                🚗
+            </div>
+
+            <div>
+                <span>Cars Analysed</span>
+                <strong>15,241</strong>
+                <small>Cleaned dataset</small>
+            </div>
+
+        </div>
+
+
+        <div class="overview-card">
+
+            <div class="overview-icon orange">
+                ⛽
+            </div>
+
+            <div>
+                <span>Popular Fuel</span>
+                <strong>Petrol</strong>
+                <small>Placeholder insight</small>
+            </div>
+
+        </div>
+
+
+        <div class="overview-card">
+
+            <div class="overview-icon purple">
+                ⚙️
+            </div>
+
+            <div>
+                <span>Popular Transmission</span>
+                <strong>Manual</strong>
+                <small>Placeholder insight</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PRICE & AGE CHART
+    ========================================== -->
+
+    <section class="analytics-grid">
+
+        <div class="analytics-card large-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <span class="card-label">PRICE ANALYSIS</span>
+                    <h2>Price by Vehicle Age</h2>
+                    <p>
+                        Illustrative average selling-price pattern by vehicle age.
+                    </p>
+                </div>
+
+                <span class="chart-badge">Sample Data</span>
+
+            </div>
+
+
+            <div class="bar-chart">
+
+                <div class="chart-y-axis">
+                    <span>₹15L</span>
+                    <span>₹12L</span>
+                    <span>₹9L</span>
+                    <span>₹6L</span>
+                    <span>₹3L</span>
+                    <span>₹0</span>
+                </div>
+
+                <div class="chart-area">
+
+                    <div class="grid-line line-1"></div>
+                    <div class="grid-line line-2"></div>
+                    <div class="grid-line line-3"></div>
+                    <div class="grid-line line-4"></div>
+                    <div class="grid-line line-5"></div>
+
+                    <div class="bars">
+
+                        <div class="bar-item">
+                            <div class="bar-value">₹13.8L</div>
+                            <div class="bar bar-1"></div>
+                            <span>1–2 yrs</span>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar-value">₹11.5L</div>
+                            <div class="bar bar-2"></div>
+                            <span>3–4 yrs</span>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar-value">₹8.9L</div>
+                            <div class="bar bar-3"></div>
+                            <span>5–6 yrs</span>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar-value">₹6.4L</div>
+                            <div class="bar bar-4"></div>
+                            <span>7–8 yrs</span>
+                        </div>
+
+                        <div class="bar-item">
+                            <div class="bar-value">₹4.7L</div>
+                            <div class="bar bar-5"></div>
+                            <span>9–10 yrs</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             MARKET SNAPSHOT
+        ====================================== -->
+
+        <div class="analytics-card snapshot-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <span class="card-label">MARKET SNAPSHOT</span>
+                    <h2>Vehicle Age</h2>
+                </div>
+
+            </div>
+
+
+            <div class="snapshot-circle">
+
+                <div class="circle-content">
+                    <strong>6.4</strong>
+                    <span>Years</span>
+                </div>
+
+            </div>
+
+
+            <div class="snapshot-info">
+
+                <div>
+                    <span>Most common range</span>
+                    <strong>2–10 years</strong>
+                </div>
+
+                <div>
+                    <span>Dataset type</span>
+                    <strong>Used Cars</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FUEL & TRANSMISSION
+    ========================================== -->
+
+    <section class="analytics-grid second-row">
+
+        <!-- Fuel Type -->
+
+        <div class="analytics-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <span class="card-label">FUEL ANALYSIS</span>
+                    <h2>Fuel Type Distribution</h2>
+                    <p>Illustrative dataset distribution.</p>
+                </div>
+
+            </div>
+
+
+            <div class="fuel-list">
+
+                <div class="fuel-item">
+
+                    <div class="fuel-name">
+                        <span class="fuel-dot petrol"></span>
+                        Petrol
+                    </div>
+
+                    <strong>54%</strong>
+
+                    <div class="progress">
+                        <span style="width: 54%;"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="fuel-item">
+
+                    <div class="fuel-name">
+                        <span class="fuel-dot diesel"></span>
+                        Diesel
+                    </div>
+
+                    <strong>41%</strong>
+
+                    <div class="progress">
+                        <span style="width: 41%;"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="fuel-item">
+
+                    <div class="fuel-name">
+                        <span class="fuel-dot cng"></span>
+                        CNG
+                    </div>
+
+                    <strong>3%</strong>
+
+                    <div class="progress">
+                        <span style="width: 3%;"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="fuel-item">
+
+                    <div class="fuel-name">
+                        <span class="fuel-dot other"></span>
+                        Other
+                    </div>
+
+                    <strong>2%</strong>
+
+                    <div class="progress">
+                        <span style="width: 2%;"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Transmission -->
+
+        <div class="analytics-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <span class="card-label">TRANSMISSION</span>
+                    <h2>Transmission Distribution</h2>
+                    <p>Illustrative dataset distribution.</p>
+                </div>
+
+            </div>
+
+
+            <div class="transmission-container">
+
+                <div class="donut-chart">
+
+                    <div class="donut-center">
+                        <strong>72%</strong>
+                        <span>Manual</span>
+                    </div>
+
+                </div>
+
+
+                <div class="transmission-legend">
+
+                    <div>
+                        <span class="legend-dot manual"></span>
+                        <span>Manual</span>
+                        <strong>72%</strong>
+                    </div>
+
+                    <div>
+                        <span class="legend-dot automatic"></span>
+                        <span>Automatic</span>
+                        <strong>28%</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         POPULAR BRANDS
+    ========================================== -->
+
+    <section class="brands-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="card-label">BRAND INSIGHTS</span>
+
+                <h2>Popular Car Brands</h2>
+
+                <p>
+                    Example brand distribution from the used-car dataset.
+                </p>
+            </div>
+
+            <span class="chart-badge">Sample Data</span>
+
+        </div>
+
+
+        <div class="brand-grid">
+
+            <div class="brand-card">
+                <div class="brand-rank">01</div>
+                <div class="brand-info">
+                    <strong>Maruti</strong>
+                    <span>High representation</span>
+                </div>
+                <div class="brand-percent">24%</div>
+            </div>
+
+
+            <div class="brand-card">
+                <div class="brand-rank">02</div>
+                <div class="brand-info">
+                    <strong>Hyundai</strong>
+                    <span>High representation</span>
+                </div>
+                <div class="brand-percent">18%</div>
+            </div>
+
+
+            <div class="brand-card">
+                <div class="brand-rank">03</div>
+                <div class="brand-info">
+                    <strong>Tata</strong>
+                    <span>Strong representation</span>
+                </div>
+                <div class="brand-percent">10%</div>
+            </div>
+
+
+            <div class="brand-card">
+                <div class="brand-rank">04</div>
+                <div class="brand-info">
+                    <strong>Toyota</strong>
+                    <span>Popular choice</span>
+                </div>
+                <div class="brand-percent">8%</div>
+            </div>
+
+
+            <div class="brand-card">
+                <div class="brand-rank">05</div>
+                <div class="brand-info">
+                    <strong>Mahindra</strong>
+                    <span>Strong representation</span>
+                </div>
+                <div class="brand-percent">7%</div>
+            </div>
+
+
+            <div class="brand-card">
+                <div class="brand-rank">06</div>
+                <div class="brand-info">
+                    <strong>Kia</strong>
+                    <span>Growing representation</span>
+                </div>
+                <div class="brand-percent">5%</div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         MARKET INSIGHTS
+    ========================================== -->
+
+    <section class="insights-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="card-label">DATA-DRIVEN OBSERVATIONS</span>
+
+                <h2>Key Market Insights</h2>
+
+                <p>
+                    General observations that can be derived from used-car data.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="insights-grid">
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    📉
+                </div>
+
+                <div>
+                    <h3>Vehicle Age Matters</h3>
+
+                    <p>
+                        Vehicle age is an important factor associated
+                        with used-car selling prices.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    🛣️
+                </div>
+
+                <div>
+                    <h3>Kilometers Influence Value</h3>
+
+                    <p>
+                        Cars with higher accumulated kilometers may
+                        have different resale values.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    ⛽
+                </div>
+
+                <div>
+                    <h3>Fuel Type Matters</h3>
+
+                    <p>
+                        Fuel type can influence vehicle demand,
+                        running costs, and market value.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    ⚙️
+                </div>
+
+                <div>
+                    <h3>Specifications Matter</h3>
+
+                    <p>
+                        Engine, mileage, power, transmission, and
+                        seats are useful vehicle characteristics.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         DATA NOTE
+    ========================================== -->
+
+    <div class="market-note">
+
+        <div class="note-icon">
+            ⓘ
+        </div>
+
+        <div>
+            <strong>About these insights</strong>
+
+            <p>
+                The numbers shown on this UI are placeholders for design purposes.
+                They will be replaced with calculations from the CarValue26 dataset
+                when the Flask backend is connected.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

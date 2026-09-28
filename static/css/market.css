@@ -1,0 +1,769 @@
+/* =========================================
+   CARVALUE26 - MARKET INSIGHTS
+========================================= */
+
+.market-page {
+    min-height: calc(100vh - 80px);
+    padding: 35px 20px 70px;
+    background: #f5f7fb;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.market-header {
+    max-width: 1250px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.market-label,
+.card-label {
+    display: inline-block;
+    color: #10a65a;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.market-header h1 {
+    margin: 7px 0 10px;
+    color: #172033;
+    font-size: 38px;
+    font-weight: 800;
+}
+
+.market-header p {
+    margin: 0;
+    color: #697386;
+    font-size: 15px;
+}
+
+.market-status {
+    padding: 9px 14px;
+    border: 1px solid #dfe8e3;
+    border-radius: 20px;
+    background: #ffffff;
+    color: #667181;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: #10a65a;
+}
+
+
+/* =========================================
+   OVERVIEW CARDS
+========================================= */
+
+.overview-grid {
+    max-width: 1250px;
+    margin: 0 auto 25px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.overview-card {
+    min-height: 110px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #e4e8ef;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(31, 45, 61, 0.05);
+}
+
+.overview-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.overview-icon.green {
+    background: #eaf8f0;
+    color: #10a65a;
+}
+
+.overview-icon.blue {
+    background: #edf4ff;
+}
+
+.overview-icon.orange {
+    background: #fff4e8;
+}
+
+.overview-icon.purple {
+    background: #f3efff;
+}
+
+.overview-card span {
+    display: block;
+    margin-bottom: 5px;
+    color: hsl(219, 12%, 59%);
+    font-size: 13px;
+}
+
+.overview-card strong {
+    display: block;
+    color: #263143;
+    font-size: 21px;
+}
+
+.overview-card small {
+    color: #a2a9b5;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   ANALYTICS GRID
+========================================= */
+
+.analytics-grid {
+    max-width: 1250px;
+    margin: 0 auto 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.analytics-card {
+    padding: 25px;
+    border: 1px solid #e4e8ef;
+    border-radius: 17px;
+    background: #ffffff;
+    box-shadow: 0 6px 22px rgba(31, 45, 61, 0.05);
+}
+
+.card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.card-heading h2 {
+    margin: 6px 0 5px;
+    color: #263143;
+    font-size: 20px;
+}
+
+.card-heading p {
+    margin: 0;
+    color: #8992a3;
+    font-size: 17px;
+}
+
+.chart-badge {
+    padding: 6px 10px;
+    border-radius: 15px;
+    background: #f0f2f5;
+    color: #7a8392;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   BAR CHART
+========================================= */
+
+.bar-chart {
+    height: 300px;
+    display: flex;
+}
+
+.chart-y-axis {
+    width: 48px;
+    padding-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #a0a8b5;
+    font-size: 15px;
+    text-align: right;
+}
+
+.chart-area {
+    position: relative;
+    flex: 1;
+    border-bottom: 1px solid #dfe4eb;
+}
+
+.grid-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 1px dashed #edf0f4;
+}
+
+.line-1 {
+    top: 0;
+}
+
+.line-2 {
+    top: 20%;
+}
+
+.line-3 {
+    top: 40%;
+}
+
+.line-4 {
+    top: 60%;
+}
+
+.line-5 {
+    top: 80%;
+}
+
+.bars {
+    position: absolute;
+    inset: 0;
+    padding: 0 8%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.bar-item {
+    height: 100%;
+    flex: 1;
+    max-width: 85px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.bar {
+    width: 70%;
+    min-height: 15px;
+    margin-top: 5px;
+    border-radius: 7px 7px 0 0;
+    background: #10a65a;
+    transition: 0.25s ease;
+}
+
+.bar:hover {
+    background: #078d4a;
+    transform: translateY(-3px);
+}
+
+.bar-1 {
+    height: 92%;
+}
+
+.bar-2 {
+    height: 77%;
+}
+
+.bar-3 {
+    height: 59%;
+}
+
+.bar-4 {
+    height: 43%;
+}
+
+.bar-5 {
+    height: 31%;
+}
+
+.bar-value {
+    margin-bottom: 5px;
+    color: #526071;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.bar-item > span {
+    margin-top: 8px;
+    color: #8992a3;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   SNAPSHOT
+========================================= */
+
+.snapshot-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.snapshot-circle {
+    width: 165px;
+    height: 165px;
+    margin: 5px auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 13px solid #eaf8f0;
+    border-right-color: #10a65a;
+    border-bottom-color: #10a65a;
+    border-radius: 50%;
+}
+
+.circle-content {
+    text-align: center;
+}
+
+.circle-content strong {
+    display: block;
+    color: #263143;
+    font-size: 30px;
+}
+
+.circle-content span {
+    color: #8992a3;
+    font-size: 12px;
+}
+
+.snapshot-info {
+    border-top: 1px solid #edf0f4;
+}
+
+.snapshot-info > div {
+    padding: 13px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.snapshot-info span {
+    color: #8992a3;
+    font-size: 12px;
+}
+
+.snapshot-info strong {
+    color: #263143;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   FUEL
+========================================= */
+
+.fuel-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.fuel-item {
+    display: grid;
+    grid-template-columns: 1fr 45px;
+    align-items: center;
+    gap: 10px;
+}
+
+.fuel-name {
+    color: #4b5565;
+    font-size: 10px;
+}
+
+.fuel-dot,
+.legend-dot {
+    width: 9px;
+    height: 9px;
+    display: inline-block;
+    margin-right: 7px;
+    border-radius: 50%;
+}
+
+.petrol {
+    background: #10a65a;
+}
+
+.diesel {
+    background: #566274;
+}
+
+.cng {
+    background: #e8a53a;
+}
+
+.other {
+    background: #b6bdc8;
+}
+
+.fuel-item > strong {
+    color: #4b5565;
+    font-size: 10px;
+    text-align: right;
+}
+
+.progress {
+    grid-column: 1 / -1;
+    height: 7px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #edf0f4;
+}
+
+.progress span {
+    display: block;
+    height: 100%;
+    border-radius: 10px;
+    background: #10a65a;
+}
+
+
+/* =========================================
+   TRANSMISSION
+========================================= */
+
+.transmission-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.donut-chart {
+    width: 145px;
+    height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: conic-gradient(
+        #10a65a 0deg 259deg,
+        #e8edf2 259deg 360deg
+    );
+}
+
+.donut-center {
+    width: 95px;
+    height: 95px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.donut-center strong {
+    color: #263143;
+    font-size: 23px;
+}
+
+.donut-center span {
+    color: #8992a3;
+    font-size: 10px;
+}
+
+.transmission-legend {
+    min-width: 130px;
+}
+
+.transmission-legend > div {
+    margin-bottom: 18px;
+    display: grid;
+    grid-template-columns: 10px 1fr auto;
+    gap: 7px;
+    align-items: center;
+    color: #697386;
+    font-size: 12px;
+}
+
+.transmission-legend strong {
+    color: #263143;
+}
+
+.manual {
+    background: #10a65a;
+}
+
+.automatic {
+    background: #d5dce5;
+}
+
+
+/* =========================================
+   BRANDS
+========================================= */
+
+.brands-section,
+.insights-section {
+    max-width: 1250px;
+    margin: 0 auto 25px;
+    padding: 27px;
+    border: 1px solid #e4e8ef;
+    border-radius: 17px;
+    background: #ffffff;
+    box-shadow: 0 6px 22px rgba(31, 45, 61, 0.05);
+}
+
+.section-heading {
+    margin-bottom: 22px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.section-heading h2 {
+    margin: 6px 0 5px;
+    color: #263143;
+    font-size: 21px;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #8992a3;
+    font-size: 12px;
+}
+
+.brand-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.brand-card {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border: 1px solid #edf0f4;
+    border-radius: 11px;
+    transition: 0.2s ease;
+}
+
+.brand-card:hover {
+    border-color: #cfe9da;
+    transform: translateY(-2px);
+}
+
+.brand-rank {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: #eaf8f0;
+    color: #10a65a;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.brand-info {
+    flex: 1;
+}
+
+.brand-info strong {
+    display: block;
+    color: #263143;
+    font-size: 13px;
+}
+
+.brand-info span {
+    color: #9aa2ae;
+    font-size: 10px;
+}
+
+.brand-percent {
+    color: #10a65a;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   INSIGHTS
+========================================= */
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.insight-card {
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    border: 1px solid #edf0f4;
+    border-radius: 13px;
+}
+
+.insight-icon {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    background: #eaf8f0;
+    font-size: 19px;
+}
+
+.insight-card h3 {
+    margin: 0 0 6px;
+    color: #263143;
+    font-size: 14px;
+}
+
+.insight-card p {
+    margin: 0;
+    color: #8992a3;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   NOTE
+========================================= */
+
+.market-note {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 15px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    border: 1px solid #dfe8e3;
+    border-radius: 11px;
+    background: #ffffff;
+}
+
+.note-icon {
+    color: #10a65a;
+    font-size: 17px;
+}
+
+.market-note strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #526071;
+    font-size: 12px;
+}
+
+.market-note p {
+    margin: 0;
+    color: #8992a3;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .overview-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .market-page {
+        padding: 25px 14px 50px;
+    }
+
+    .market-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .market-header h1 {
+        font-size: 30px;
+    }
+
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-card {
+        padding: 20px;
+    }
+
+    .brand-grid,
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brands-section,
+    .insights-section {
+        padding: 20px;
+    }
+
+    .transmission-container {
+        flex-direction: column;
+    }
+
+    .section-heading {
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .bar-chart {
+        height: 260px;
+    }
+
+    .bars {
+        padding: 0 2%;
+        gap: 5px;
+    }
+
+    .bar {
+        width: 80%;
+    }
+
+    .bar-value {
+        font-size: 8px;
+    }
+
+    .bar-item > span {
+        font-size: 8px;
+    }
+
+    .market-status {
+        align-self: flex-start;
+    }
+}

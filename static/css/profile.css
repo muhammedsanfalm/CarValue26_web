@@ -1,0 +1,679 @@
+/* =========================================
+   CARVALUE26 - PROFILE PAGE
+========================================= */
+
+.profile-page {
+    min-height: calc(100vh - 80px);
+    padding: 35px 20px 70px;
+    background: #f5f7fb;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.profile-header {
+    max-width: 1150px;
+    margin: 0 auto 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.profile-label {
+    color: #10a65a;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.profile-header h1 {
+    margin: 7px 0 8px;
+    color: #172033;
+    font-size: 36px;
+    font-weight: 800;
+}
+
+.profile-header p {
+    margin: 0;
+    color: #758094;
+    font-size: 14px;
+}
+
+.edit-profile-btn {
+    padding: 11px 20px;
+
+    border-radius: 8px;
+    background: #10a65a;
+    color: white;
+
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: 0.25s ease;
+}
+
+.edit-profile-btn:hover {
+    background: #078d4a;
+    color: white;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   PROFILE OVERVIEW
+========================================= */
+
+.profile-overview {
+    max-width: 1150px;
+    margin: 0 auto 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 0.55fr;
+    gap: 20px;
+}
+
+
+/* =========================================
+   PROFILE CARD
+========================================= */
+
+.profile-card {
+    min-height: 145px;
+    padding: 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    border: 1px solid #e3e8ef;
+    border-radius: 16px;
+
+    background: white;
+
+    box-shadow: 0 7px 25px rgba(31, 45, 61, 0.05);
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #e8f8ef;
+    color: #10a65a;
+
+    font-size: 29px;
+    font-weight: 800;
+}
+
+.profile-main-info h2 {
+    margin: 0 0 5px;
+
+    color: #263143;
+    font-size: 23px;
+}
+
+.profile-main-info p {
+    margin: 0 0 10px;
+
+    color: #8992a3;
+    font-size: 12px;
+}
+
+.member-badge {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: #eaf8f0;
+    color: #10a65a;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   ACCOUNT STATUS
+========================================= */
+
+.account-status-card {
+    padding: 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    border-radius: 16px;
+
+    background: #172033;
+    color: white;
+
+    box-shadow: 0 8px 25px rgba(23, 32, 51, 0.12);
+}
+
+.status-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: rgba(16, 166, 90, 0.16);
+    color: #54d58d;
+
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.account-status-card span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #8994a5;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.account-status-card strong {
+    display: block;
+
+    color: white;
+
+    font-size: 17px;
+}
+
+.account-status-card small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #8f99a8;
+
+    font-size: 10px;
+}
+
+
+/* =========================================
+   STATISTICS
+========================================= */
+
+.stats-grid {
+    max-width: 1150px;
+    margin: 0 auto 25px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.stat-card {
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    border: 1px solid #e4e8ef;
+    border-radius: 14px;
+
+    background: white;
+
+    box-shadow: 0 5px 18px rgba(31, 45, 61, 0.04);
+}
+
+.stat-icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background: #eaf8f0;
+
+    font-size: 18px;
+}
+
+.stat-card span {
+    display: block;
+
+    color: #8992a3;
+
+    font-size: 10px;
+}
+
+.stat-card strong {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #263143;
+
+    font-size: 20px;
+}
+
+.stat-card small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #a1a9b5;
+
+    font-size: 9px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.profile-content {
+    max-width: 1150px;
+    margin: 0 auto 25px;
+
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 20px;
+}
+
+.details-card,
+.actions-card {
+    padding: 25px;
+
+    border: 1px solid #e4e8ef;
+    border-radius: 16px;
+
+    background: white;
+
+    box-shadow: 0 6px 20px rgba(31, 45, 61, 0.04);
+}
+
+
+/* =========================================
+   CARD HEADING
+========================================= */
+
+.card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.card-heading span {
+    color: #10a65a;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.card-heading h2 {
+    margin: 6px 0 0;
+
+    color: #263143;
+
+    font-size: 20px;
+}
+
+.heading-icon {
+    width: 37px;
+    height: 37px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #f0f8f3;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   PERSONAL DETAILS
+========================================= */
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 30px;
+}
+
+.detail-item {
+    padding-bottom: 14px;
+
+    border-bottom: 1px solid #edf0f4;
+}
+
+.detail-item span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #929baa;
+
+    font-size: 10px;
+}
+
+.detail-item strong {
+    color: #354052;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   ACTION LIST
+========================================= */
+
+.action-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.action-item {
+    padding: 14px 0;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    border-top: 1px solid #edf0f4;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+.action-item:hover {
+    padding-left: 5px;
+}
+
+.action-icon {
+    width: 37px;
+    height: 37px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background: #f1f7f3;
+
+    font-size: 15px;
+}
+
+.action-item strong {
+    display: block;
+
+    color: #354052;
+
+    font-size: 12px;
+}
+
+.action-item small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #939baa;
+
+    font-size: 9px;
+}
+
+.action-arrow {
+    margin-left: auto;
+
+    color: #10a65a;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+.security-card {
+    max-width: 1150px;
+    margin: 0 auto 25px;
+
+    padding: 20px 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    border: 1px solid #dcefe3;
+    border-radius: 15px;
+
+    background: #f0faf4;
+}
+
+.security-icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background: white;
+
+    font-size: 18px;
+}
+
+.security-content {
+    flex: 1;
+}
+
+.security-content span {
+    color: #10a65a;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.security-content h2 {
+    margin: 4px 0;
+
+    color: #263143;
+
+    font-size: 14px;
+}
+
+.security-content p {
+    margin: 0;
+
+    color: #788594;
+
+    font-size: 10px;
+}
+
+.security-btn {
+    padding: 9px 14px;
+
+    border: 1px solid #cde6d7;
+    border-radius: 7px;
+
+    background: white;
+    color: #10a65a;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   BOTTOM CTA
+========================================= */
+
+.profile-cta {
+    max-width: 1150px;
+    margin: 0 auto;
+
+    padding: 25px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    border-radius: 16px;
+
+    background: #172033;
+}
+
+.profile-cta span {
+    color: #53d58c;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.profile-cta h2 {
+    margin: 6px 0 5px;
+
+    color: white;
+
+    font-size: 20px;
+}
+
+.profile-cta p {
+    margin: 0;
+
+    color: #929baa;
+
+    font-size: 11px;
+}
+
+.cta-btn {
+    padding: 11px 18px;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: #10a65a;
+    color: white;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: 0.25s ease;
+}
+
+.cta-btn:hover {
+    background: #078d4a;
+    color: white;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .profile-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-content {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .profile-page {
+        padding: 25px 14px 50px;
+    }
+
+    .profile-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .profile-header h1 {
+        font-size: 30px;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .avatar {
+        width: 65px;
+        height: 65px;
+        font-size: 24px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .security-card {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .security-btn {
+        margin-left: 58px;
+    }
+
+    .profile-cta {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 22px;
+    }
+}

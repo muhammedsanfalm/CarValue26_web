@@ -1,0 +1,470 @@
+/* =========================================
+   CARVALUE26 - CONTACT PAGE
+========================================= */
+
+.contact-page {
+    min-height: calc(100vh - 80px);
+    padding: 35px 20px 70px;
+    background: #f5f7fb;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.contact-header {
+    max-width: 800px;
+    margin: 0 auto 38px;
+    text-align: center;
+}
+
+.contact-label,
+.info-label,
+.form-header > span,
+.faq-header > span,
+.contact-cta > div:first-child > span {
+    display: inline-block;
+    color: #10a65a;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.contact-header h1 {
+    margin: 8px 0 11px;
+    color: #172033;
+    font-size: 38px;
+    font-weight: 800;
+}
+
+.contact-header p {
+    max-width: 680px;
+    margin: auto;
+    color: #697386;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   CONTACT CONTAINER
+========================================= */
+
+.contact-container {
+    max-width: 1150px;
+    margin: 0 auto 55px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 25px;
+}
+
+
+/* =========================================
+   CONTACT INFORMATION
+========================================= */
+
+.contact-info {
+    padding: 30px;
+    border-radius: 18px;
+    background: #172033;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(23, 32, 51, 0.12);
+}
+
+.contact-info h2 {
+    margin: 8px 0 12px;
+    font-size: 28px;
+}
+
+.info-description {
+    margin: 0 0 28px;
+    color: #b9c1ce;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   CONTACT ITEMS
+========================================= */
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 17px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(16, 166, 90, 0.15);
+    color: #53d58c;
+    font-size: 17px;
+}
+
+.contact-item span {
+    display: block;
+    margin-bottom: 4px;
+    color: #9fa9b8;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.contact-item strong {
+    display: block;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.contact-item small {
+    display: block;
+    margin-top: 4px;
+    color: #8f99a8;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   HELP CARD
+========================================= */
+
+.help-card {
+    margin-top: 20px;
+    padding: 17px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid rgba(16, 166, 90, 0.25);
+    border-radius: 12px;
+    background: rgba(16, 166, 90, 0.08);
+}
+
+.help-icon {
+    font-size: 20px;
+}
+
+.help-card h3 {
+    margin: 0 0 5px;
+    font-size: 14px;
+}
+
+.help-card p {
+    margin: 0 0 8px;
+    color: #aeb7c5;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.help-link {
+    color: #53d58c;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.help-link:hover {
+    color: #7be5a8;
+}
+
+
+/* =========================================
+   CONTACT FORM
+========================================= */
+
+.contact-form-card {
+    padding: 30px;
+    border: 1px solid #e4e8ef;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 8px 28px rgba(31, 45, 61, 0.06);
+}
+
+.form-header {
+    margin-bottom: 25px;
+}
+
+.form-header h2 {
+    margin: 7px 0 7px;
+    color: #263143;
+    font-size: 24px;
+}
+
+.form-header p {
+    margin: 0;
+    color: #8992a3;
+    font-size: 15px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #374151;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #dfe4eb;
+    border-radius: 9px;
+    outline: none;
+    background: #fafbfc;
+    color: #263143;
+    font-family: inherit;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.form-group input,
+.form-group select {
+    height: 45px;
+    padding: 0 13px;
+}
+
+.form-group textarea {
+    padding: 12px 13px;
+    resize: vertical;
+    min-height: 130px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a6aeba;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #10a65a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(16, 166, 90, 0.08);
+}
+
+
+/* =========================================
+   SEND BUTTON
+========================================= */
+
+.send-message-btn {
+    width: 100%;
+    height: 49px;
+    border: none;
+    border-radius: 9px;
+    background: #10a65a;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.send-message-btn span {
+    margin-left: 8px;
+    font-size: 17px;
+}
+
+.send-message-btn:hover {
+    background: #078d4a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(16, 166, 90, 0.22);
+}
+
+.form-note {
+    margin: 10px 0 0;
+    color: #a0a8b5;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+/* =========================================
+   FAQ
+========================================= */
+
+.faq-section {
+    max-width: 1150px;
+    margin: 0 auto 35px;
+}
+
+.faq-header {
+    margin-bottom: 23px;
+    text-align: center;
+}
+
+.faq-header h2 {
+    margin: 7px 0;
+    color: #263143;
+    font-size: 27px;
+}
+
+.faq-header p {
+    margin: 0;
+    color: #8992a3;
+    font-size: 17px;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.faq-card {
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    border: 1px solid #e4e8ef;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 5px 18px rgba(31, 45, 61, 0.04);
+}
+
+.faq-number {
+    width: 37px;
+    height: 37px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: #eaf8f0;
+    color: #10a65a;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.faq-card h3 {
+    margin: 0 0 7px;
+    color: #263143;
+    font-size: 15px;
+}
+
+.faq-card p {
+    margin: 0;
+    color: #8992a3;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+
+/* =========================================
+   BOTTOM CTA
+========================================= */
+
+.contact-cta {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 16px;
+    background: #eaf8f0;
+    border: 1px solid #d5eee0;
+}
+
+.contact-cta h2 {
+    margin: 6px 0 5px;
+    color: #263143;
+    font-size: 22px;
+}
+
+.contact-cta p {
+    margin: 0;
+    color: #718090;
+    font-size: 15px;
+}
+
+.cta-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: #ffffff;
+    font-size: 25px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .contact-page {
+        padding: 25px 14px 50px;
+    }
+
+    .contact-header h1 {
+        font-size: 30px;
+    }
+
+    .contact-header p {
+        font-size: 15px;
+    }
+
+    .contact-info,
+    .contact-form-card {
+        padding: 22px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .contact-cta {
+        padding: 20px;
+    }
+
+    .contact-cta h2 {
+        font-size: 19px;
+    }
+
+    .cta-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}

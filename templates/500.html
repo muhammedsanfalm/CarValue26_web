@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}Server Error - CarValue26{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/500.css') }}">
+
+<div class="server-error-page">
+
+    <div class="server-error-card">
+
+        <div class="server-error-icon">
+            ⚠️
+        </div>
+
+        <span class="server-error-label">
+            ERROR 500
+        </span>
+
+        <h1>Something Went Wrong</h1>
+
+        <p>
+            We couldn't complete your request right now.
+            Please try again in a moment or return to the
+            CarValue26 homepage.
+        </p>
+
+        <div class="server-error-actions">
+
+            <a href="#" class="server-home-btn">
+                ← Back to Home
+            </a>
+
+            <a href="#" class="server-retry-btn">
+                Try Again
+            </a>
+
+        </div>
+
+        <div class="server-error-note">
+
+            <div class="note-icon">
+                💡
+            </div>
+
+            <div>
+                <strong>Don't worry</strong>
+
+                <p>
+                    Your account and saved information are not
+                    affected by this temporary error.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="server-brand">
+            <strong>CarValue<span>26</span></strong>
+            <small>Smarter Used-Car Valuation</small>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,156 @@
+/* =========================================
+   404 ERROR PAGE
+========================================= */
+
+.error-page {
+    min-height: calc(100vh - 80px);
+    padding: 70px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f7fb;
+}
+
+.error-card {
+    width: 100%;
+    max-width: 650px;
+    padding: 55px 45px;
+    text-align: center;
+    border: 1px solid #e1e7ed;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 10px 35px rgba(31, 45, 61, 0.07);
+}
+
+.error-icon {
+    width: 95px;
+    height: 95px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eaf8f0;
+    font-size: 43px;
+}
+
+.error-label {
+    color: #10a65a;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.error-card h1 {
+    margin: 13px auto 15px;
+    max-width: 500px;
+    color: #172033;
+    font-size: 31px;
+    line-height: 1.25;
+    font-weight: 800;
+}
+
+.error-card > p {
+    max-width: 490px;
+    margin: 0 auto;
+    color: #7d8998;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.error-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.home-btn,
+.secondary-btn {
+    padding: 13px 22px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.home-btn {
+    background: #10a65a;
+    color: #ffffff;
+}
+
+.home-btn:hover {
+    background: #078d4a;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    border: 1px solid #dce2e8;
+    background: #ffffff;
+    color: #657285;
+}
+
+.secondary-btn:hover {
+    border-color: #10a65a;
+    color: #10a65a;
+}
+
+.error-note {
+    margin-top: 32px;
+    padding: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
+    border-radius: 10px;
+    background: #effaf4;
+}
+
+.error-note span {
+    font-size: 16px;
+}
+
+.error-note p {
+    margin: 0;
+    color: #718090;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .error-page {
+        padding: 45px 15px;
+    }
+
+    .error-card {
+        padding: 40px 22px;
+    }
+
+    .error-card h1 {
+        font-size: 26px;
+    }
+
+    .error-card > p {
+        font-size: 12px;
+    }
+
+    .error-actions {
+        flex-direction: column;
+    }
+
+    .home-btn,
+    .secondary-btn {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}

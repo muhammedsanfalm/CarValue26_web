@@ -1,0 +1,351 @@
+{% extends "layout.html" %}
+
+{% block title %}Compare Cars - CarValue26{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/compare.css') }}">
+
+<div class="compare-page">
+
+    <!-- Page Header -->
+    <section class="compare-header">
+        <span class="compare-label">SMART CAR COMPARISON</span>
+
+        <h1>Compare Two Used Cars</h1>
+
+        <p>
+            Enter the details of two cars and compare their value,
+            performance, efficiency, and ownership factors.
+        </p>
+    </section>
+
+
+    <!-- Car Comparison Forms -->
+     <form action="{{ url_for('compare_result') }}" method="POST">
+    <section class="comparison-section">
+
+        <!-- Car 1 -->
+        <div class="car-form-card">
+
+            <div class="car-card-header">
+                <div class="car-number">01</div>
+
+                <div>
+                    <h2>Car 1</h2>
+                    <p>Enter the first car details</p>
+                </div>
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Brand</label>
+                    <input type="text"
+                           name="car1_brand"
+                           placeholder="e.g. Hyundai">
+                </div>
+
+                <div class="form-group">
+                    <label>Model</label>
+                    <input type="text"
+                           name="car1_model"
+                           placeholder="e.g. Creta">
+                </div>
+
+                <div class="form-group">
+                    <label>Year</label>
+                    <input type="number"
+                           name="car1_year"
+                           placeholder="e.g. 2022">
+                </div>
+
+                <div class="form-group">
+                    <label>Kilometers Driven</label>
+                    <input type="number"
+                           name="car1_km"
+                           placeholder="e.g. 45000">
+                </div>
+
+                <div class="form-group">
+                    <label>Seller Type</label>
+                    <select name="car1_seller_type">
+                        <option value="">Select seller type</option>
+                        <option>Individual</option>
+                        <option>Dealer</option>
+                        <option>Trustmark Dealer</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Fuel Type</label>
+                    <select name="car1_fuel">
+                        <option value="">Select fuel type</option>
+                        <option>Petrol</option>
+                        <option>Diesel</option>
+                        <option>CNG</option>
+                        <option>LPG</option>
+                        <option>Electric</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Transmission</label>
+                    <select name="car1_transmission">
+                        <option value="">Select transmission</option>
+                        <option>Manual</option>
+                        <option>Automatic</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Mileage (km/l)</label>
+                    <input type="number"
+                           step="0.1"
+                           name="car1_mileage"
+                           placeholder="e.g. 18.5">
+                </div>
+
+                <div class="form-group">
+                    <label>Engine (cc)</label>
+                    <input type="number"
+                           name="car1_engine"
+                           placeholder="e.g. 1497">
+                </div>
+
+                <div class="form-group">
+                    <label>Max Power (bhp)</label>
+                    <input type="number"
+                           step="0.1"
+                           name="car1_power"
+                           placeholder="e.g. 115">
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Seats</label>
+                    <select name="car1_seats">
+                        <option value="">Select seats</option>
+                        <option>2</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- VS Divider -->
+        <div class="vs-divider">
+            <span>VS</span>
+        </div>
+
+
+        <!-- Car 2 -->
+        <div class="car-form-card">
+
+            <div class="car-card-header">
+                <div class="car-number second">02</div>
+
+                <div>
+                    <h2>Car 2</h2>
+                    <p>Enter the second car details</p>
+                </div>
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Brand</label>
+                    <input type="text"
+                           name="car2_brand"
+                           placeholder="e.g. Kia">
+                </div>
+
+                <div class="form-group">
+                    <label>Model</label>
+                    <input type="text"
+                           name="car2_model"
+                           placeholder="e.g. Seltos">
+                </div>
+
+                <div class="form-group">
+                    <label>Year</label>
+                    <input type="number"
+                           name="car2_year"
+                           placeholder="e.g. 2021">
+                </div>
+
+                <div class="form-group">
+                    <label>Kilometers Driven</label>
+                    <input type="number"
+                           name="car2_km"
+                           placeholder="e.g. 52000">
+                </div>
+
+                <div class="form-group">
+                    <label>Seller Type</label>
+                    <select name="car2_seller_type">
+                        <option value="">Select seller type</option>
+                        <option>Individual</option>
+                        <option>Dealer</option>
+                        <option>Trustmark Dealer</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Fuel Type</label>
+                    <select name="car2_fuel">
+                        <option value="">Select fuel type</option>
+                        <option>Petrol</option>
+                        <option>Diesel</option>
+                        <option>CNG</option>
+                        <option>LPG</option>
+                        <option>Electric</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Transmission</label>
+                    <select name="car2_transmission">
+                        <option value="">Select transmission</option>
+                        <option>Manual</option>
+                        <option>Automatic</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Mileage (km/l)</label>
+                    <input type="number"
+                           step="0.1"
+                           name="car2_mileage"
+                           placeholder="e.g. 17.8">
+                </div>
+
+                <div class="form-group">
+                    <label>Engine (cc)</label>
+                    <input type="number"
+                           name="car2_engine"
+                           placeholder="e.g. 1493">
+                </div>
+
+                <div class="form-group">
+                    <label>Max Power (bhp)</label>
+                    <input type="number"
+                           step="0.1"
+                           name="car2_power"
+                           placeholder="e.g. 113">
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Seats</label>
+                    <select name="car2_seats">
+                        <option value="">Select seats</option>
+                        <option>2</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Compare Button -->
+<div class="compare-action">
+
+    <button type="submit" class="compare-button">
+        <span>⚖</span>
+        Compare Cars
+    </button>
+
+    <p>
+        Compare both cars using their specifications and condition.
+    </p>
+
+</div>
+
+
+    <!-- Future Result Section -->
+    <section class="comparison-result">
+
+        <div class="result-header">
+            <span class="result-label">COMPARISON RESULT</span>
+
+            <h2>Which Car Is More Suitable?</h2>
+
+            <p>
+                Your comparison results will appear here after you compare
+                the two cars.
+            </p>
+        </div>
+
+
+        <div class="result-placeholder">
+
+            <div class="placeholder-icon">🚗</div>
+
+            <h3>Ready to Compare</h3>
+
+            <p>
+                Enter the details of both cars above and click
+                <strong>Compare Cars</strong> to see the comparison.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Comparison Factors -->
+    <section class="comparison-factors">
+
+        <div class="factor-card">
+            <div class="factor-icon">💰</div>
+            <h3>Estimated Value</h3>
+            <p>Compare the estimated market value of both cars.</p>
+        </div>
+
+        <div class="factor-card">
+            <div class="factor-icon">⚡</div>
+            <h3>Performance</h3>
+            <p>Compare engine size, power and overall specifications.</p>
+        </div>
+
+        <div class="factor-card">
+            <div class="factor-icon">⛽</div>
+            <h3>Efficiency</h3>
+            <p>Compare mileage, fuel type and running efficiency.</p>
+        </div>
+
+        <div class="factor-card">
+            <div class="factor-icon">🛣️</div>
+            <h3>Usage</h3>
+            <p>Compare vehicle age and kilometers driven.</p>
+        </div>
+
+        </section>
+
+</form>
+
+</div>
+
+
+{% endblock %}

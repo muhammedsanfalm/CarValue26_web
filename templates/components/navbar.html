@@ -7,14 +7,52 @@
     </a>
 
     <!-- Navigation Links -->
-    <ul class="nav-links">
-        <li><a href="#hero" class="active">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#market">Market</a></li>
-        <li><a href="#compare">Compare</a></li>
-        <li><a href="#assistant">AI Assistant</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+
+<ul class="nav-links">
+
+    <li>
+        <a href="{{ url_for('home') }}"
+           class="{% if request.endpoint == 'home' %}active{% endif %}">
+            Home
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('features') }}"
+           class="{% if request.endpoint == 'features' %}active{% endif %}">
+            Features
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('market') }}"
+           class="{% if request.endpoint == 'market' %}active{% endif %}">
+            Market
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('compare') }}"
+           class="{% if request.endpoint == 'compare' or request.endpoint == 'compare_result' %}active{% endif %}">
+            Compare
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('ai_assistant') }}"
+           class="{% if request.endpoint == 'ai_assistant' %}active{% endif %}">
+            AI Assistant
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('contact') }}"
+           class="{% if request.endpoint == 'contact' %}active{% endif %}">
+            Contact
+        </a>
+    </li>
+
+</ul>
 
     <!-- Right Side -->
     <div class="nav-right">
@@ -28,13 +66,27 @@
             >
         </div>
 
-        <button class="login-btn">
-            Login
-        </button>
+        {% if session.get('user') %}
 
-        <button class="register-btn">
-            Register
-        </button>
+    <span class="welcome-user">
+        Welcome, {{ session['user']['name'] }}
+    </span>
+
+    <a href="{{ url_for('logout') }}" class="logout-btn">
+    Logout
+</a>
+
+{% else %}
+
+    <a href="{{ url_for('login') }}" class="login-btn">
+        Login
+    </a>
+
+    <a href="{{ url_for('register') }}" class="register-btn">
+        Register
+    </a>
+
+{% endif %}
 
     </div>
 

@@ -1,0 +1,410 @@
+/* =========================================
+   CARVALUE26 - COMPARE CARS
+========================================= */
+
+.compare-page {
+    min-height: calc(100vh - 80px);
+    padding: 35px 20px 70px;
+    background: #f5f7fb;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.compare-header {
+    max-width: 900px;
+    margin: 0 auto 35px;
+    text-align: center;
+}
+
+.compare-label,
+.result-label {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #10a65a;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.compare-header h1 {
+    margin: 0 0 12px;
+    color: #172033;
+    font-size: 38px;
+    font-weight: 800;
+}
+
+.compare-header p {
+    max-width: 700px;
+    margin: auto;
+    color: #697386;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   COMPARISON SECTION
+========================================= */
+
+.comparison-section {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 55px 1fr;
+    align-items: start;
+    gap: 15px;
+}
+
+
+/* =========================================
+   CAR FORM CARD
+========================================= */
+
+.car-form-card {
+    background: #ffffff;
+    border: 1px solid #e5e9f0;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 8px 30px rgba(31, 45, 61, 0.07);
+}
+
+.car-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 22px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.car-number {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #10a65a;
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.car-number.second {
+    background: #172033;
+}
+
+.car-card-header h2 {
+    margin: 0 0 4px;
+    color: #172033;
+    font-size: 22px;
+}
+
+.car-card-header p {
+    margin: 0;
+    color: #8992a3;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   FORM GRID
+========================================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    color: #374151;
+    font-size: 15px;
+    font-weight: 600
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 46px;
+    padding: 0 13px;
+    border: 1px solid #dfe4eb;
+    border-radius: 9px;
+    outline: none;
+    background: #fafbfc;
+    color: #263143;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #a4acb9;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #10a65a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(16, 166, 90, 0.09);
+}
+
+
+/* =========================================
+   VS DIVIDER
+========================================= */
+
+.vs-divider {
+    height: 100%;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vs-divider span {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #172033;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    box-shadow: 0 8px 20px rgba(23, 32, 51, 0.2);
+}
+
+
+/* =========================================
+   COMPARE ACTION
+========================================= */
+
+.compare-action {
+    text-align: center;
+    margin: 35px auto 50px;
+}
+
+.compare-button {
+    min-width: 210px;
+    height: 52px;
+    padding: 0 28px;
+    border: none;
+    border-radius: 10px;
+    background: #10a65a;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(16, 166, 90, 0.22);
+    transition: 0.3s ease;
+}
+
+.compare-button span {
+    margin-right: 7px;
+}
+
+.compare-button:hover {
+    background: #078d4a;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(16, 166, 90, 0.28);
+}
+
+.compare-action p {
+    margin: 12px 0 0;
+    color: #8992a3;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   RESULT SECTION
+========================================= */
+
+.comparison-result {
+    max-width: 1250px;
+    margin: 0 auto 40px;
+    padding: 35px;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid #e5e9f0;
+    box-shadow: 0 8px 30px rgba(31, 45, 61, 0.06);
+}
+
+.result-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.result-header h2 {
+    margin: 0 0 10px;
+    color: #172033;
+    font-size: 27px;
+}
+
+.result-header p {
+    margin: 0;
+    color: #8992a3;
+    font-size: 16px;
+}
+
+.result-placeholder {
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    border: 2px dashed #dfe4eb;
+    border-radius: 14px;
+    text-align: center;
+    background: #fafbfc;
+}
+
+.placeholder-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.result-placeholder h3 {
+    margin: 0 0 8px;
+    color: #263143;
+    font-size: 19px;
+}
+
+.result-placeholder p {
+    max-width: 500px;
+    margin: 0;
+    color: #8992a3;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   COMPARISON FACTORS
+========================================= */
+
+.comparison-factors {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.factor-card {
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e5e9f0;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(31, 45, 61, 0.05);
+}
+
+.factor-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #eaf8f0;
+    font-size: 22px;
+}
+
+.factor-card h3 {
+    margin: 0 0 8px;
+    color: #263143;
+    font-size: 16px;
+}
+
+.factor-card p {
+    margin: 0;
+    color: #8992a3;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .comparison-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .vs-divider {
+        min-height: auto;
+        height: 50px;
+    }
+
+    .comparison-factors {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .compare-page {
+        padding: 25px 14px 50px;
+    }
+
+    .compare-header h1 {
+        font-size: 30px;
+    }
+
+    .compare-header p {
+        font-size: 14px;
+    }
+
+    .car-form-card {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    .comparison-result {
+        padding: 22px;
+    }
+
+    .result-header h2 {
+        font-size: 23px;
+    }
+
+    .comparison-factors {
+        grid-template-columns: 1fr;
+    }
+
+    .compare-button {
+        width: 100%;
+        max-width: 300px;
+    }
+}

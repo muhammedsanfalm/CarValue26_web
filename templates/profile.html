@@ -1,0 +1,316 @@
+{% extends "layout.html" %}
+
+{% block title %}My Profile - CarValue26{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/profile.css') }}">
+
+<div class="profile-page">
+
+    <!-- Profile Header -->
+    <section class="profile-header">
+
+        <div>
+            <span class="profile-label">MY ACCOUNT</span>
+
+            <h1>My Profile</h1>
+
+            <p>
+                Manage your CarValue26 account and view your activity.
+            </p>
+        </div>
+
+        <a href="#" class="edit-profile-btn">
+            Edit Profile
+        </a>
+
+    </section>
+
+
+    <!-- Profile Overview -->
+    <section class="profile-overview">
+
+        <div class="profile-card">
+
+            <div class="avatar">
+                U
+            </div>
+
+            <div class="profile-main-info">
+
+                <h2>User Name</h2>
+
+                <p>
+                    user@example.com
+                </p>
+
+                <span class="member-badge">
+                    CarValue26 Member
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Account Status -->
+        <div class="account-status-card">
+
+            <div class="status-icon">
+                ✓
+            </div>
+
+            <div>
+                <span>ACCOUNT STATUS</span>
+
+                <strong>Active</strong>
+
+                <small>
+                    Your account is ready to use
+                </small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Statistics -->
+    <section class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📊
+            </div>
+
+            <div>
+                <span>Total Predictions</span>
+                <strong>0</strong>
+                <small>Car valuations made</small>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🚗
+            </div>
+
+            <div>
+                <span>Cars Compared</span>
+                <strong>0</strong>
+                <small>Comparison activities</small>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                💰
+            </div>
+
+            <div>
+                <span>Latest Estimate</span>
+                <strong>—</strong>
+                <small>No prediction yet</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Account Details -->
+    <section class="profile-content">
+
+        <div class="details-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <span>ACCOUNT INFORMATION</span>
+
+                    <h2>Personal Details</h2>
+                </div>
+
+                <div class="heading-icon">
+                    👤
+                </div>
+
+            </div>
+
+
+            <div class="details-grid">
+
+                <div class="detail-item">
+
+                    <span>Full Name</span>
+
+                    <strong>User Name</strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>Email Address</span>
+
+                    <strong>user@example.com</strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>Account Type</span>
+
+                    <strong>Standard Member</strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>Member Since</span>
+
+                    <strong>September 2026</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Quick Actions -->
+        <div class="actions-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <span>QUICK ACCESS</span>
+
+                    <h2>Account Actions</h2>
+                </div>
+
+                <div class="heading-icon">
+                    ⚙
+                </div>
+
+            </div>
+
+
+            <div class="action-list">
+
+                <a href="#" class="action-item">
+
+                    <div class="action-icon">
+                        🚗
+                    </div>
+
+                    <div>
+                        <strong>Predict a Car</strong>
+                        <small>Estimate a vehicle's market value</small>
+                    </div>
+
+                    <span class="action-arrow">→</span>
+
+                </a>
+
+
+                <a href="#" class="action-item">
+
+                    <div class="action-icon">
+                        📋
+                    </div>
+
+                    <div>
+                        <strong>Prediction History</strong>
+                        <small>View your previous predictions</small>
+                    </div>
+
+                    <span class="action-arrow">→</span>
+
+                </a>
+
+
+                <a href="#" class="action-item">
+
+                    <div class="action-icon">
+                        ⚖️
+                    </div>
+
+                    <div>
+                        <strong>Compare Cars</strong>
+                        <small>Compare two vehicles</small>
+                    </div>
+
+                    <span class="action-arrow">→</span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Security -->
+    <section class="security-card">
+
+        <div class="security-icon">
+            🔒
+        </div>
+
+        <div class="security-content">
+
+            <span>ACCOUNT SECURITY</span>
+
+            <h2>Your account is protected</h2>
+
+            <p>
+                Your account information and prediction history are
+                associated with your CarValue26 account.
+            </p>
+
+        </div>
+
+        <a href="#" class="security-btn">
+            Security Settings
+        </a>
+
+    </section>
+
+
+    <!-- Bottom CTA -->
+    <section class="profile-cta">
+
+        <div>
+
+            <span>CARVALUE26</span>
+
+            <h2>Ready to discover your car's value?</h2>
+
+            <p>
+                Get an AI-powered estimate using your vehicle details.
+            </p>
+
+        </div>
+
+        <a href="#" class="cta-btn">
+            Start Prediction →
+        </a>
+
+    </section>
+
+</div>
+
+{% endblock %}

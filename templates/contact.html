@@ -1,0 +1,382 @@
+{% extends "layout.html" %}
+
+{% block title %}Contact Us - CarValue26{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/contact.css') }}">
+
+<div class="contact-page">
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <section class="contact-header">
+
+        <span class="contact-label">GET IN TOUCH</span>
+
+        <h1>How Can We Help?</h1>
+
+        <p>
+            Have a question about CarValue26, car valuation, or our features?
+            Send us a message and we'll be happy to help.
+        </p>
+
+    </section>
+
+
+    <!-- =========================================
+         CONTACT CONTENT
+    ========================================== -->
+
+    <section class="contact-container">
+
+        <!-- Contact Information -->
+
+        <div class="contact-info">
+
+            <span class="info-label">CONTACT CARVALUE26</span>
+
+            <h2>Let's Talk About Cars</h2>
+
+            <p class="info-description">
+                Whether you have a question, feedback, or need help using
+                CarValue26, we're here to assist you.
+            </p>
+
+
+            <!-- Email -->
+
+            <div class="contact-item">
+
+                <div class="contact-icon">
+                    ✉
+                </div>
+
+                <div>
+                    <span>Email</span>
+                    <strong>support@carvalue26.com</strong>
+                    <small>We'll respond as soon as possible</small>
+                </div>
+
+            </div>
+
+
+            <!-- Phone -->
+
+            <div class="contact-item">
+
+                <div class="contact-icon">
+                    ☎
+                </div>
+
+                <div>
+                    <span>Phone</span>
+                    <strong>+91 XXXXX XXXXX</strong>
+                    <small>Available during support hours</small>
+                </div>
+
+            </div>
+
+
+            <!-- Support Hours -->
+
+            <div class="contact-item">
+
+                <div class="contact-icon">
+                    🕒
+                </div>
+
+                <div>
+                    <span>Support Hours</span>
+                    <strong>Monday – Saturday</strong>
+                    <small>9:00 AM – 6:00 PM</small>
+                </div>
+
+            </div>
+
+
+            <!-- Help Card -->
+
+            <div class="help-card">
+
+                <div class="help-icon">
+                    💡
+                </div>
+
+                <div>
+                    <h3>Need quick help?</h3>
+
+                    <p>
+                        Try our CarValue AI Assistant for instant
+                        car-related information.
+                    </p>
+
+                    <a href="#" class="help-link">
+                        Explore AI Assistant →
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Contact Form -->
+
+        <div class="contact-form-card">
+
+            <div class="form-header">
+
+                <span>MESSAGE US</span>
+
+                <h2>Send Us a Message</h2>
+
+                <p>
+                    Fill in the form below and we'll get back to you.
+                </p>
+
+            </div>
+
+
+            <form>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <select id="subject" name="subject">
+
+                        <option value="">
+                            Select a subject
+                        </option>
+
+                        <option>
+                            General Question
+                        </option>
+
+                        <option>
+                            Car Price Prediction
+                        </option>
+
+                        <option>
+                            Compare Cars
+                        </option>
+
+                        <option>
+                            AI Assistant
+                        </option>
+
+                        <option>
+                            Technical Support
+                        </option>
+
+                        <option>
+                            Feedback
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="6"
+                        placeholder="Write your message here..."></textarea>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="send-message-btn">
+
+                    Send Message
+                    <span>→</span>
+
+                </button>
+
+                <p class="form-note">
+                    We respect your privacy and won't share your information.
+                </p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FAQ
+    ========================================== -->
+
+    <section class="faq-section">
+
+        <div class="faq-header">
+
+            <span>COMMON QUESTIONS</span>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <p>
+                Here are some quick answers about CarValue26.
+            </p>
+
+        </div>
+
+
+        <div class="faq-grid">
+
+            <div class="faq-card">
+
+                <div class="faq-number">
+                    01
+                </div>
+
+                <div>
+                    <h3>How does car price prediction work?</h3>
+
+                    <p>
+                        CarValue26 uses vehicle characteristics such as
+                        brand, model, age, mileage, engine, and other
+                        specifications to estimate a car's value.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-card">
+
+                <div class="faq-number">
+                    02
+                </div>
+
+                <div>
+                    <h3>Can I compare two used cars?</h3>
+
+                    <p>
+                        Yes. The Compare Cars feature allows you to enter
+                        details for two vehicles and compare their
+                        characteristics.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-card">
+
+                <div class="faq-number">
+                    03
+                </div>
+
+                <div>
+                    <h3>Is the predicted price exact?</h3>
+
+                    <p>
+                        No. A predicted price is an estimate based on
+                        available data and should be used as a reference,
+                        not as a guaranteed selling price.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-card">
+
+                <div class="faq-number">
+                    04
+                </div>
+
+                <div>
+                    <h3>Can I view my previous predictions?</h3>
+
+                    <p>
+                        Yes. Signed-in users can access their prediction
+                        history and review previous car valuations.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         BOTTOM CTA
+    ========================================== -->
+
+    <section class="contact-cta">
+
+        <div>
+
+            <span>CARVALUE26</span>
+
+            <h2>Have Something to Share?</h2>
+
+            <p>
+                Your feedback helps us make CarValue26 better.
+            </p>
+
+        </div>
+
+        <div class="cta-icon">
+            💬
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

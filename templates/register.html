@@ -1,10 +1,11 @@
+'
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CarValue26 | Register</title>
+    <title>Register - CarValue26</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/login.css') }}">
@@ -12,166 +13,169 @@
 
 <body>
 
-<div class="login-page">
+    <div class="auth-container">
 
-    <!-- Left side -->
-    <div class="login-left">
-
-        <div class="brand">
-            <img src="{{ url_for('static', filename='images/logo.png') }}"
-                 alt="CarValue26">
-        </div>
-
-        <div class="welcome">
-            <h1>Create Your Account</h1>
-
-            <p>
-                Join CarValue26 and discover smarter,
-                faster and more accurate used car valuation.
-            </p>
-        </div>
-
-    </div>
-
-
-    <!-- Right side -->
-    <div class="login-right">
-
-        <div class="login-card">
-
-            <h2>Create Your Account</h2>
-
-            <p class="subtitle">
-                Enter your details to get started
-            </p>
-
-
-            <form action="#" method="POST">
-
-                <!-- Full Name -->
-                <label>Full Name</label>
-
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Enter your full name"
-                    required
-                >
-
-
-                <!-- Email -->
-                <label>Email Address</label>
-
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    required
-                >
-
-
-                <!-- Password -->
-                <label>Password</label>
-
-                <div class="password-box">
-
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Create a password"
-                        required
-                    >
-
-                    <button
-                        type="button"
-                        class="show-password"
-                        onclick="togglePassword('password')">
-                        👁
-                    </button>
-
-                </div>
-
-
-                <!-- Confirm Password -->
-                <label>Confirm Password</label>
-
-                <div class="password-box">
-
-                    <input
-                        type="password"
-                        id="confirm-password"
-                        name="confirm_password"
-                        placeholder="Confirm your password"
-                        required
-                    >
-
-                    <button
-                        type="button"
-                        class="show-password"
-                        onclick="togglePassword('confirm-password')">
-                        👁
-                    </button>
-
-                </div>
-
-
-                <!-- Create account -->
-                <button type="submit" class="login-btn">
-                    Create Account
-                </button>
-
-            </form>
-
-
-            <div class="divider">
-                <span>OR</span>
+        <!-- Left Section -->
+        <div class="auth-left">
+            <div class="brand">
+                <h1>CarValue<span>26</span></h1>
             </div>
 
+            <div class="welcome-text">
+                <h2>Create Your Account</h2>
+                <p>
+                    Join CarValue26 and get accurate estimated
+                    car values with our prediction system.
+                </p>
+            </div>
+        </div>
 
-            <!-- Google -->
-            <button class="google-btn" type="button">
+        <!-- Right Section -->
+        <div class="auth-right">
 
-                <span class="google-icon">G</span>
+            <div class="form-box">
 
-                Continue with Google
+                <h2>Register</h2>
+                <p class="form-subtitle">
+                    Create your CarValue26 account
+                </p>
 
-            </button>
+                <!-- Flash Messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert {{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
 
+                <form action="{{ url_for('register') }}" method="POST">
 
-            <p class="register-text">
+                    <!-- Full Name -->
+                    <div class="input-group">
+                        <label for="name">Full Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            required
+                            autocomplete="name">
+                    </div>
 
-                Already have an account?
+                    <!-- Email -->
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                            autocomplete="email">
+                    </div>
 
-                <a href="{{ url_for('login') }}">
-                    Login
-                </a>
+                    <!-- Password -->
+                    <div class="input-group">
+                        <label for="password">Password</label>
 
-            </p>
+                        <div class="password-box">
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a password"
+                                minlength="6"
+                                required
+                                autocomplete="new-password">
+
+                            <button
+                                type="button"
+                                class="show-password"
+                                onclick="togglePassword('password', this)">
+                                Show
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="input-group">
+                        <label for="confirm_password">
+                            Confirm Password
+                        </label>
+
+                        <div class="password-box">
+                            <input
+                                type="password"
+                                id="confirm_password"
+                                name="confirm_password"
+                                placeholder="Confirm your password"
+                                minlength="6"
+                                required
+                                autocomplete="new-password">
+
+                            <button
+                                type="button"
+                                class="show-password"
+                                onclick="togglePassword('confirm_password', this)">
+                                Show
+                            </button>
+                        </div>
+                    </div>
+
+                    <label class="terms">
+                        <input type="checkbox" required>
+                        I agree to the Terms and Conditions
+                    </label>
+
+                    <button type="submit" class="auth-button">
+                        Create Account
+                    </button>
+
+                </form>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <p class="switch-page">
+                    Already have an account?
+                    <a href="{{ url_for('login') }}">Login</a>
+                </p>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+    <script>
+        function togglePassword(inputId, button) {
+            const password = document.getElementById(inputId);
 
+            if (password.type === "password") {
+                password.type = "text";
+                button.textContent = "Hide";
+            } else {
+                password.type = "password";
+                button.textContent = "Show";
+            }
+        }
 
-<script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            const password = document.getElementById("password").value;
+            const confirmPassword =
+                document.getElementById("confirm_password").value;
 
-function togglePassword(id) {
-
-    const password =
-        document.getElementById(id);
-
-    if (password.type === "password") {
-        password.type = "text";
-    } else {
-        password.type = "password";
-    }
-
-}
-
-</script>
+            if (password !== confirmPassword) {
+                event.preventDefault();
+                alert("Passwords do not match!");
+            }
+        });
+    </script>
 
 </body>
 </html>
+```

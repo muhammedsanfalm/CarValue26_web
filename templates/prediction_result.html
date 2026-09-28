@@ -1,0 +1,296 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/prediction_result.css') }}">
+
+<div class="result-page">
+
+    <!-- TOP RESULT CARD -->
+    <section class="result-hero">
+
+        <div class="result-left">
+
+            <div class="success-icon">✓</div>
+
+            <div>
+                <h3>Estimated Car Price</h3>
+
+                <div class="price">
+                    ₹{{ "{:,.0f}".format(prediction) }}
+                </div>
+
+                <p class="result-description">
+                    This is the estimated market value of your car
+                    based on the information you provided.
+                </p>
+            </div>
+
+            <div class="result-features">
+
+                <div class="feature">
+                    <div class="feature-icon">🛡</div>
+                    <div>
+                        <strong>AI Powered</strong>
+                        <span>Smart Prediction</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <div>
+                        <strong>Based on Real Data</strong>
+                        <span>Market Trends & Features</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    <div>
+                        <strong>Reliable Estimate</strong>
+                        <span>For Better Decisions</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="result-car">
+
+            <!-- Replace this image with your own car image if available -->
+            <img src="{{ url_for('static', filename='images/car-result.png') }}"
+                 alt="Car">
+
+            <div class="true-value">
+                Know Your Car's<br>
+                <strong>True Value</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PREDICTION HISTORY -->
+<section class="prediction-history-card">
+
+    <div class="history-card-icon">
+        🕘
+    </div>
+
+    <div class="history-card-content">
+
+        <span class="history-card-label">
+            YOUR PREDICTIONS
+        </span>
+
+        <h2>
+            Prediction History
+        </h2>
+
+        <p>
+            View your previous car price predictions and keep track
+            of the vehicles you have evaluated with CarValue26.
+        </p>
+
+    </div>
+
+    <a href="{{ url_for('history') }}" class="history-card-btn">
+        View Prediction History
+        <span>→</span>
+    </a>
+
+</section>
+
+
+<!-- DETAILS + INSIGHTS -->
+<section class="result-grid">
+
+        <!-- CAR DETAILS -->
+        <div class="details-card">
+
+            <div class="section-heading">
+
+                <div class="heading-icon">🚗</div>
+
+                <div>
+                    <h2>Car Details</h2>
+                    <p>The details you provided for the prediction</p>
+                </div>
+
+            </div>
+
+
+            <div class="details-list">
+
+                <div class="detail-row">
+                    <span>🚘 Brand</span>
+                    <strong>{{ brand }}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>🚗 Model</span>
+                    <strong>{{ model }}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>📅 Year / Age</span>
+                    <strong>{{ year }} ({{ vehicle_age }} years)</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>🛣 Kilometers Driven</span>
+                    <strong>{{ "{:,}".format(kilometers) }} km</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>⛽ Fuel Type</span>
+                    <strong>{{ fuel_type }}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>⚙ Transmission</span>
+                    <strong>{{ transmission_type }}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>👤 Seller Type</span>
+                    <strong>{{ seller_type }}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>📈 Mileage</span>
+                    <strong>{{ mileage }} km/l</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>🔧 Engine</span>
+                    <strong>{{ engine }} cc</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>⚡ Max Power</span>
+                    <strong>{{ max_power }} bhp</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>💺 Seats</span>
+                    <strong>{{ seats }}</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK INSIGHTS -->
+        <div class="insights-card">
+
+            <div class="insights-header">
+
+                <div class="heading-icon">💡</div>
+
+                <div>
+                    <h2>Quick Insights</h2>
+                    <p>
+                        Here are a few things to keep in mind about
+                        your car's estimated price.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="insight-item">
+
+                <div class="insight-icon green">↑</div>
+
+                <div>
+                    <h3>Estimated Market Value</h3>
+                    <p>
+                        The displayed price is an estimated value
+                        generated from the available car data
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="insight-item">
+
+                <div class="insight-icon blue">★</div>
+
+                <div>
+                    <h3>{{ brand }} {{ model }}</h3>
+                    <p>
+                        Your prediction is based on the selected
+                        brand, model and vehicle specifications
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="insight-item">
+
+                <div class="insight-icon purple">%</div>
+
+                <div>
+                    <h3>Fuel Efficiency</h3>
+                    <p>
+                        With {{ mileage }} km/l mileage, this car's
+                        fuel economy is included in the estimate.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="insight-item">
+
+                <div class="insight-icon orange">👥</div>
+
+                <div>
+                    <h3>Vehicle Information</h3>
+                    <p>
+                        {{ seats }} seats with {{ transmission_type }}
+                        transmission and {{ fuel_type }} fuel
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="notice">
+
+                <span>ⓘ</span>
+
+                <p>
+                    This is an estimated price and may vary based on
+                    actual vehicle condition, location, demand and
+                    other market factors
+                </p>
+
+            </div>
+
+
+            <a href="{{ url_for('predict') }}" class="another-car-btn">
+                ↻ &nbsp; Discover More
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <div class="result-footer">
+        ♥ Your Trusted Car Price Predictor
+        <span>|</span>
+        <strong>CarValue26</strong>
+    </div>
+
+</div>
+
+{% endblock %}

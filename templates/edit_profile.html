@@ -1,0 +1,268 @@
+{% extends "layout.html" %}
+
+{% block title %}Edit Profile - CarValue26{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/edit_profile.css') }}">
+
+<div class="edit-profile-page">
+
+    <!-- HEADER -->
+    <div class="edit-profile-header">
+
+        <span class="profile-label">
+            ACCOUNT SETTINGS
+        </span>
+
+        <h1>Edit Your Profile</h1>
+
+        <p>
+            Update your personal information and manage your CarValue26
+            account details.
+        </p>
+
+    </div>
+
+
+    <!-- PROFILE CARD -->
+    <div class="edit-profile-container">
+
+        <div class="profile-card">
+
+            <!-- PROFILE AVATAR -->
+            <div class="profile-top">
+
+                <div class="profile-avatar">
+                    U
+                </div>
+
+                <div class="profile-info">
+
+                    <h2>User Name</h2>
+
+                    <p>
+                        user@example.com
+                    </p>
+
+                    <span class="member-badge">
+                        CarValue26 Member
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERSONAL INFORMATION -->
+            <div class="form-section">
+
+                <div class="section-title">
+
+                    <span>PERSONAL INFORMATION</span>
+
+                    <h2>Account Details</h2>
+
+                    <p>
+                        Keep your account information up to date.
+                    </p>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <!-- FULL NAME -->
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value="User Name"
+                            placeholder="Enter your full name"
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value="user@example.com"
+                            placeholder="Enter your email"
+                        >
+
+                    </div>
+
+
+                    <!-- PHONE -->
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                        >
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+                    <div class="form-group">
+
+                        <label for="location">
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="City, State"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCOUNT INFORMATION -->
+            <div class="account-information">
+
+                <div class="section-title">
+
+                    <span>ACCOUNT INFORMATION</span>
+
+                    <h2>Account Overview</h2>
+
+                </div>
+
+
+                <div class="account-grid">
+
+                    <div class="account-item">
+
+                        <div class="account-icon">
+                            👤
+                        </div>
+
+                        <div>
+                            <small>Account Type</small>
+                            <strong>Personal Account</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="account-item">
+
+                        <div class="account-icon">
+                            📅
+                        </div>
+
+                        <div>
+                            <small>Member Since</small>
+                            <strong>September 2026</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="account-item">
+
+                        <div class="account-icon">
+                            📊
+                        </div>
+
+                        <div>
+                            <small>Predictions</small>
+                            <strong>0 Predictions</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SECURITY -->
+            <div class="security-section">
+
+                <div class="security-icon">
+                    🔒
+                </div>
+
+                <div class="security-content">
+
+                    <h3>Account Security</h3>
+
+                    <p>
+                        Your account information is protected and securely
+                        associated with your CarValue26 account.
+                    </p>
+
+                    <a href="#" class="change-password-btn">
+                        Change Password
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTION BUTTONS -->
+            <div class="profile-actions">
+
+                <a href="#" class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="button" class="save-btn">
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BOTTOM NOTE -->
+    <div class="profile-note">
+
+        <span>ℹ</span>
+
+        <p>
+            Profile changes will be associated with your CarValue26
+            account. Some account information, such as your email
+            address, may be managed separately for security purposes.
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

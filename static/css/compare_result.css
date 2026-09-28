@@ -1,0 +1,1097 @@
+/* =========================================================
+CARVALUE26
+COMPARISON RESULT PAGE
+========================================================= */
+
+.compare-result-page {
+width: 100%;
+max-width: 1240px;
+margin: 0 auto;
+padding: 50px 24px 80px;
+box-sizing: border-box;
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.compare-result-header {
+text-align: center;
+margin-bottom: 42px;
+}
+
+.result-badge {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 8px 17px;
+margin-bottom: 15px;
+border-radius: 999px;
+background: rgba(16, 166, 90, 0.10);
+color: #10a65a;
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 1.5px;
+}
+
+.compare-result-header h1 {
+margin: 0 0 12px;
+color: #17221c;
+font-size: 42px;
+line-height: 1.15;
+font-weight: 800;
+}
+
+.compare-result-header p {
+max-width: 720px;
+margin: 0 auto;
+color: #6e7771;
+font-size: 15px;
+line-height: 1.7;
+}
+
+/* =========================================================
+EMPTY RESULT
+========================================================= */
+
+.empty-result-card {
+max-width: 700px;
+margin: 30px auto 0;
+padding: 50px 30px;
+background: #ffffff;
+border: 1px solid #e4e9e6;
+border-radius: 22px;
+box-shadow: 0 12px 40px rgba(26, 47, 35, 0.06);
+text-align: center;
+}
+
+.empty-icon {
+width: 68px;
+height: 68px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 20px;
+border-radius: 50%;
+background: #edf9f2;
+color: #10a65a;
+font-size: 28px;
+}
+
+.empty-result-card h2 {
+margin: 0 0 10px;
+color: #18231d;
+font-size: 25px;
+}
+
+.empty-result-card p {
+max-width: 500px;
+margin: 0 auto 25px;
+color: #737c76;
+font-size: 14px;
+line-height: 1.7;
+}
+
+/* =========================================================
+CAR OVERVIEW
+========================================================= */
+
+.cars-overview {
+display: grid;
+grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr);
+align-items: center;
+gap: 20px;
+margin-bottom: 30px;
+}
+
+.car-overview-card {
+position: relative;
+min-height: 285px;
+padding: 32px 28px;
+background: #ffffff;
+border: 1px solid #e5eae7;
+border-radius: 22px;
+box-shadow: 0 10px 35px rgba(26, 47, 35, 0.055);
+text-align: center;
+transition:
+transform 0.25s ease,
+border-color 0.25s ease,
+box-shadow 0.25s ease;
+}
+
+.car-overview-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 42px rgba(26, 47, 35, 0.09);
+}
+
+.car-overview-card.overall-winner {
+border: 2px solid #10a65a;
+box-shadow: 0 15px 45px rgba(16, 166, 90, 0.14);
+}
+
+.car-number {
+display: block;
+margin-bottom: 15px;
+color: #828b85;
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 1.7px;
+}
+
+.car-icon {
+width: 64px;
+height: 64px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 17px;
+border-radius: 50%;
+background: #ecf8f1;
+font-size: 29px;
+}
+
+.car-overview-card h2 {
+margin: 0 0 7px;
+color: #19251e;
+font-size: 24px;
+font-weight: 800;
+line-height: 1.3;
+word-break: break-word;
+}
+
+.car-subtitle {
+margin: 0;
+color: #7b857e;
+font-size: 13px;
+}
+
+.car-score {
+margin-top: 23px;
+}
+
+.score-label {
+display: block;
+margin-bottom: 5px;
+color: #78827b;
+font-size: 12px;
+font-weight: 600;
+}
+
+.score-number {
+display: flex;
+align-items: baseline;
+justify-content: center;
+gap: 6px;
+}
+
+.score-number strong {
+color: #10a65a;
+font-size: 38px;
+font-weight: 800;
+line-height: 1;
+}
+
+.score-number span {
+color: #7b857e;
+font-size: 13px;
+font-weight: 600;
+}
+
+/* =========================================================
+VS
+========================================================= */
+
+.vs-container {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.vs-circle {
+width: 58px;
+height: 58px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+background: #17221c;
+color: #ffffff;
+font-size: 13px;
+font-weight: 800;
+box-shadow: 0 10px 24px rgba(23, 34, 28, 0.17);
+}
+
+/* =========================================================
+OVERALL RESULT
+========================================================= */
+
+.overall-result {
+display: flex;
+align-items: center;
+gap: 20px;
+margin-bottom: 22px;
+padding: 25px 28px;
+background: linear-gradient(135deg, #f1fbf5, #ffffff);
+border: 1px solid #dceee3;
+border-radius: 19px;
+}
+
+.result-icon {
+width: 55px;
+height: 55px;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+background: #10a65a;
+color: #ffffff;
+font-size: 24px;
+font-weight: 800;
+}
+
+.result-content {
+min-width: 0;
+}
+
+.result-label {
+display: block;
+margin-bottom: 5px;
+color: #10a65a;
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 1.5px;
+}
+
+.result-content h2 {
+margin: 0 0 6px;
+color: #19251f;
+font-size: 23px;
+line-height: 1.3;
+font-weight: 800;
+}
+
+.result-content p {
+margin: 0;
+color: #69736c;
+font-size: 13px;
+line-height: 1.65;
+}
+
+/* =========================================================
+QUICK SUMMARY
+========================================================= */
+
+.quick-summary {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+margin-bottom: 65px;
+background: #ffffff;
+border: 1px solid #e6ebe8;
+border-radius: 18px;
+overflow: hidden;
+box-shadow: 0 8px 28px rgba(25, 45, 35, 0.04);
+}
+
+.summary-item {
+min-width: 0;
+padding: 20px 22px;
+border-right: 1px solid #edf0ee;
+}
+
+.summary-item:last-child {
+border-right: none;
+}
+
+.summary-item-label {
+display: block;
+margin-bottom: 6px;
+color: #858e88;
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 1px;
+}
+
+.summary-item strong {
+display: block;
+overflow: hidden;
+color: #233028;
+font-size: 14px;
+font-weight: 800;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+
+/* =========================================================
+SECTION HEADINGS
+========================================================= */
+
+.section-heading {
+margin-bottom: 24px;
+}
+
+.section-heading > span {
+display: block;
+margin-bottom: 7px;
+color: #10a65a;
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+margin: 0 0 8px;
+color: #19251e;
+font-size: 29px;
+line-height: 1.25;
+font-weight: 800;
+}
+
+.section-heading p {
+max-width: 760px;
+margin: 0;
+color: #737d76;
+font-size: 14px;
+line-height: 1.7;
+}
+
+/* =========================================================
+SPECIFICATIONS
+========================================================= */
+
+.specifications-section {
+margin-bottom: 68px;
+}
+
+.spec-table-wrapper {
+width: 100%;
+overflow-x: auto;
+background: #ffffff;
+border: 1px solid #e4e9e6;
+border-radius: 18px;
+box-shadow: 0 8px 28px rgba(24, 45, 34, 0.045);
+}
+
+.spec-table {
+width: 100%;
+min-width: 760px;
+border-collapse: collapse;
+}
+
+.spec-table th,
+.spec-table td {
+padding: 16px 18px;
+border-bottom: 1px solid #edf0ee;
+text-align: left;
+vertical-align: middle;
+}
+
+.spec-table thead th {
+background: #f5faf7;
+color: #1a261f;
+font-size: 13px;
+font-weight: 800;
+}
+
+.spec-table thead th:first-child {
+width: 29%;
+color: #6e7871;
+}
+
+.spec-table tbody td {
+color: #566159;
+font-size: 13px;
+}
+
+.spec-table tbody td:first-child {
+color: #25332b;
+font-weight: 700;
+}
+
+.spec-table tbody td:nth-child(2),
+.spec-table tbody td:nth-child(3) {
+font-weight: 600;
+}
+
+.spec-table tbody tr:hover {
+background: #fbfcfb;
+}
+
+.spec-table tbody tr:last-child td {
+border-bottom: none;
+}
+
+/* =========================================================
+ANALYSIS
+========================================================= */
+
+.analysis-section {
+margin-bottom: 68px;
+}
+
+.factor-list {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 18px;
+}
+
+.factor-card {
+padding: 23px;
+background: #ffffff;
+border: 1px solid #e5eae7;
+border-radius: 18px;
+box-shadow: 0 7px 24px rgba(24, 45, 34, 0.04);
+transition:
+transform 0.2s ease,
+border-color 0.2s ease,
+box-shadow 0.2s ease;
+}
+
+.factor-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 11px 29px rgba(24, 45, 34, 0.07);
+}
+
+.factor-card.factor-winner-car1 {
+border-color: rgba(16, 166, 90, 0.45);
+}
+
+.factor-card.factor-winner-car2 {
+border-color: rgba(16, 166, 90, 0.45);
+}
+
+.factor-card.factor-tie {
+border-color: #dfe5e1;
+}
+
+/* =========================================================
+FACTOR HEADER
+========================================================= */
+
+.factor-top {
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+gap: 14px;
+margin-bottom: 22px;
+}
+
+.factor-title {
+display: flex;
+align-items: center;
+gap: 12px;
+min-width: 0;
+}
+
+.factor-icon {
+width: 43px;
+height: 43px;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 11px;
+background: #edf9f2;
+font-size: 19px;
+}
+
+.factor-title h3 {
+margin: 0 0 4px;
+color: #1c2821;
+font-size: 15px;
+font-weight: 800;
+}
+
+.factor-title p {
+margin: 0;
+color: #7a847d;
+font-size: 11px;
+line-height: 1.5;
+}
+
+.factor-weight {
+flex-shrink: 0;
+padding: 6px 10px;
+border-radius: 999px;
+background: #f1f4f2;
+color: #59635d;
+font-size: 11px;
+font-weight: 800;
+}
+
+/* =========================================================
+FACTOR VALUES
+========================================================= */
+
+.factor-values {
+display: grid;
+grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr);
+align-items: center;
+gap: 8px;
+margin-bottom: 17px;
+}
+
+.factor-car {
+padding: 15px 12px;
+border: 1px solid transparent;
+border-radius: 12px;
+background: #f8faf9;
+text-align: center;
+transition:
+background 0.2s ease,
+border-color 0.2s ease;
+}
+
+.factor-winner-car1 .factor-car:first-child,
+.factor-winner-car2 .factor-car:last-child {
+background: #effaf4;
+border-color: rgba(16, 166, 90, 0.18);
+}
+
+.factor-car-name {
+display: block;
+margin-bottom: 6px;
+overflow: hidden;
+color: #69736d;
+font-size: 10px;
+font-weight: 700;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+
+.factor-car strong {
+display: block;
+color: #202c25;
+font-size: 15px;
+font-weight: 800;
+}
+
+.factor-car small {
+display: block;
+margin-top: 6px;
+color: #7b857f;
+font-size: 10px;
+font-weight: 700;
+}
+
+.factor-vs {
+color: #9aa39d;
+font-size: 9px;
+font-weight: 800;
+text-align: center;
+}
+
+/* =========================================================
+FACTOR RESULT
+========================================================= */
+
+.factor-result {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+padding-top: 14px;
+border-top: 1px solid #edf0ee;
+}
+
+.factor-result span {
+color: #858e88;
+font-size: 11px;
+font-weight: 600;
+}
+
+.factor-result strong {
+color: #10a65a;
+font-size: 12px;
+font-weight: 800;
+text-align: right;
+}
+
+.factor-result strong.winner-car1,
+.factor-result strong.winner-car2 {
+color: #10a65a;
+}
+
+.factor-result strong.tie-result {
+color: #757f78;
+}
+
+/* =========================================================
+SCORE SUMMARY
+========================================================= */
+
+.score-summary-section {
+margin-bottom: 68px;
+}
+
+.score-summary-card {
+padding: 28px;
+background: #ffffff;
+border: 1px solid #e4e9e6;
+border-radius: 19px;
+box-shadow: 0 8px 30px rgba(24, 45, 34, 0.045);
+}
+
+.score-summary-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 32px;
+}
+
+.score-column {
+min-width: 0;
+}
+
+.score-column-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 15px;
+margin-bottom: 12px;
+}
+
+.score-column-label {
+display: block;
+margin-bottom: 4px;
+color: #10a65a;
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 1.3px;
+}
+
+.score-column-header h3 {
+margin: 0;
+overflow: hidden;
+color: #27342c;
+font-size: 14px;
+font-weight: 800;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+
+.score-column-header > strong {
+flex-shrink: 0;
+color: #10a65a;
+font-size: 27px;
+font-weight: 800;
+}
+
+.score-bar {
+width: 100%;
+height: 11px;
+overflow: hidden;
+border-radius: 999px;
+background: #eaf0ec;
+}
+
+.score-bar-fill {
+width: 0;
+height: 100%;
+border-radius: inherit;
+transition: width 1s ease;
+}
+
+.car1-fill {
+background: #10a65a;
+}
+
+.car2-fill {
+background: #46b97d;
+}
+
+.score-column p {
+margin: 8px 0 0;
+color: #858e88;
+font-size: 10px;
+}
+
+/* =========================================================
+BUYING ANALYSIS
+========================================================= */
+
+.buying-analysis-section {
+margin-bottom: 42px;
+}
+
+.buying-analysis-card {
+padding: 28px;
+background: #ffffff;
+border: 1px solid #e4e9e6;
+border-radius: 19px;
+box-shadow: 0 8px 30px rgba(24, 45, 34, 0.045);
+}
+
+.analysis-columns {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 30px;
+}
+
+.analysis-column {
+min-width: 0;
+}
+
+.analysis-column + .analysis-column {
+padding-left: 30px;
+border-left: 1px solid #edf0ee;
+}
+
+.analysis-column-heading {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 16px;
+}
+
+.analysis-dot {
+width: 10px;
+height: 10px;
+flex-shrink: 0;
+border-radius: 50%;
+background: #10a65a;
+}
+
+.analysis-dot.second {
+background: #46b97d;
+}
+
+.analysis-column-heading h3 {
+margin: 0;
+overflow: hidden;
+color: #243128;
+font-size: 15px;
+font-weight: 800;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+
+.analysis-column ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+.analysis-column li {
+position: relative;
+margin-bottom: 10px;
+padding-left: 18px;
+color: #68736c;
+font-size: 12px;
+line-height: 1.6;
+}
+
+.analysis-column li::before {
+content: "•";
+position: absolute;
+left: 0;
+top: 0;
+color: #10a65a;
+font-weight: 900;
+}
+
+.analysis-note {
+display: flex;
+align-items: flex-start;
+gap: 8px;
+margin-top: 24px;
+padding-top: 20px;
+border-top: 1px solid #edf0ee;
+color: #777f79;
+font-size: 11px;
+line-height: 1.6;
+}
+
+.analysis-note strong {
+color: #36433b;
+}
+
+/* =========================================================
+ACTION BUTTONS
+========================================================= */
+
+.result-actions {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 14px;
+}
+
+.primary-button,
+.secondary-button {
+min-height: 48px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 0 24px;
+border-radius: 10px;
+font-size: 13px;
+font-weight: 700;
+text-decoration: none;
+transition:
+transform 0.2s ease,
+background 0.2s ease,
+color 0.2s ease,
+border-color 0.2s ease,
+box-shadow 0.2s ease;
+}
+
+.primary-button {
+background: #10a65a;
+color: #ffffff;
+border: 1px solid #10a65a;
+box-shadow: 0 7px 18px rgba(16, 166, 90, 0.17);
+}
+
+.primary-button:hover {
+background: #078d4a;
+color: #ffffff;
+text-decoration: none;
+transform: translateY(-2px);
+}
+
+.secondary-button {
+background: #ffffff;
+color: #27342c;
+border: 1px solid #dfe5e1;
+}
+
+.secondary-button:hover {
+background: #f5f8f6;
+color: #10a65a;
+border-color: #10a65a;
+text-decoration: none;
+transform: translateY(-2px);
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+
+.compare-result-page {
+    padding: 42px 20px 65px;
+}
+
+.compare-result-header h1 {
+    font-size: 36px;
+}
+
+.cars-overview {
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+.vs-container {
+    height: 46px;
+}
+
+.vs-circle {
+    width: 48px;
+    height: 48px;
+    font-size: 11px;
+}
+
+.factor-list {
+    grid-template-columns: 1fr;
+}
+
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+
+.compare-result-page {
+    padding: 30px 14px 55px;
+}
+
+
+/* Header */
+
+.compare-result-header {
+    margin-bottom: 30px;
+}
+
+.result-badge {
+    padding: 7px 13px;
+    font-size: 10px;
+}
+
+.compare-result-header h1 {
+    font-size: 29px;
+}
+
+.compare-result-header p {
+    font-size: 13px;
+}
+
+
+/* Cars */
+
+.car-overview-card {
+    min-height: auto;
+    padding: 25px 18px;
+    border-radius: 17px;
+}
+
+.car-overview-card h2 {
+    font-size: 21px;
+}
+
+.car-icon {
+    width: 57px;
+    height: 57px;
+    font-size: 25px;
+}
+
+.score-number strong {
+    font-size: 32px;
+}
+
+
+/* Overall result */
+
+.overall-result {
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.result-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 19px;
+}
+
+.result-content h2 {
+    font-size: 18px;
+}
+
+.result-content p {
+    font-size: 12px;
+}
+
+
+/* Quick summary */
+
+.quick-summary {
+    grid-template-columns: 1fr;
+    margin-bottom: 50px;
+}
+
+.summary-item {
+    border-right: none;
+    border-bottom: 1px solid #edf0ee;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+
+/* Section headings */
+
+.section-heading h2 {
+    font-size: 24px;
+}
+
+
+/* Factors */
+
+.factor-card {
+    padding: 19px;
+    border-radius: 15px;
+}
+
+.factor-top {
+    gap: 10px;
+}
+
+.factor-icon {
+    width: 39px;
+    height: 39px;
+    font-size: 17px;
+}
+
+.factor-title h3 {
+    font-size: 14px;
+}
+
+.factor-title p {
+    font-size: 10px;
+}
+
+.factor-weight {
+    padding: 5px 8px;
+    font-size: 9px;
+}
+
+.factor-values {
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+.factor-vs {
+    height: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.factor-car {
+    padding: 13px 10px;
+}
+
+
+/* Score */
+
+.score-summary-card {
+    padding: 21px;
+}
+
+.score-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+}
+
+
+/* Buying analysis */
+
+.buying-analysis-card {
+    padding: 20px;
+}
+
+.analysis-columns {
+    grid-template-columns: 1fr;
+    gap: 22px;
+}
+
+.analysis-column + .analysis-column {
+    padding-left: 0;
+    padding-top: 22px;
+    border-left: none;
+    border-top: 1px solid #edf0ee;
+}
+
+
+/* Buttons */
+
+.result-actions {
+    flex-direction: column;
+    width: 100%;
+}
+
+.primary-button,
+.secondary-button {
+    width: 100%;
+}
+
+
+}

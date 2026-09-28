@@ -1,0 +1,212 @@
+{% extends "layout.html" %}
+
+{% block title %}Prediction History - CarValue26{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/history.css') }}">
+
+<div class="history-page">
+
+    <!-- Header -->
+    <div class="history-header">
+        <div>
+            <span class="history-label">YOUR ACTIVITY</span>
+            <h1>Prediction History</h1>
+            <p>
+                View and manage your previous car price predictions.
+            </p>
+        </div>
+
+        <a href="{{ url_for('predict') }}" class="new-prediction-btn">
+            + Predict Another Car
+        </a>
+    </div>
+
+
+    <!-- Statistics -->
+    <div class="history-stats">
+
+        <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div>
+                <span>Total Predictions</span>
+                <strong>{{ history|length }}</strong>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🚗</div>
+            <div>
+                <span>Cars Checked</span>
+                <strong>{{ history|length }}</strong>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div>
+                <span>Latest Estimate</span>
+
+                {% if history %}
+                    <strong>
+                        ₹{{ "{:,.0f}".format(history[0].prediction) }}
+                    </strong>
+                {% else %}
+                    <strong>—</strong>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- History Section -->
+    <div class="history-section">
+
+        <div class="section-heading">
+            <div>
+                <h2>Recent Predictions</h2>
+                <p>Your latest car valuation activity</p>
+            </div>
+        </div>
+
+
+        {% if history %}
+
+        <div class="history-table-wrapper">
+
+            <table class="history-table">
+
+                <thead>
+                    <tr>
+                        <th>Car</th>
+                        <th>Year</th>
+                        <th>Fuel</th>
+                        <th>Transmission</th>
+                        <th>Kilometers</th>
+                        <th>Estimated Price</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for item in history %}
+
+                    <tr>
+
+                        <td>
+                            <div class="car-name">
+                                <div class="car-icon">🚘</div>
+
+                                <div>
+                                    <strong>
+                                        {{ item.brand }} {{ item.model }}
+                                    </strong>
+
+                                    <small>
+                                        {{ item.engine }} cc
+                                    </small>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            {{ item.year }}
+                        </td>
+
+                        <td>
+                            <span class="fuel-badge">
+                                {{ item.fuel_type }}
+                            </span>
+                        </td>
+
+                        <td>
+                            {{ item.transmission_type }}
+                        </td>
+
+                        <td>
+                            {{ "{:,}".format(item.kilometers) }} km
+                        </td>
+
+                        <td>
+                            <strong class="price">
+                                ₹{{ "{:,.0f}".format(item.prediction) }}
+                            </strong>
+                        </td>
+
+                        <td>
+                            <span class="date">
+                                {{ item.created_at }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <a href="#" class="view-btn">
+                                View
+                            </a>
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <!-- Empty State -->
+
+        <div class="empty-history">
+
+            <div class="empty-icon">
+                🚗
+            </div>
+
+            <h2>No Predictions Yet</h2>
+
+            <p>
+                You haven't made any car price predictions yet.
+                Start by checking the estimated value of a car.
+            </p>
+
+            <a href="{{ url_for('predict') }}" class="empty-btn">
+                Start Your First Prediction
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- Information Banner -->
+
+    <div class="history-info">
+
+        <div class="info-icon">
+            ✓
+        </div>
+
+        <div>
+            <strong>Your predictions are saved securely</strong>
+
+            <p>
+                Your prediction history is linked to your CarValue26
+                account and can be accessed whenever you sign in.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

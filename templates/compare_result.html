@@ -1,0 +1,2534 @@
+{% extends "layout.html" %}
+
+{% block title %}Comparison Result - CarValue26{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/compare_result.css') }}">
+
+{% set car1_brand = request.form.get('car1_brand', 'Car 1') %}
+{% set car1_model = request.form.get('car1_model', '') %}
+{% set car1_year = request.form.get('car1_year', '0') %}
+{% set car1_km = request.form.get('car1_km', '0') %}
+{% set car1_seller = request.form.get('car1_seller_type', 'Not specified') %}
+{% set car1_fuel = request.form.get('car1_fuel', 'Not specified') %}
+{% set car1_transmission = request.form.get('car1_transmission', 'Not specified') %}
+{% set car1_mileage = request.form.get('car1_mileage', '0') %}
+{% set car1_engine = request.form.get('car1_engine', '0') %}
+{% set car1_power = request.form.get('car1_power', '0') %}
+{% set car1_seats = request.form.get('car1_seats', '0') %}
+
+{% set car2_brand = request.form.get('car2_brand', 'Car 2') %}
+{% set car2_model = request.form.get('car2_model', '') %}
+{% set car2_year = request.form.get('car2_year', '0') %}
+{% set car2_km = request.form.get('car2_km', '0') %}
+{% set car2_seller = request.form.get('car2_seller_type', 'Not specified') %}
+{% set car2_fuel = request.form.get('car2_fuel', 'Not specified') %}
+{% set car2_transmission = request.form.get('car2_transmission', 'Not specified') %}
+{% set car2_mileage = request.form.get('car2_mileage', '0') %}
+{% set car2_engine = request.form.get('car2_engine', '0') %}
+{% set car2_power = request.form.get('car2_power', '0') %}
+{% set car2_seats = request.form.get('car2_seats', '0') %}
+
+{% set has_comparison = request.method == 'POST' and request.form.get('car1_brand') and request.form.get('car2_brand') %}
+
+<!-- =========================================================
+     COMPARISON DATA
+     Jinja is kept inside HTML attributes.
+     JavaScript reads these values from the data attributes.
+========================================================== -->
+
+<div
+    id="comparison-data"
+    hidden
+
+```
+data-car1-brand="{{ car1_brand | e }}"
+data-car1-model="{{ car1_model | e }}"
+data-car1-year="{{ car1_year | e }}"
+data-car1-km="{{ car1_km | e }}"
+data-car1-seller="{{ car1_seller | e }}"
+data-car1-fuel="{{ car1_fuel | e }}"
+data-car1-transmission="{{ car1_transmission | e }}"
+data-car1-mileage="{{ car1_mileage | e }}"
+data-car1-engine="{{ car1_engine | e }}"
+data-car1-power="{{ car1_power | e }}"
+data-car1-seats="{{ car1_seats | e }}"
+
+data-car2-brand="{{ car2_brand | e }}"
+data-car2-model="{{ car2_model | e }}"
+data-car2-year="{{ car2_year | e }}"
+data-car2-km="{{ car2_km | e }}"
+data-car2-seller="{{ car2_seller | e }}"
+data-car2-fuel="{{ car2_fuel | e }}"
+data-car2-transmission="{{ car2_transmission | e }}"
+data-car2-mileage="{{ car2_mileage | e }}"
+data-car2-engine="{{ car2_engine | e }}"
+data-car2-power="{{ car2_power | e }}"
+data-car2-seats="{{ car2_seats | e }}"
+```
+
+> </div>
+
+<div class="compare-result-page">
+
+```
+<!-- =====================================================
+     HEADER
+====================================================== -->
+<section class="compare-result-header">
+
+    <div class="result-badge">
+        CARVALUE26 COMPARISON
+    </div>
+
+    <h1>Compare Your Cars</h1>
+
+    <p>
+        Compare specifications, buying factors and the overall
+        comparison score for the two vehicles you selected.
+    </p>
+
+</section>
+
+
+{% if not has_comparison %}
+
+<!-- =====================================================
+     NO COMPARISON DATA
+====================================================== -->
+<section class="empty-result-card">
+
+    <div class="empty-icon">
+        ⚖
+    </div>
+
+    <h2>No comparison data available</h2>
+
+    <p>
+        Select two vehicles on the Compare Cars page to generate
+        a detailed comparison result.
+    </p>
+
+    <a href="{{ url_for('compare') }}" class="primary-button">
+        Go to Compare Cars
+    </a>
+
+</section>
+
+{% else %}
+
+
+<!-- =====================================================
+     CAR OVERVIEW
+====================================================== -->
+<section class="cars-overview">
+
+
+    <!-- CAR 1 -->
+    <div class="car-overview-card" id="car1-card">
+
+        <div class="car-number">
+            CAR 01
+        </div>
+
+        <div class="car-icon">
+            🚗
+        </div>
+
+        <h2 id="car1-name">
+            {{ car1_brand }} {{ car1_model }}
+        </h2>
+
+        <p class="car-subtitle">
+            First selected vehicle
+        </p>
+
+        <div class="car-score">
+
+            <span class="score-label">
+                Comparison Score
+            </span>
+
+            <div class="score-number">
+                <strong id="car1-score">0</strong>
+                <span>/ 100</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- VS -->
+    <div class="vs-container">
+        <div class="vs-circle">
+            VS
+        </div>
+    </div>
+
+
+    <!-- CAR 2 -->
+    <div class="car-overview-card" id="car2-card">
+
+        <div class="car-number">
+            CAR 02
+        </div>
+
+        <div class="car-icon">
+            🚙
+        </div>
+
+        <h2 id="car2-name">
+            {{ car2_brand }} {{ car2_model }}
+        </h2>
+
+        <p class="car-subtitle">
+            Second selected vehicle
+        </p>
+
+        <div class="car-score">
+
+            <span class="score-label">
+                Comparison Score
+            </span>
+
+            <div class="score-number">
+                <strong id="car2-score">0</strong>
+                <span>/ 100</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     OVERALL RESULT
+====================================================== -->
+<section class="overall-result" id="overall-result">
+
+    <div class="result-icon" id="result-icon">
+        ✓
+    </div>
+
+    <div class="result-content">
+
+        <span class="result-label">
+            COMPARISON RESULT
+        </span>
+
+        <h2 id="winner-title">
+            Calculating comparison...
+        </h2>
+
+        <p id="winner-description">
+            Calculating the selected comparison factors.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     QUICK SUMMARY
+====================================================== -->
+<section class="quick-summary">
+
+    <div class="summary-item">
+
+        <span class="summary-item-label">
+            Car 1
+        </span>
+
+        <strong id="summary-car1-name">
+            {{ car1_brand }} {{ car1_model }}
+        </strong>
+
+    </div>
+
+
+    <div class="summary-item">
+
+        <span class="summary-item-label">
+            Car 2
+        </span>
+
+        <strong id="summary-car2-name">
+            {{ car2_brand }} {{ car2_model }}
+        </strong>
+
+    </div>
+
+
+    <div class="summary-item">
+
+        <span class="summary-item-label">
+            Score Difference
+        </span>
+
+        <strong id="score-difference">
+            0 points
+        </strong>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SPECIFICATIONS
+====================================================== -->
+<section class="specifications-section">
+
+    <div class="section-heading">
+
+        <span>
+            VEHICLE DETAILS
+        </span>
+
+        <h2>
+            Side-by-Side Specifications
+        </h2>
+
+        <p>
+            Complete information entered for both vehicles.
+        </p>
+
+    </div>
+
+
+    <div class="spec-table-wrapper">
+
+        <table class="spec-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Specification
+                    </th>
+
+                    <th id="table-car1-name">
+                        {{ car1_brand }} {{ car1_model }}
+                    </th>
+
+                    <th id="table-car2-name">
+                        {{ car2_brand }} {{ car2_model }}
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+                    <td>Brand</td>
+                    <td id="spec-car1-brand">{{ car1_brand }}</td>
+                    <td id="spec-car2-brand">{{ car2_brand }}</td>
+                </tr>
+
+                <tr>
+                    <td>Model</td>
+                    <td id="spec-car1-model">{{ car1_model }}</td>
+                    <td id="spec-car2-model">{{ car2_model }}</td>
+                </tr>
+
+                <tr>
+                    <td>Model Year</td>
+                    <td id="spec-car1-year">{{ car1_year }}</td>
+                    <td id="spec-car2-year">{{ car2_year }}</td>
+                </tr>
+
+                <tr>
+                    <td>Kilometres Driven</td>
+                    <td id="spec-car1-km">{{ car1_km }} km</td>
+                    <td id="spec-car2-km">{{ car2_km }} km</td>
+                </tr>
+
+                <tr>
+                    <td>Fuel Type</td>
+                    <td id="spec-car1-fuel">{{ car1_fuel }}</td>
+                    <td id="spec-car2-fuel">{{ car2_fuel }}</td>
+                </tr>
+
+                <tr>
+                    <td>Mileage</td>
+                    <td id="spec-car1-mileage">{{ car1_mileage }} km/l</td>
+                    <td id="spec-car2-mileage">{{ car2_mileage }} km/l</td>
+                </tr>
+
+                <tr>
+                    <td>Engine Capacity</td>
+                    <td id="spec-car1-engine">{{ car1_engine }} cc</td>
+                    <td id="spec-car2-engine">{{ car2_engine }} cc</td>
+                </tr>
+
+                <tr>
+                    <td>Maximum Power</td>
+                    <td id="spec-car1-power">{{ car1_power }} bhp</td>
+                    <td id="spec-car2-power">{{ car2_power }} bhp</td>
+                </tr>
+
+                <tr>
+                    <td>Transmission</td>
+                    <td id="spec-car1-transmission">{{ car1_transmission }}</td>
+                    <td id="spec-car2-transmission">{{ car2_transmission }}</td>
+                </tr>
+
+                <tr>
+                    <td>Seats</td>
+                    <td id="spec-car1-seats">{{ car1_seats }}</td>
+                    <td id="spec-car2-seats">{{ car2_seats }}</td>
+                </tr>
+
+                <tr>
+                    <td>Seller / Owner Type</td>
+                    <td id="spec-car1-seller">{{ car1_seller }}</td>
+                    <td id="spec-car2-seller">{{ car2_seller }}</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FACTOR ANALYSIS
+====================================================== -->
+<section class="analysis-section">
+
+    <div class="section-heading">
+
+        <span>
+            BUYING FACTORS
+        </span>
+
+        <h2>
+            Detailed Comparison
+        </h2>
+
+        <p>
+            The scores use the comparison preferences defined for
+            CarValue26. The result is a comparison aid, not a
+            universal rule for every buyer.
+        </p>
+
+    </div>
+
+
+    <div class="factor-list">
+
+
+        <!-- =================================================
+             KM
+        ================================================== -->
+        <article class="factor-card" id="factor-km">
+
+            <div class="factor-top">
+
+                <div class="factor-title">
+
+                    <div class="factor-icon">
+                        🚗
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Kilometres Driven
+                        </h3>
+
+                        <p>
+                            Lower kilometres receive more priority.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="factor-weight">
+                    25%
+                </div>
+
+            </div>
+
+
+            <div class="factor-values">
+
+                <div class="factor-car" id="factor-km-car1">
+
+                    <span class="factor-car-name">
+                        {{ car1_brand }} {{ car1_model }}
+                    </span>
+
+                    <strong id="factor-km-car1-value">
+                        {{ car1_km }} km
+                    </strong>
+
+                    <small id="factor-km-car1-points">
+                        0 points
+                    </small>
+
+                </div>
+
+
+                <div class="factor-vs">
+                    VS
+                </div>
+
+
+                <div class="factor-car" id="factor-km-car2">
+
+                    <span class="factor-car-name">
+                        {{ car2_brand }} {{ car2_model }}
+                    </span>
+
+                    <strong id="factor-km-car2-value">
+                        {{ car2_km }} km
+                    </strong>
+
+                    <small id="factor-km-car2-points">
+                        0 points
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="factor-result">
+
+                <span>
+                    Advantage
+                </span>
+
+                <strong id="factor-km-result">
+                    Calculating...
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             YEAR
+        ================================================== -->
+        <article class="factor-card" id="factor-year">
+
+            <div class="factor-top">
+
+                <div class="factor-title">
+
+                    <div class="factor-icon">
+                        📅
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Model Year
+                        </h3>
+
+                        <p>
+                            Newer model years receive more priority.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="factor-weight">
+                    20%
+                </div>
+
+            </div>
+
+
+            <div class="factor-values">
+
+                <div class="factor-car" id="factor-year-car1">
+
+                    <span class="factor-car-name">
+                        {{ car1_brand }} {{ car1_model }}
+                    </span>
+
+                    <strong id="factor-year-car1-value">
+                        {{ car1_year }}
+                    </strong>
+
+                    <small id="factor-year-car1-points">
+                        0 points
+                    </small>
+
+                </div>
+
+
+                <div class="factor-vs">
+                    VS
+                </div>
+
+
+                <div class="factor-car" id="factor-year-car2">
+
+                    <span class="factor-car-name">
+                        {{ car2_brand }} {{ car2_model }}
+                    </span>
+
+                    <strong id="factor-year-car2-value">
+                        {{ car2_year }}
+                    </strong>
+
+                    <small id="factor-year-car2-points">
+                        0 points
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="factor-result">
+
+                <span>
+                    Advantage
+                </span>
+
+                <strong id="factor-year-result">
+                    Calculating...
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             FUEL
+        ================================================== -->
+        <article class="factor-card" id="factor-fuel">
+
+            <div class="factor-top">
+
+                <div class="factor-title">
+
+                    <div class="factor-icon">
+                        ⛽
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Fuel Type
+                        </h3>
+
+                        <p>
+                            Diesel receives the selected preference.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="factor-weight">
+                    15%
+                </div>
+
+            </div>
+
+
+            <div class="factor-values">
+
+                <div class="factor-car" id="factor-fuel-car1">
+
+                    <span class="factor-car-name">
+                        {{ car1_brand }} {{ car1_model }}
+                    </span>
+
+                    <strong id="factor-fuel-car1-value">
+                        {{ car1_fuel }}
+                    </strong>
+
+                    <small id="factor-fuel-car1-points">
+                        0 points
+                    </small>
+
+                </div>
+
+
+                <div class="factor-vs">
+                    VS
+                </div>
+
+
+                <div class="factor-car" id="factor-fuel-car2">
+
+                    <span class="factor-car-name">
+                        {{ car2_brand }} {{ car2_model }}
+                    </span>
+
+                    <strong id="factor-fuel-car2-value">
+                        {{ car2_fuel }}
+                    </strong>
+
+                    <small id="factor-fuel-car2-points">
+                        0 points
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="factor-result">
+
+                <span>
+                    Advantage
+                </span>
+
+                <strong id="factor-fuel-result">
+                    Calculating...
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             MILEAGE
+        ================================================== -->
+        <article class="factor-card" id="factor-mileage">
+
+            <div class="factor-top">
+
+                <div class="factor-title">
+
+                    <div class="factor-icon">
+                        🛢️
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Mileage
+                        </h3>
+
+                        <p>
+                            Higher mileage receives more priority.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="factor-weight">
+                    10%
+                </div>
+
+            </div>
+
+
+            <div class="factor-values">
+
+                <div class="factor-car" id="factor-mileage-car1">
+
+                    <span class="factor-car-name">
+                        {{ car1_brand }} {{ car1_model }}
+                    </span>
+
+                    <strong id="factor-mileage-car1-value">
+                        {{ car1_mileage }} km/l
+                    </strong>
+
+                    <small id="factor-mileage-car1-points">
+                        0 points
+                    </small>
+
+                </div>
+
+
+                <div class="factor-vs">
+                    VS
+                </div>
+
+
+                <div class="factor-car" id="factor-mileage-car2">
+
+                    <span class="factor-car-name">
+                        {{ car2_brand }} {{ car2_model }}
+                    </span>
+
+                    <strong id="factor-mileage-car2-value">
+                        {{ car2_mileage }} km/l
+                    </strong>
+
+                    <small id="factor-mileage-car2-points">
+                        0 points
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="factor-result">
+
+                <span>
+                    Advantage
+                </span>
+
+                <strong id="factor-mileage-result">
+                    Calculating...
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             ENGINE
+        ================================================== -->
+        <article class="factor-card" id="factor-engine">
+
+            <div class="factor-top">
+
+                <div class="factor-title">
+
+                    <div class="factor-icon">
+                        ⚙️
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Engine Capacity
+                        </h3>
+
+                        <p>
+                            Higher engine capacity receives more priority.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="factor-weight">
+                    8%
+                </div>
+
+            </div>
+
+
+            <div class="factor-values">
+
+                <div class="factor-car" id="factor-engine-car1">
+
+                    <span class="factor-car-name">
+                        {{ car1_brand }} {{ car1_model }}
+                    </span>
+
+                    <strong id="factor-engine-car1-value">
+                        {{ car1_engine }} cc
+                    </strong>
+
+                    <small id="factor-engine-car1-points">
+                        0 points
+                    </small>
+
+                </div>
+
+
+                <div class="factor-vs">
+                    VS
+                </div>
+
+
+                <div class="factor-car" id="factor-engine-car2">
+
+                    <span class="factor-car-name">
+                        {{ car2_brand }} {{ car2_model }}
+                    </span>
+
+                    <strong id="factor-engine-car2-value">
+                        {{ car2_engine }} cc
+                    </strong>
+
+                    <small id="factor-engine-car2-points">
+                        0 points
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="factor-result">
+
+                <span>
+                    Advantage
+                </span>
+
+                <strong id="factor-engine-result">
+                    Calculating...
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             POWER
+        ================================================== -->
+        <article class="factor-card" id="factor-power">
+
+            <div class="factor-top">
+
+                <div class="factor-title">
+
+                    <div class="factor-icon">
+                        💪
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Maximum Power
+                        </h3>
+
+                        <p>
+                            Higher power receives more priority.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="factor-weight">
+                    8%
+                </div>
+
+            </div>
+
+
+            <div class="factor-values">
+
+                <div class="factor-car" id="factor-power-car1">
+
+                    <span class="factor-car-name">
+                        {{ car1_brand }} {{ car1_model }}
+                    </span>
+
+                    <strong id="factor-power-car1-value">
+                        {{ car1_power }} bhp
+                    </strong>
+
+                    <small id="factor-power-car1-points">
+                        0 points
+                    </small>
+
+                </div>
+
+
+                <div class="factor-vs">
+                    VS
+                </div>
+
+
+                <div class="factor-car" id="factor-power-car2">
+
+                    <span class="factor-car-name">
+                        {{ car2_brand }} {{ car2_model }}
+                    </span>
+
+                    <strong id="factor-power-car2-value">
+                        {{ car2_power }} bhp
+                    </strong>
+
+                    <small id="factor-power-car2-points">
+                        0 points
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="factor-result">
+
+                <span>
+                    Advantage
+                </span>
+
+                <strong id="factor-power-result">
+                    Calculating...
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             TRANSMISSION
+        ================================================== -->
+        <article class="factor-card" id="factor-transmission">
+
+            <div class="factor-top">
+
+                <div class="factor-title">
+
+                    <div class="factor-icon">
+                        🔧
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Transmission
+                        </h3>
+
+                        <p>
+                            Automatic receives the selected preference.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="factor-weight">
+                    5%
+                </div>
+
+            </div>
+
+
+            <div class="factor-values">
+
+                <div class="factor-car" id="factor-transmission-car1">
+
+                    <span class="factor-car-name">
+                        {{ car1_brand }} {{ car1_model }}
+                    </span>
+
+                    <strong id="factor-transmission-car1-value">
+                        {{ car1_transmission }}
+                    </strong>
+
+                    <small id="factor-transmission-car1-points">
+                        0 points
+                    </small>
+
+                </div>
+
+
+                <div class="factor-vs">
+                    VS
+                </div>
+
+
+                <div class="factor-car" id="factor-transmission-car2">
+
+                    <span class="factor-car-name">
+                        {{ car2_brand }} {{ car2_model }}
+                    </span>
+
+                    <strong id="factor-transmission-car2-value">
+                        {{ car2_transmission }}
+                    </strong>
+
+                    <small id="factor-transmission-car2-points">
+                        0 points
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="factor-result">
+
+                <span>
+                    Advantage
+                </span>
+
+                <strong id="factor-transmission-result">
+                    Calculating...
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             SELLER
+        ================================================== -->
+        <article class="factor-card" id="factor-seller">
+
+            <div class="factor-top">
+
+                <div class="factor-title">
+
+                    <div class="factor-icon">
+                        👤
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Seller / Owner Type
+                        </h3>
+
+                        <p>
+                            Individual seller receives the selected preference.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="factor-weight">
+                    4%
+                </div>
+
+            </div>
+
+
+            <div class="factor-values">
+
+                <div class="factor-car" id="factor-seller-car1">
+
+                    <span class="factor-car-name">
+                        {{ car1_brand }} {{ car1_model }}
+                    </span>
+
+                    <strong id="factor-seller-car1-value">
+                        {{ car1_seller }}
+                    </strong>
+
+                    <small id="factor-seller-car1-points">
+                        0 points
+                    </small>
+
+                </div>
+
+
+                <div class="factor-vs">
+                    VS
+                </div>
+
+
+                <div class="factor-car" id="factor-seller-car2">
+
+                    <span class="factor-car-name">
+                        {{ car2_brand }} {{ car2_model }}
+                    </span>
+
+                    <strong id="factor-seller-car2-value">
+                        {{ car2_seller }}
+                    </strong>
+
+                    <small id="factor-seller-car2-points">
+                        0 points
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="factor-result">
+
+                <span>
+                    Advantage
+                </span>
+
+                <strong id="factor-seller-result">
+                    Calculating...
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             SEATS
+        ================================================== -->
+        <article class="factor-card" id="factor-seats">
+
+            <div class="factor-top">
+
+                <div class="factor-title">
+
+                    <div class="factor-icon">
+                        💺
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Seating Capacity
+                        </h3>
+
+                        <p>
+                            More seats receive more priority in this comparison.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="factor-weight">
+                    5%
+                </div>
+
+            </div>
+
+
+            <div class="factor-values">
+
+                <div class="factor-car" id="factor-seats-car1">
+
+                    <span class="factor-car-name">
+                        {{ car1_brand }} {{ car1_model }}
+                    </span>
+
+                    <strong id="factor-seats-car1-value">
+                        {{ car1_seats }} seats
+                    </strong>
+
+                    <small id="factor-seats-car1-points">
+                        0 points
+                    </small>
+
+                </div>
+
+
+                <div class="factor-vs">
+                    VS
+                </div>
+
+
+                <div class="factor-car" id="factor-seats-car2">
+
+                    <span class="factor-car-name">
+                        {{ car2_brand }} {{ car2_model }}
+                    </span>
+
+                    <strong id="factor-seats-car2-value">
+                        {{ car2_seats }} seats
+                    </strong>
+
+                    <small id="factor-seats-car2-points">
+                        0 points
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="factor-result">
+
+                <span>
+                    Advantage
+                </span>
+
+                <strong id="factor-seats-result">
+                    Calculating...
+                </strong>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SCORE SUMMARY
+====================================================== -->
+<section class="score-summary-section">
+
+    <div class="section-heading">
+
+        <span>
+            SCORE BREAKDOWN
+        </span>
+
+        <h2>
+            Overall Comparison Score
+        </h2>
+
+        <p>
+            Each factor contributes its assigned weight to the final score.
+            A tie gives both vehicles half of that factor's points.
+        </p>
+
+    </div>
+
+
+    <div class="score-summary-card">
+
+        <div class="score-summary-grid">
+
+
+            <!-- CAR 1 -->
+            <div class="score-column">
+
+                <div class="score-column-header">
+
+                    <div>
+
+                        <span class="score-column-label">
+                            CAR 01
+                        </span>
+
+                        <h3 id="summary-score-name1">
+                            {{ car1_brand }} {{ car1_model }}
+                        </h3>
+
+                    </div>
+
+                    <strong id="summary-score1">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="score-bar">
+
+                    <div
+                        class="score-bar-fill car1-fill"
+                        id="score-progress1"
+                    ></div>
+
+                </div>
+
+                <p>
+                    points out of 100
+                </p>
+
+            </div>
+
+
+            <!-- CAR 2 -->
+            <div class="score-column">
+
+                <div class="score-column-header">
+
+                    <div>
+
+                        <span class="score-column-label">
+                            CAR 02
+                        </span>
+
+                        <h3 id="summary-score-name2">
+                            {{ car2_brand }} {{ car2_model }}
+                        </h3>
+
+                    </div>
+
+                    <strong id="summary-score2">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="score-bar">
+
+                    <div
+                        class="score-bar-fill car2-fill"
+                        id="score-progress2"
+                    ></div>
+
+                </div>
+
+                <p>
+                    points out of 100
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHY THE SCORE IS DIFFERENT
+====================================================== -->
+<section class="buying-analysis-section">
+
+    <div class="section-heading">
+
+        <span>
+            BUYING ANALYSIS
+        </span>
+
+        <h2>
+            Why The Scores Differ
+        </h2>
+
+        <p>
+            The following factors created the difference between the two scores.
+        </p>
+
+    </div>
+
+
+    <div class="buying-analysis-card">
+
+        <div class="analysis-columns">
+
+            <div class="analysis-column">
+
+                <div class="analysis-column-heading">
+                    <span class="analysis-dot"></span>
+
+                    <h3 id="analysis-car1-name">
+                        {{ car1_brand }} {{ car1_model }}
+                    </h3>
+                </div>
+
+                <ul id="advantages-car1">
+                </ul>
+
+            </div>
+
+
+            <div class="analysis-column">
+
+                <div class="analysis-column-heading">
+                    <span class="analysis-dot second"></span>
+
+                    <h3 id="analysis-car2-name">
+                        {{ car2_brand }} {{ car2_model }}
+                    </h3>
+                </div>
+
+                <ul id="advantages-car2">
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="analysis-note">
+
+            <strong>
+                Note:
+            </strong>
+
+            <span>
+                The comparison score follows the preferences configured
+                for CarValue26. Different buyers may value different
+                specifications differently.
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ACTION BUTTONS
+====================================================== -->
+<section class="result-actions">
+
+    <a
+        href="{{ url_for('compare') }}"
+        class="secondary-button"
+    >
+        ← Compare Another Pair
+    </a>
+
+    <a
+        href="{{ url_for('home') }}"
+        class="primary-button"
+    >
+        Back to Home
+    </a>
+
+</section>
+
+
+{% endif %}
+```
+
+</div>
+
+{% if has_comparison %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =========================================================
+       READ DATA FROM HTML DATA ATTRIBUTES
+    ========================================================= */
+
+    const dataElement = document.getElementById("comparison-data");
+
+    if (!dataElement) {
+        return;
+    }
+
+    const data = dataElement.dataset;
+
+
+    /* =========================================================
+       CREATE CAR OBJECTS
+    ========================================================= */
+
+    const car1 = {
+        brand: data.car1Brand || "Car 1",
+        model: data.car1Model || "",
+        year: parseFloat(data.car1Year) || 0,
+        km: parseFloat(data.car1Km) || 0,
+        seller: data.car1Seller || "Not specified",
+        fuel: data.car1Fuel || "Not specified",
+        transmission: data.car1Transmission || "Not specified",
+        mileage: parseFloat(data.car1Mileage) || 0,
+        engine: parseFloat(data.car1Engine) || 0,
+        power: parseFloat(data.car1Power) || 0,
+        seats: parseFloat(data.car1Seats) || 0
+    };
+
+
+    const car2 = {
+        brand: data.car2Brand || "Car 2",
+        model: data.car2Model || "",
+        year: parseFloat(data.car2Year) || 0,
+        km: parseFloat(data.car2Km) || 0,
+        seller: data.car2Seller || "Not specified",
+        fuel: data.car2Fuel || "Not specified",
+        transmission: data.car2Transmission || "Not specified",
+        mileage: parseFloat(data.car2Mileage) || 0,
+        engine: parseFloat(data.car2Engine) || 0,
+        power: parseFloat(data.car2Power) || 0,
+        seats: parseFloat(data.car2Seats) || 0
+    };
+
+
+    /* =========================================================
+       CAR NAMES
+    ========================================================= */
+
+    const name1 = `${car1.brand} ${car1.model}`.trim() || "Car 1";
+    const name2 = `${car2.brand} ${car2.model}`.trim() || "Car 2";
+
+
+    /* =========================================================
+       COMPARISON WEIGHTS
+       TOTAL = 100
+    ========================================================= */
+
+    const weights = {
+        km: 25,
+        year: 20,
+        fuel: 15,
+        mileage: 10,
+        engine: 8,
+        power: 8,
+        transmission: 5,
+        seller: 4,
+        seats: 5
+    };
+
+
+    /* =========================================================
+       HELPERS
+    ========================================================= */
+
+    function normalizeText(value) {
+
+        return String(value || "")
+            .trim()
+            .toLowerCase();
+
+    }
+
+
+    function winnerForHigher(value1, value2) {
+
+        if (value1 === value2) {
+            return "tie";
+        }
+
+        return value1 > value2 ? "car1" : "car2";
+
+    }
+
+
+    function winnerForLower(value1, value2) {
+
+        if (value1 === value2) {
+            return "tie";
+        }
+
+        return value1 < value2 ? "car1" : "car2";
+
+    }
+
+
+    function winnerText(winner) {
+
+        if (winner === "car1") {
+            return name1;
+        }
+
+        if (winner === "car2") {
+            return name2;
+        }
+
+        return "Both cars";
+
+    }
+
+
+    function setResultText(elementId, winner, tieText = "Both cars") {
+
+        const element = document.getElementById(elementId);
+
+        if (!element) {
+            return;
+        }
+
+        element.classList.remove(
+            "winner-car1",
+            "winner-car2",
+            "tie-result"
+        );
+
+
+        if (winner === "car1") {
+
+            element.textContent = name1;
+            element.classList.add("winner-car1");
+
+        } else if (winner === "car2") {
+
+            element.textContent = name2;
+            element.classList.add("winner-car2");
+
+        } else {
+
+            element.textContent = tieText;
+            element.classList.add("tie-result");
+
+        }
+
+    }
+
+
+    function setPoints(elementId, points) {
+
+        const element = document.getElementById(elementId);
+
+        if (!element) {
+            return;
+        }
+
+        element.textContent =
+            `${points.toFixed(1)} points`;
+
+    }
+
+
+    function applyFactorHighlight(cardId, winner) {
+
+        const card = document.getElementById(cardId);
+
+        if (!card) {
+            return;
+        }
+
+        card.classList.remove(
+            "factor-winner-car1",
+            "factor-winner-car2",
+            "factor-tie"
+        );
+
+
+        if (winner === "car1") {
+
+            card.classList.add("factor-winner-car1");
+
+        } else if (winner === "car2") {
+
+            card.classList.add("factor-winner-car2");
+
+        } else {
+
+            card.classList.add("factor-tie");
+
+        }
+
+    }
+
+
+    function addAdvantage(listId, text) {
+
+        const list = document.getElementById(listId);
+
+        if (!list) {
+            return;
+        }
+
+        const item = document.createElement("li");
+
+        item.textContent = text;
+
+        list.appendChild(item);
+
+    }
+
+
+    function roundScore(value) {
+
+        return Math.round(value * 10) / 10;
+
+    }
+
+
+    /* =========================================================
+       INITIAL SCORES
+    ========================================================= */
+
+    let score1 = 0;
+    let score2 = 0;
+
+
+    const advantages1 = [];
+    const advantages2 = [];
+
+
+    /* =========================================================
+       1. KILOMETRES - 25%
+    ========================================================= */
+
+    const kmWinner = winnerForLower(
+        car1.km,
+        car2.km
+    );
+
+
+    let kmScore1 = 0;
+    let kmScore2 = 0;
+
+
+    if (kmWinner === "car1") {
+
+        kmScore1 = weights.km;
+
+        advantages1.push(
+            `Lower kilometres driven (${car1.km.toLocaleString()} km).`
+        );
+
+    } else if (kmWinner === "car2") {
+
+        kmScore2 = weights.km;
+
+        advantages2.push(
+            `Lower kilometres driven (${car2.km.toLocaleString()} km).`
+        );
+
+    } else {
+
+        kmScore1 = weights.km / 2;
+        kmScore2 = weights.km / 2;
+
+    }
+
+
+    score1 += kmScore1;
+    score2 += kmScore2;
+
+
+    /* =========================================================
+       2. MODEL YEAR - 20%
+    ========================================================= */
+
+    const yearWinner = winnerForHigher(
+        car1.year,
+        car2.year
+    );
+
+
+    let yearScore1 = 0;
+    let yearScore2 = 0;
+
+
+    if (yearWinner === "car1") {
+
+        yearScore1 = weights.year;
+
+        advantages1.push(
+            `Newer model year (${car1.year}).`
+        );
+
+    } else if (yearWinner === "car2") {
+
+        yearScore2 = weights.year;
+
+        advantages2.push(
+            `Newer model year (${car2.year}).`
+        );
+
+    } else {
+
+        yearScore1 = weights.year / 2;
+        yearScore2 = weights.year / 2;
+
+    }
+
+
+    score1 += yearScore1;
+    score2 += yearScore2;
+
+
+    /* =========================================================
+       3. FUEL - 15%
+    ========================================================= */
+
+    const fuel1 = normalizeText(car1.fuel);
+    const fuel2 = normalizeText(car2.fuel);
+
+    const diesel1 = fuel1.includes("diesel");
+    const diesel2 = fuel2.includes("diesel");
+
+
+    let fuelWinner = "tie";
+
+    let fuelScore1 = 0;
+    let fuelScore2 = 0;
+
+
+    if (diesel1 && !diesel2) {
+
+        fuelWinner = "car1";
+        fuelScore1 = weights.fuel;
+
+        advantages1.push(
+            "Diesel receives the configured fuel preference."
+        );
+
+    } else if (!diesel1 && diesel2) {
+
+        fuelWinner = "car2";
+        fuelScore2 = weights.fuel;
+
+        advantages2.push(
+            "Diesel receives the configured fuel preference."
+        );
+
+    } else {
+
+        fuelScore1 = weights.fuel / 2;
+        fuelScore2 = weights.fuel / 2;
+
+    }
+
+
+    score1 += fuelScore1;
+    score2 += fuelScore2;
+
+
+    /* =========================================================
+       4. MILEAGE - 10%
+    ========================================================= */
+
+    const mileageWinner = winnerForHigher(
+        car1.mileage,
+        car2.mileage
+    );
+
+
+    let mileageScore1 = 0;
+    let mileageScore2 = 0;
+
+
+    if (mileageWinner === "car1") {
+
+        mileageScore1 = weights.mileage;
+
+        advantages1.push(
+            `Higher mileage (${car1.mileage} km/l).`
+        );
+
+    } else if (mileageWinner === "car2") {
+
+        mileageScore2 = weights.mileage;
+
+        advantages2.push(
+            `Higher mileage (${car2.mileage} km/l).`
+        );
+
+    } else {
+
+        mileageScore1 = weights.mileage / 2;
+        mileageScore2 = weights.mileage / 2;
+
+    }
+
+
+    score1 += mileageScore1;
+    score2 += mileageScore2;
+
+
+    /* =========================================================
+       5. ENGINE CC - 8%
+    ========================================================= */
+
+    const engineWinner = winnerForHigher(
+        car1.engine,
+        car2.engine
+    );
+
+
+    let engineScore1 = 0;
+    let engineScore2 = 0;
+
+
+    if (engineWinner === "car1") {
+
+        engineScore1 = weights.engine;
+
+        advantages1.push(
+            `Higher engine capacity (${car1.engine} cc).`
+        );
+
+    } else if (engineWinner === "car2") {
+
+        engineScore2 = weights.engine;
+
+        advantages2.push(
+            `Higher engine capacity (${car2.engine} cc).`
+        );
+
+    } else {
+
+        engineScore1 = weights.engine / 2;
+        engineScore2 = weights.engine / 2;
+
+    }
+
+
+    score1 += engineScore1;
+    score2 += engineScore2;
+
+
+    /* =========================================================
+       6. POWER - 8%
+    ========================================================= */
+
+    const powerWinner = winnerForHigher(
+        car1.power,
+        car2.power
+    );
+
+
+    let powerScore1 = 0;
+    let powerScore2 = 0;
+
+
+    if (powerWinner === "car1") {
+
+        powerScore1 = weights.power;
+
+        advantages1.push(
+            `Higher maximum power (${car1.power} bhp).`
+        );
+
+    } else if (powerWinner === "car2") {
+
+        powerScore2 = weights.power;
+
+        advantages2.push(
+            `Higher maximum power (${car2.power} bhp).`
+        );
+
+    } else {
+
+        powerScore1 = weights.power / 2;
+        powerScore2 = weights.power / 2;
+
+    }
+
+
+    score1 += powerScore1;
+    score2 += powerScore2;
+
+
+    /* =========================================================
+       7. TRANSMISSION - 5%
+    ========================================================= */
+
+    const transmission1 =
+        normalizeText(car1.transmission);
+
+    const transmission2 =
+        normalizeText(car2.transmission);
+
+
+    const automatic1 =
+        transmission1.includes("automatic") ||
+        transmission1 === "auto";
+
+    const automatic2 =
+        transmission2.includes("automatic") ||
+        transmission2 === "auto";
+
+
+    let transmissionWinner = "tie";
+
+    let transmissionScore1 = 0;
+    let transmissionScore2 = 0;
+
+
+    if (automatic1 && !automatic2) {
+
+        transmissionWinner = "car1";
+        transmissionScore1 = weights.transmission;
+
+        advantages1.push(
+            "Automatic transmission receives the configured preference."
+        );
+
+    } else if (!automatic1 && automatic2) {
+
+        transmissionWinner = "car2";
+        transmissionScore2 = weights.transmission;
+
+        advantages2.push(
+            "Automatic transmission receives the configured preference."
+        );
+
+    } else {
+
+        transmissionScore1 = weights.transmission / 2;
+        transmissionScore2 = weights.transmission / 2;
+
+    }
+
+
+    score1 += transmissionScore1;
+    score2 += transmissionScore2;
+
+
+    /* =========================================================
+       8. SELLER / OWNER TYPE - 4%
+    ========================================================= */
+
+    const seller1 = normalizeText(car1.seller);
+    const seller2 = normalizeText(car2.seller);
+
+
+    function sellerRank(value) {
+
+        if (value.includes("individual")) {
+            return 3;
+        }
+
+        if (value.includes("trustmark")) {
+            return 2;
+        }
+
+        if (value.includes("dealer")) {
+            return 1;
+        }
+
+        return 0;
+
+    }
+
+
+    const sellerRank1 = sellerRank(seller1);
+    const sellerRank2 = sellerRank(seller2);
+
+
+    let sellerWinner = "tie";
+
+    let sellerScore1 = 0;
+    let sellerScore2 = 0;
+
+
+    if (sellerRank1 > sellerRank2) {
+
+        sellerWinner = "car1";
+        sellerScore1 = weights.seller;
+
+        advantages1.push(
+            `Seller type is ${car1.seller}.`
+        );
+
+    } else if (sellerRank2 > sellerRank1) {
+
+        sellerWinner = "car2";
+        sellerScore2 = weights.seller;
+
+        advantages2.push(
+            `Seller type is ${car2.seller}.`
+        );
+
+    } else {
+
+        sellerScore1 = weights.seller / 2;
+        sellerScore2 = weights.seller / 2;
+
+    }
+
+
+    score1 += sellerScore1;
+    score2 += sellerScore2;
+
+
+    /* =========================================================
+       9. SEATS - 5%
+    ========================================================= */
+
+    const seatsWinner = winnerForHigher(
+        car1.seats,
+        car2.seats
+    );
+
+
+    let seatsScore1 = 0;
+    let seatsScore2 = 0;
+
+
+    if (seatsWinner === "car1") {
+
+        seatsScore1 = weights.seats;
+
+        advantages1.push(
+            `Higher seating capacity (${car1.seats} seats).`
+        );
+
+    } else if (seatsWinner === "car2") {
+
+        seatsScore2 = weights.seats;
+
+        advantages2.push(
+            `Higher seating capacity (${car2.seats} seats).`
+        );
+
+    } else {
+
+        seatsScore1 = weights.seats / 2;
+        seatsScore2 = weights.seats / 2;
+
+    }
+
+
+    score1 += seatsScore1;
+    score2 += seatsScore2;
+
+
+    /* =========================================================
+       FINAL ROUNDING
+    ========================================================= */
+
+    score1 = Math.min(
+        100,
+        roundScore(score1)
+    );
+
+    score2 = Math.min(
+        100,
+        roundScore(score2)
+    );
+
+
+    /* =========================================================
+       UPDATE NAMES
+    ========================================================= */
+
+    const nameElements = [
+        "car1-name",
+        "table-car1-name",
+        "summary-car1-name",
+        "summary-score-name1",
+        "analysis-car1-name"
+    ];
+
+
+    nameElements.forEach(function (id) {
+
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.textContent = name1;
+        }
+
+    });
+
+
+    const nameElements2 = [
+        "car2-name",
+        "table-car2-name",
+        "summary-car2-name",
+        "summary-score-name2",
+        "analysis-car2-name"
+    ];
+
+
+    nameElements2.forEach(function (id) {
+
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.textContent = name2;
+        }
+
+    });
+
+
+    /* =========================================================
+       UPDATE SCORE
+    ========================================================= */
+
+    document.getElementById("car1-score").textContent =
+        score1.toFixed(1);
+
+    document.getElementById("car2-score").textContent =
+        score2.toFixed(1);
+
+    document.getElementById("summary-score1").textContent =
+        score1.toFixed(1);
+
+    document.getElementById("summary-score2").textContent =
+        score2.toFixed(1);
+
+
+    const scoreDifference =
+        Math.abs(score1 - score2);
+
+
+    document.getElementById("score-difference").textContent =
+        `${scoreDifference.toFixed(1)} points`;
+
+
+    /* =========================================================
+       UPDATE SCORE BARS
+    ========================================================= */
+
+    setTimeout(function () {
+
+        document.getElementById(
+            "score-progress1"
+        ).style.width = `${score1}%`;
+
+
+        document.getElementById(
+            "score-progress2"
+        ).style.width = `${score2}%`;
+
+    }, 200);
+
+
+    /* =========================================================
+       UPDATE POINTS
+    ========================================================= */
+
+    setPoints("factor-km-car1-points", kmScore1);
+    setPoints("factor-km-car2-points", kmScore2);
+
+    setPoints("factor-year-car1-points", yearScore1);
+    setPoints("factor-year-car2-points", yearScore2);
+
+    setPoints("factor-fuel-car1-points", fuelScore1);
+    setPoints("factor-fuel-car2-points", fuelScore2);
+
+    setPoints("factor-mileage-car1-points", mileageScore1);
+    setPoints("factor-mileage-car2-points", mileageScore2);
+
+    setPoints("factor-engine-car1-points", engineScore1);
+    setPoints("factor-engine-car2-points", engineScore2);
+
+    setPoints("factor-power-car1-points", powerScore1);
+    setPoints("factor-power-car2-points", powerScore2);
+
+    setPoints(
+        "factor-transmission-car1-points",
+        transmissionScore1
+    );
+
+    setPoints(
+        "factor-transmission-car2-points",
+        transmissionScore2
+    );
+
+    setPoints(
+        "factor-seller-car1-points",
+        sellerScore1
+    );
+
+    setPoints(
+        "factor-seller-car2-points",
+        sellerScore2
+    );
+
+    setPoints(
+        "factor-seats-car1-points",
+        seatsScore1
+    );
+
+    setPoints(
+        "factor-seats-car2-points",
+        seatsScore2
+    );
+
+
+    /* =========================================================
+       UPDATE FACTOR RESULTS
+    ========================================================= */
+
+    setResultText(
+        "factor-km-result",
+        kmWinner
+    );
+
+    setResultText(
+        "factor-year-result",
+        yearWinner
+    );
+
+    setResultText(
+        "factor-fuel-result",
+        fuelWinner
+    );
+
+    setResultText(
+        "factor-mileage-result",
+        mileageWinner
+    );
+
+    setResultText(
+        "factor-engine-result",
+        engineWinner
+    );
+
+    setResultText(
+        "factor-power-result",
+        powerWinner
+    );
+
+    setResultText(
+        "factor-transmission-result",
+        transmissionWinner
+    );
+
+    setResultText(
+        "factor-seller-result",
+        sellerWinner
+    );
+
+    setResultText(
+        "factor-seats-result",
+        seatsWinner
+    );
+
+
+    /* =========================================================
+       HIGHLIGHT WINNING FACTORS
+    ========================================================= */
+
+    applyFactorHighlight(
+        "factor-km",
+        kmWinner
+    );
+
+    applyFactorHighlight(
+        "factor-year",
+        yearWinner
+    );
+
+    applyFactorHighlight(
+        "factor-fuel",
+        fuelWinner
+    );
+
+    applyFactorHighlight(
+        "factor-mileage",
+        mileageWinner
+    );
+
+    applyFactorHighlight(
+        "factor-engine",
+        engineWinner
+    );
+
+    applyFactorHighlight(
+        "factor-power",
+        powerWinner
+    );
+
+    applyFactorHighlight(
+        "factor-transmission",
+        transmissionWinner
+    );
+
+    applyFactorHighlight(
+        "factor-seller",
+        sellerWinner
+    );
+
+    applyFactorHighlight(
+        "factor-seats",
+        seatsWinner
+    );
+
+
+    /* =========================================================
+       OVERALL RESULT
+    ========================================================= */
+
+    const winnerTitle =
+        document.getElementById("winner-title");
+
+    const winnerDescription =
+        document.getElementById("winner-description");
+
+    const resultIcon =
+        document.getElementById("result-icon");
+
+
+    if (score1 > score2) {
+
+        winnerTitle.textContent =
+            `${name1} has the higher comparison score`;
+
+        winnerDescription.textContent =
+            `${name1} scored ${score1.toFixed(1)}/100 compared with ${score2.toFixed(1)}/100 for ${name2}, based on the configured CarValue26 comparison preferences.`;
+
+        resultIcon.textContent = "✓";
+
+        document
+            .getElementById("car1-card")
+            .classList.add("overall-winner");
+
+        document
+            .getElementById("car2-card")
+            .classList.remove("overall-winner");
+
+    } else if (score2 > score1) {
+
+        winnerTitle.textContent =
+            `${name2} has the higher comparison score`;
+
+        winnerDescription.textContent =
+            `${name2} scored ${score2.toFixed(1)}/100 compared with ${score1.toFixed(1)}/100 for ${name1}, based on the configured CarValue26 comparison preferences.`;
+
+        resultIcon.textContent = "✓";
+
+        document
+            .getElementById("car2-card")
+            .classList.add("overall-winner");
+
+        document
+            .getElementById("car1-card")
+            .classList.remove("overall-winner");
+
+    } else {
+
+        winnerTitle.textContent =
+            "Both cars have the same comparison score";
+
+        winnerDescription.textContent =
+            `Both vehicles scored ${score1.toFixed(1)}/100 based on the configured comparison preferences.`;
+
+        resultIcon.textContent = "=";
+
+    }
+
+
+    /* =========================================================
+       ADVANTAGE LISTS
+    ========================================================= */
+
+    const advantagesList1 =
+        document.getElementById("advantages-car1");
+
+    const advantagesList2 =
+        document.getElementById("advantages-car2");
+
+
+    if (advantages1.length === 0) {
+
+        const item = document.createElement("li");
+
+        item.textContent =
+            "No individual scoring advantage over the second vehicle.";
+
+        advantagesList1.appendChild(item);
+
+    } else {
+
+        advantages1.forEach(function (advantage) {
+
+            addAdvantage(
+                "advantages-car1",
+                advantage
+            );
+
+        });
+
+    }
+
+
+    if (advantages2.length === 0) {
+
+        const item = document.createElement("li");
+
+        item.textContent =
+            "No individual scoring advantage over the first vehicle.";
+
+        advantagesList2.appendChild(item);
+
+    } else {
+
+        advantages2.forEach(function (advantage) {
+
+            addAdvantage(
+                "advantages-car2",
+                advantage
+            );
+
+        });
+
+    }
+
+
+});
+</script>
+
+{% endif %}
+
+{% endblock %}

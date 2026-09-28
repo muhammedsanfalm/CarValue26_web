@@ -1,0 +1,737 @@
+/* =========================================
+   CARVALUE26 - PREDICTION RESULT PAGE
+   ========================================= */
+
+.result-page {
+    min-height: calc(100vh - 70px);
+    padding: 30px 5%;
+    background: linear-gradient(135deg, #f5f9fc, #ffffff);
+    color: #1f3d5c;
+}
+
+
+/* =========================================
+   RESULT HERO
+   ========================================= */
+
+.result-hero {
+    max-width: 1350px;
+    margin: 0 auto 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    min-height: 285px;
+    padding: 30px 40px;
+
+    background: linear-gradient(
+        120deg,
+        #effbf7,
+        #f8ffff
+    );
+
+    border: 1px solid #d9eeee;
+    border-radius: 16px;
+
+    box-shadow: 0 8px 25px rgba(20, 70, 100, 0.08);
+
+    overflow: hidden;
+}
+
+
+.result-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    max-width: 700px;
+}
+
+
+.success-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #2ba875;
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 34px;
+    font-weight: bold;
+
+    box-shadow: 0 5px 15px rgba(43, 168, 117, 0.25);
+}
+
+
+.result-left h3 {
+    margin: 0 0 5px;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    color: #294c70;
+}
+
+
+.price {
+    font-size: 48px;
+    font-weight: 800;
+
+    color: #199b62;
+
+    margin-bottom: 8px;
+}
+
+
+.result-description {
+    max-width: 600px;
+
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    color: #607b99;
+}
+
+
+/* =========================================
+   HERO FEATURES
+   ========================================= */
+
+.result-features {
+    display: flex;
+    gap: 35px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #d8ebe6;
+}
+
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.feature-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e7f4fb;
+
+    border-radius: 50%;
+
+    font-size: 19px;
+}
+
+
+.feature strong {
+    display: block;
+
+    font-size: 14px;
+    color: #234b75;
+}
+
+
+.feature span {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 12px;
+    color: #7590aa;
+}
+
+
+/* =========================================
+   CAR IMAGE
+   ========================================= */
+
+.result-car {
+    position: relative;
+
+    width: 440px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.result-car img {
+    width: 100%;
+    max-width: 430px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(
+        0 15px 15px rgba(0, 0, 0, 0.18)
+    );
+}
+
+
+.true-value {
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    font-size: 18px;
+    font-style: italic;
+
+    line-height: 1.3;
+
+    color: #205b8e;
+
+    transform: rotate(-5deg);
+}
+
+
+.true-value strong {
+    font-size: 21px;
+}
+
+
+/* =========================================
+   PREDICTION HISTORY CARD
+   ========================================= */
+
+.prediction-history-card {
+    width: 100%;
+    max-width: 1350px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 22px 28px;
+
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        120deg,
+        #effbf7,
+        #ffffff
+    );
+
+    border: 1px solid #d9eee3;
+    border-radius: 16px;
+
+    box-shadow: 0 8px 24px rgba(20, 70, 100, 0.06);
+}
+
+
+.history-card-icon {
+    width: 56px;
+    height: 56px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e7f6ee;
+    border-radius: 50%;
+
+    color: #10a65a;
+    font-size: 25px;
+}
+
+
+.history-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+
+.history-card-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #10a65a;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+
+.history-card-content h2 {
+    margin: 0 0 5px;
+    color: #294c70;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+
+.history-card-content p {
+    max-width: 720px;
+    margin: 0;
+    color: #607b99;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+.history-card-btn {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 12px 20px;
+
+    background: #10a65a;
+    color: #ffffff;
+
+    border: 1px solid #10a65a;
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+
+.history-card-btn span {
+    font-size: 17px;
+    line-height: 1;
+}
+
+
+.history-card-btn:hover {
+    background: #078d4a;
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(16, 166, 90, 0.20);
+}
+
+
+
+/* =========================================
+   MAIN GRID
+   ========================================= */
+
+.result-grid {
+    max-width: 1350px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1.12fr;
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   CAR DETAILS
+   ========================================= */
+
+.details-card,
+.insights-card {
+    background: white;
+
+    border: 1px solid #e2edf4;
+    border-radius: 16px;
+
+    box-shadow: 0 7px 25px rgba(25, 70, 100, 0.06);
+}
+
+
+.details-card {
+    padding: 28px;
+}
+
+
+.section-heading,
+.insights-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+
+.heading-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e9f4ff;
+
+    border-radius: 50%;
+
+    font-size: 23px;
+}
+
+
+.section-heading h2,
+.insights-header h2 {
+    margin: 0;
+
+    font-size: 24px;
+    color: #245488;
+}
+
+
+.section-heading p,
+.insights-header p {
+    margin: 4px 0 0;
+
+    color: #7690aa;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   DETAILS ROWS
+   ========================================= */
+
+.details-list {
+    width: 100%;
+}
+
+
+.detail-row {
+    min-height: 36px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    border-bottom: 1px solid #e7eef4;
+
+    font-size: 14px;
+}
+
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+
+.detail-row span {
+    color: #64809e;
+}
+
+
+.detail-row strong {
+    color: #25496f;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   INSIGHTS
+   ========================================= */
+
+.insights-card {
+    padding: 28px;
+}
+
+
+.insights-header {
+    padding: 16px;
+
+    background: #eef7ff;
+
+    border-radius: 12px;
+}
+
+
+.insights-header {
+    margin-bottom: 18px;
+}
+
+
+.insight-item {
+    display: flex;
+    gap: 15px;
+
+    padding: 10px 5px;
+}
+
+
+.insight-icon {
+    flex-shrink: 0;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.insight-icon.green {
+    background: #27a76e;
+}
+
+
+.insight-icon.blue {
+    background: #3c8be8;
+}
+
+
+.insight-icon.purple {
+    background: #8e58c7;
+}
+
+
+.insight-icon.orange {
+    background: #ef9140;
+}
+
+
+.insight-item h3 {
+    margin: 0 0 4px;
+
+    font-size: 15px;
+
+    color: #245488;
+}
+
+
+.insight-item p {
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: #708aa4;
+}
+
+
+/* =========================================
+   NOTICE
+   ========================================= */
+
+.notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    margin: 12px 5px;
+
+    padding: 12px 15px;
+
+    background: #eef6ff;
+
+    border-radius: 10px;
+
+    color: #6684a3;
+}
+
+
+.notice span {
+    font-size: 17px;
+}
+
+
+.notice p {
+    margin: 0;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   BUTTON
+   ========================================= */
+
+.another-car-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    margin-top: 12px;
+    padding: 13px 20px;
+
+    background: #255d9d;
+    color: white;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.25s ease;
+}
+
+
+.another-car-btn:hover {
+    background: #194c87;
+
+    color: white;
+
+    transform: translateY(-1px);
+
+    text-decoration: none;
+
+    box-shadow: 0 5px 15px rgba(37, 93, 157, 0.25);
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.result-footer {
+    max-width: 1350px;
+
+    margin: 18px auto 0;
+
+    padding: 14px;
+
+    text-align: center;
+
+    border-top: 1px solid #e1eaf1;
+
+    color: #718aa3;
+
+    font-size: 13px;
+}
+
+
+.result-footer span {
+    margin: 0 8px;
+}
+
+
+.result-footer strong {
+    color: #456789;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+    .result-hero {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+
+    .result-car {
+        width: 100%;
+    }
+
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .prediction-history-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px;
+    }
+
+
+    .history-card-content h2 {
+        font-size: 20px;
+    }
+
+
+    .history-card-content p {
+        font-size: 14px;
+    }
+
+
+    .history-card-btn {
+        width: 100%;
+    }
+
+    .result-page {
+        padding: 15px;
+    }
+
+
+    .result-hero {
+        padding: 22px;
+    }
+
+
+    .price {
+        font-size: 38px;
+    }
+
+
+    .result-features {
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .detail-row {
+        grid-template-columns: 1fr;
+
+        gap: 5px;
+
+        padding: 9px 0;
+    }
+
+
+    .true-value {
+        display: none;
+    }
+
+}

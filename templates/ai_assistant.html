@@ -1,0 +1,851 @@
+{% extends "layout.html" %}
+
+{% block title %}AI Assistant - CarValue26{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/ai_assistant.css') }}">
+
+<div class="ai-page">
+
+```
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<div class="ai-header">
+
+    <span class="ai-label">
+        CARVALUE AI
+    </span>
+
+    <h1>
+        Your AI Car Assistant
+    </h1>
+
+    <p>
+        Ask questions about used cars, pricing, specifications,
+        maintenance, comparisons and buying decisions.
+    </p>
+
+</div>
+
+
+<!-- =====================================================
+     AI CHAT
+====================================================== -->
+
+<div class="ai-chat-container">
+
+    <!-- CHAT HEADER -->
+    <div class="chat-header">
+
+        <div class="ai-profile">
+
+            <div class="ai-avatar">
+                🤖
+            </div>
+
+            <div>
+
+                <strong>
+                    ChatValue AI
+                </strong>
+
+                <span class="online-status">
+                    <i></i>
+                    Online
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="chat-header-actions">
+
+            <span class="ai-powered">
+                AI POWERED
+            </span>
+
+            <button
+                type="button"
+                id="clear-chat"
+                class="clear-chat-button"
+            >
+                Clear
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHAT AREA -->
+    <div
+        class="chat-area"
+        id="chat-area"
+        aria-live="polite"
+    >
+
+        <!-- INITIAL WELCOME -->
+        <div
+            class="welcome-state"
+            id="welcome-state"
+        >
+
+            <div class="welcome-icon">
+                🤖
+            </div>
+
+            <h2>
+                How can I help you?
+            </h2>
+
+            <p>
+                Ask me anything about cars, used-car prices,
+                specifications, maintenance or buying.
+            </p>
+
+        </div>
+
+
+        <!-- INITIAL AI MESSAGE -->
+        <div class="message ai-message">
+
+            <div class="message-avatar">
+                🤖
+            </div>
+
+            <div class="message-content">
+
+                <span class="message-name">
+                    ChatValue AI
+                </span>
+
+                <div class="message-bubble">
+                    Hi! I'm ChatValue AI. Ask me anything about
+                    cars and I'll explain it in a simple way.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SUGGESTIONS
+    ================================================== -->
+
+    <div class="suggestions">
+
+        <span class="suggestions-title">
+            Try asking
+        </span>
+
+        <div class="suggestion-list">
+
+            <button
+                type="button"
+                class="suggestion-button"
+                data-question="What factors affect the price of a used car?"
+            >
+                What affects used-car prices?
+            </button>
+
+            <button
+                type="button"
+                class="suggestion-button"
+                data-question="How do I compare two used cars before buying?"
+            >
+                How should I compare cars?
+            </button>
+
+            <button
+                type="button"
+                class="suggestion-button"
+                data-question="What is the difference between petrol and diesel cars?"
+            >
+                Petrol vs diesel?
+            </button>
+
+            <button
+                type="button"
+                class="suggestion-button"
+                data-question="Is higher mileage always better when buying a used car?"
+            >
+                Is mileage important?
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         INPUT
+    ================================================== -->
+
+    <div class="chat-input-area">
+
+        <div class="chat-input-wrapper">
+
+            <textarea
+                id="chat-input"
+                rows="1"
+                maxlength="2000"
+                placeholder="Ask ChatValue AI anything about cars..."
+                aria-label="Ask ChatValue AI"
+            ></textarea>
+
+
+            <button
+                type="button"
+                id="send-button"
+                class="send-button"
+                aria-label="Send message"
+            >
+                ➤
+            </button>
+
+        </div>
+
+
+        <div class="input-footer">
+
+            <p class="input-note">
+                ChatValue AI can make mistakes. Verify important
+                information before making decisions.
+            </p>
+
+            <span id="character-count">
+                0 / 2000
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CAPABILITIES
+====================================================== -->
+
+<div class="ai-capabilities">
+
+    <div class="capabilities-heading">
+
+        <span>
+            WHAT I CAN HELP WITH
+        </span>
+
+        <h2>
+            Explore CarValue AI
+        </h2>
+
+    </div>
+
+
+    <div class="capability-grid">
+
+
+        <button
+            type="button"
+            class="capability-card"
+            data-question="Explain how used-car valuation works and what information is important."
+        >
+
+            <div class="capability-icon">
+                💰
+            </div>
+
+            <h3>
+                Car Pricing
+            </h3>
+
+            <p>
+                Understand used-car valuation,
+                pricing factors and market value.
+            </p>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="capability-card"
+            data-question="What should I check when comparing two used cars?"
+        >
+
+            <div class="capability-icon">
+                ⚖️
+            </div>
+
+            <h3>
+                Car Comparison
+            </h3>
+
+            <p>
+                Compare specifications and understand
+                what matters before buying.
+            </p>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="capability-card"
+            data-question="Explain important car specifications such as engine cc, power, mileage, transmission and seats."
+        >
+
+            <div class="capability-icon">
+                🔧
+            </div>
+
+            <h3>
+                Car Knowledge
+            </h3>
+
+            <p>
+                Get simple explanations of specifications,
+                features and automotive terms.
+            </p>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="capability-card"
+            data-question="What are the important things to know about the current used-car market?"
+        >
+
+            <div class="capability-icon">
+                📊
+            </div>
+
+            <h3>
+                Market Insights
+            </h3>
+
+            <p>
+                Ask about market trends, ownership costs
+                and current automotive information.
+            </p>
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     DISCLAIMER
+====================================================== -->
+
+<div class="ai-disclaimer">
+
+    <span>
+        ℹ
+    </span>
+
+    <p>
+        <strong>AI Assistant Disclaimer:</strong>
+        ChatValue AI provides general automotive information.
+        It does not replace professional automotive, financial
+        or mechanical advice.
+    </p>
+
+</div>
+```
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const chatArea = document.getElementById("chat-area");
+    const chatInput = document.getElementById("chat-input");
+    const sendButton = document.getElementById("send-button");
+    const clearButton = document.getElementById("clear-chat");
+    const characterCount = document.getElementById("character-count");
+
+    const suggestionButtons =
+        document.querySelectorAll(".suggestion-button");
+
+    const capabilityCards =
+        document.querySelectorAll(".capability-card");
+
+
+    const messages = [];
+
+    let waitingForResponse = false;
+
+
+    /* =====================================================
+       HELPERS
+    ====================================================== */
+
+    function scrollChatToBottom() {
+
+        chatArea.scrollTop = chatArea.scrollHeight;
+
+    }
+
+
+    function createMessageElement(
+        role,
+        text,
+        temporary = false
+    ) {
+
+        const message = document.createElement("div");
+
+        message.className =
+            role === "user"
+                ? "message user-message"
+                : "message ai-message";
+
+        if (temporary) {
+            message.classList.add("temporary-message");
+        }
+
+
+        if (role === "user") {
+
+            message.innerHTML = `
+                <div class="message-content">
+
+                    <span class="message-name">
+                        You
+                    </span>
+
+                    <div class="message-bubble"></div>
+
+                </div>
+
+                <div class="message-avatar user-avatar">
+                    👤
+                </div>
+            `;
+
+        } else {
+
+            message.innerHTML = `
+                <div class="message-avatar">
+                    🤖
+                </div>
+
+                <div class="message-content">
+
+                    <span class="message-name">
+                        ChatValue AI
+                    </span>
+
+                    <div class="message-bubble"></div>
+
+                </div>
+            `;
+
+        }
+
+
+        const bubble =
+            message.querySelector(".message-bubble");
+
+        bubble.textContent = text;
+
+        return message;
+
+    }
+
+
+    function addMessage(role, text) {
+
+        const message =
+            createMessageElement(role, text);
+
+        chatArea.appendChild(message);
+
+        scrollChatToBottom();
+
+        return message;
+
+    }
+
+
+    function addTypingMessage() {
+
+        const message = document.createElement("div");
+
+        message.className =
+            "message ai-message temporary-message";
+
+        message.innerHTML = `
+            <div class="message-avatar">
+                🤖
+            </div>
+
+            <div class="message-content">
+
+                <span class="message-name">
+                    ChatValue AI
+                </span>
+
+                <div class="thinking-bubble">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+        `;
+
+        chatArea.appendChild(message);
+
+        scrollChatToBottom();
+
+        return message;
+
+    }
+
+
+    function resizeInput() {
+
+        chatInput.style.height = "auto";
+
+        chatInput.style.height =
+            Math.min(
+                chatInput.scrollHeight,
+                120
+            ) + "px";
+
+    }
+
+
+    function updateCharacterCount() {
+
+        characterCount.textContent =
+            `${chatInput.value.length} / 2000`;
+
+    }
+
+
+    /* =====================================================
+       SEND MESSAGE
+    ====================================================== */
+
+    async function sendMessage(customQuestion = null) {
+
+        if (waitingForResponse) {
+            return;
+        }
+
+
+        const question =
+            (
+                customQuestion !== null
+                    ? customQuestion
+                    : chatInput.value
+            ).trim();
+
+
+        if (!question) {
+            return;
+        }
+
+
+        if (question.length > 2000) {
+            addMessage(
+                "assistant",
+                "Please keep your question under 2000 characters."
+            );
+
+            return;
+        }
+
+
+        waitingForResponse = true;
+
+        sendButton.disabled = true;
+        chatInput.disabled = true;
+
+
+        addMessage(
+            "user",
+            question
+        );
+
+
+        messages.push({
+            role: "user",
+            content: question
+        });
+
+
+        if (customQuestion === null) {
+
+            chatInput.value = "";
+
+            updateCharacterCount();
+
+            resizeInput();
+
+        }
+
+
+        const typingMessage =
+            addTypingMessage();
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "{{ url_for('ai_assistant_api') }}",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            messages: messages.slice(-12)
+                        })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            typingMessage.remove();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.error ||
+                    "The AI assistant could not respond."
+                );
+
+            }
+
+
+            const answer =
+                data.answer ||
+                "I couldn't generate a response right now.";
+
+
+            addMessage(
+                "assistant",
+                answer
+            );
+
+
+            messages.push({
+                role: "assistant",
+                content: answer
+            });
+
+
+        } catch (error) {
+
+            typingMessage.remove();
+
+            addMessage(
+                "assistant",
+                "I'm sorry, I couldn't connect to the AI service right now. Please check the AI configuration and try again."
+            );
+
+            console.error(
+                "AI assistant error:",
+                error
+            );
+
+        } finally {
+
+            waitingForResponse = false;
+
+            sendButton.disabled = false;
+            chatInput.disabled = false;
+
+            chatInput.focus();
+
+        }
+
+    }
+
+
+    /* =====================================================
+       SEND BUTTON
+    ====================================================== */
+
+    sendButton.addEventListener(
+        "click",
+        function () {
+            sendMessage();
+        }
+    );
+
+
+    /* =====================================================
+       ENTER KEY
+    ====================================================== */
+
+    chatInput.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Enter" &&
+                !event.shiftKey
+            ) {
+
+                event.preventDefault();
+
+                sendMessage();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       INPUT EVENTS
+    ====================================================== */
+
+    chatInput.addEventListener(
+        "input",
+        function () {
+
+            updateCharacterCount();
+
+            resizeInput();
+
+        }
+    );
+
+
+    /* =====================================================
+       SUGGESTIONS
+    ====================================================== */
+
+    suggestionButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    sendMessage(
+                        button.dataset.question
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CAPABILITY CARDS
+    ====================================================== */
+
+    capabilityCards.forEach(
+        function (card) {
+
+            card.addEventListener(
+                "click",
+                function () {
+
+                    sendMessage(
+                        card.dataset.question
+                    );
+
+                    chatInput.focus();
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CLEAR CHAT
+    ====================================================== */
+
+    clearButton.addEventListener(
+        "click",
+        function () {
+
+            const userMessages =
+                chatArea.querySelectorAll(
+                    ".message"
+                );
+
+            userMessages.forEach(
+                function (message) {
+                    message.remove();
+                }
+            );
+
+
+            messages.length = 0;
+
+
+            const welcome =
+                document.getElementById(
+                    "welcome-state"
+                );
+
+            if (welcome) {
+                chatArea.insertBefore(
+                    welcome,
+                    chatArea.firstChild
+                );
+            }
+
+
+            addMessage(
+                "assistant",
+                "Chat cleared. What would you like to know about cars?"
+            );
+
+
+            chatInput.value = "";
+
+            updateCharacterCount();
+
+            resizeInput();
+
+            chatInput.focus();
+
+        }
+    );
+
+
+    updateCharacterCount();
+
+    resizeInput();
+
+});
+</script>
+
+{% endblock %}

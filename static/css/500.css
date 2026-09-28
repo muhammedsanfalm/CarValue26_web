@@ -1,0 +1,252 @@
+/* =========================================
+   500 SERVER ERROR PAGE
+========================================= */
+
+.server-error-page {
+    min-height: calc(100vh - 80px);
+    padding: 70px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f7fb;
+}
+
+.server-error-card {
+    width: 100%;
+    max-width: 650px;
+    padding: 55px 45px;
+    text-align: center;
+    border: 1px solid #e1e7ed;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 10px 35px rgba(31, 45, 61, 0.07);
+}
+
+
+/* =========================================
+   ERROR ICON
+========================================= */
+
+.server-error-icon {
+    width: 95px;
+    height: 95px;
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #fff5e6;
+
+    font-size: 42px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.server-error-label {
+    color: #e58a00;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.server-error-card h1 {
+    margin: 13px 0 15px;
+
+    color: #172033;
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 800;
+}
+
+.server-error-card > p {
+    max-width: 490px;
+    margin: 0 auto;
+
+    color: #7d8998;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.server-error-actions {
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.server-home-btn,
+.server-retry-btn {
+    padding: 13px 22px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: 0.25s ease;
+}
+
+
+/* HOME BUTTON */
+
+.server-home-btn {
+    background: #10a65a;
+    color: #ffffff;
+}
+
+.server-home-btn:hover {
+    background: #078d4a;
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 18px rgba(16, 166, 90, 0.2);
+}
+
+
+/* RETRY BUTTON */
+
+.server-retry-btn {
+    border: 1px solid #dce2e8;
+    background: #ffffff;
+    color: #657285;
+}
+
+.server-retry-btn:hover {
+    border-color: #10a65a;
+    color: #10a65a;
+}
+
+
+/* =========================================
+   INFORMATION NOTE
+========================================= */
+
+.server-error-note {
+    margin-top: 32px;
+    padding: 16px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    text-align: left;
+
+    border: 1px solid #f1e4c9;
+    border-radius: 11px;
+
+    background: #fffaf0;
+}
+
+.note-icon {
+    width: 35px;
+    height: 35px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+    background: #ffffff;
+
+    font-size: 15px;
+}
+
+.server-error-note strong {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #354052;
+    font-size: 11px;
+}
+
+.server-error-note p {
+    margin: 0;
+
+    color: #7b8491;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.server-brand {
+    margin-top: 35px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.server-brand strong {
+    color: #172033;
+    font-size: 17px;
+}
+
+.server-brand strong span {
+    color: #10a65a;
+}
+
+.server-brand small {
+    color: #9aa3ae;
+    font-size: 9px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .server-error-page {
+        padding: 45px 15px;
+    }
+
+    .server-error-card {
+        padding: 40px 22px;
+    }
+
+    .server-error-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 35px;
+    }
+
+    .server-error-card h1 {
+        font-size: 27px;
+    }
+
+    .server-error-card > p {
+        font-size: 12px;
+    }
+
+    .server-error-actions {
+        flex-direction: column;
+    }
+
+    .server-home-btn,
+    .server-retry-btn {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}

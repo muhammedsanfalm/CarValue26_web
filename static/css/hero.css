@@ -143,23 +143,7 @@
 
 /* Button */
 
-.hero-search button {
-    height: 100%;
 
-    padding: 0 35px;
-
-    border: none;
-
-    background: #10a65a;
-    color: white;
-
-    font-size: 17px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
 
 .hero-search button:hover {
     background: #078d4a;
@@ -266,4 +250,90 @@
     .hero-stats p {
         font-size: 13px;
     }
+}
+
+/* Estimate Price Button */
+
+.hero-search .estimate-button {
+    height: 100%;
+    padding: 0 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    background: #10a65a;
+    color: white;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.hero-search .estimate-button:hover {
+    background: #078d4a;
+    color: white;
+    text-decoration: none;
+}
+
+/* Estimate Price Link Button */
+
+.hero-search .estimate-button {
+    height: 100%;
+    padding: 0 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #10a65a;
+    color: white;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.hero-search .estimate-button:hover {
+    background: #078d4a;
+    color: white;
+    text-decoration: none;
+}
+
+.hero-search .estimate-button {
+    height: 100%;
+    padding: 0 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: #10a65a;
+    color: white;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.hero-search .estimate-button:hover {
+    background: #078d4a;
+    color: white;
+    text-decoration: none;
 }
