@@ -50,12 +50,12 @@
                 <span>Latest Estimate</span>
 
                 {% if history %}
-                    <strong>
-                        ₹{{ "{:,.0f}".format(history[0].prediction) }}
-                    </strong>
-                {% else %}
-                    <strong>—</strong>
-                {% endif %}
+    <strong>
+        ₹{{ history[0].prediction | indian_currency }}
+    </strong>
+{% else %}
+    <strong>—</strong>
+{% endif %}
             </div>
         </div>
 
@@ -134,7 +134,7 @@
 
                         <td>
                             <strong class="price">
-                                ₹{{ "{:,.0f}".format(item.prediction) }}
+                                ₹{{ item.prediction | indian_currency }}
                             </strong>
                         </td>
 

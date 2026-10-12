@@ -4,8 +4,20 @@
 
 .compare-page {
     min-height: calc(100vh - 80px);
-    padding: 35px 20px 70px;
-    background: #f5f7fb;
+    padding: 24px 20px 70px;
+    box-sizing: border-box;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.38),
+            rgba(255, 255, 255, 0.38)
+        ),
+        url("../images/compare-bg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 
@@ -16,17 +28,19 @@
 .compare-header {
     max-width: 900px;
     margin: 0 auto 35px;
+    padding-top: 8px;
     text-align: center;
 }
 
-.compare-label,
-.result-label {
+.compare-label {
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     color: #10a65a;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 17px;
+    font-weight: 800;
     letter-spacing: 1.5px;
+    position: relative;
+    z-index: 2;
 }
 
 .compare-header h1 {
@@ -34,12 +48,13 @@
     color: #172033;
     font-size: 38px;
     font-weight: 800;
+    line-height: 1.2;
 }
 
 .compare-header p {
     max-width: 700px;
     margin: auto;
-    color: #697386;
+    color: #59677a;
     font-size: 16px;
     line-height: 1.7;
 }
@@ -68,7 +83,7 @@
     border: 1px solid #e5e9f0;
     border-radius: 18px;
     padding: 28px;
-    box-shadow: 0 8px 30px rgba(31, 45, 61, 0.07);
+    box-shadow: 0 8px 30px rgba(31, 45, 61, 0.08);
 }
 
 .car-card-header {
@@ -86,6 +101,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     border-radius: 12px;
     background: #10a65a;
     color: white;
@@ -133,7 +149,7 @@
     margin-bottom: 8px;
     color: #374151;
     font-size: 15px;
-    font-weight: 600
+    font-weight: 600;
 }
 
 .form-group input,
@@ -196,7 +212,7 @@
 
 .compare-action {
     text-align: center;
-    margin: 35px auto 50px;
+    margin: 35px auto 55px;
 }
 
 .compare-button {
@@ -226,117 +242,176 @@
 
 .compare-action p {
     margin: 12px 0 0;
-    color: #8992a3;
+    color: #687587;
     font-size: 13px;
 }
 
 
 /* =========================================
-   RESULT SECTION
+   USEFUL INFORMATION SECTION
 ========================================= */
 
-.comparison-result {
+.comparison-guide {
     max-width: 1250px;
-    margin: 0 auto 40px;
-    padding: 35px;
-    border-radius: 18px;
-    background: #ffffff;
-    border: 1px solid #e5e9f0;
-    box-shadow: 0 8px 30px rgba(31, 45, 61, 0.06);
+    margin: 0 auto;
+    padding: 42px 42px 38px;
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(234, 248, 240, 0.96),
+            rgba(245, 251, 247, 0.96)
+        );
+
+    border: 1px solid #d7eee0;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(31, 45, 61, 0.07);
 }
 
-.result-header {
+.guide-header {
+    max-width: 760px;
+    margin: 0 auto 28px;
     text-align: center;
-    margin-bottom: 30px;
 }
 
-.result-header h2 {
+.guide-label {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #10a65a;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.guide-header h2 {
     margin: 0 0 10px;
     color: #172033;
     font-size: 27px;
+    line-height: 1.3;
 }
 
-.result-header p {
-    margin: 0;
-    color: #8992a3;
-    font-size: 16px;
-}
-
-.result-placeholder {
-    min-height: 190px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-    border: 2px dashed #dfe4eb;
-    border-radius: 14px;
-    text-align: center;
-    background: #fafbfc;
-}
-
-.placeholder-icon {
-    font-size: 42px;
-    margin-bottom: 12px;
-}
-
-.result-placeholder h3 {
-    margin: 0 0 8px;
-    color: #263143;
-    font-size: 19px;
-}
-
-.result-placeholder p {
-    max-width: 500px;
-    margin: 0;
-    color: #8992a3;
-    font-size: 16px;
-    line-height: 1.6;
+.guide-header p {
+    margin: 0 auto;
+    color: #5e6c7c;
+    font-size: 15px;
+    line-height: 1.65;
 }
 
 
 /* =========================================
-   COMPARISON FACTORS
+   USEFUL MEDIUM-SIZE CARDS
 ========================================= */
 
-.comparison-factors {
-    max-width: 1250px;
-    margin: 0 auto;
+.guide-cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 18px;
 }
 
-.factor-card {
-    padding: 24px;
+.guide-card {
+    min-height: 150px;
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+
+    padding: 22px;
+
     background: #ffffff;
-    border: 1px solid #e5e9f0;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(31, 45, 61, 0.05);
+    border: 1px solid #dcebe2;
+    border-radius: 16px;
+
+    box-sizing: border-box;
+
+    box-shadow: 0 5px 18px rgba(31, 45, 61, 0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
-.factor-icon {
+.guide-card:hover {
+    transform: translateY(-3px);
+    border-color: #b8dfc7;
+    box-shadow: 0 10px 24px rgba(31, 45, 61, 0.08);
+}
+
+.guide-icon {
     width: 48px;
     height: 48px;
-    margin: 0 auto 13px;
+    flex-shrink: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
+
+    border-radius: 13px;
     background: #eaf8f0;
+
     font-size: 22px;
 }
 
-.factor-card h3 {
-    margin: 0 0 8px;
+.guide-card h3 {
+    margin: 2px 0 8px;
+    color: #263143;
+    font-size: 19px;
+    line-height: 1.3;
+}
+
+.guide-card p {
+    margin: 0;
+    color: #657386;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+
+/* =========================================
+   SMART BUYING TIP
+========================================= */
+
+.guide-tip {
+    margin-top: 22px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    padding: 18px 20px;
+
+    background: #ffffff;
+    border: 1px solid #d5e9dd;
+    border-radius: 14px;
+}
+
+.tip-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #10a65a;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.guide-tip strong {
+    display: block;
+    margin-bottom: 4px;
     color: #263143;
     font-size: 16px;
 }
 
-.factor-card p {
+.guide-tip p {
     margin: 0;
-    color: #8992a3;
+    color: #657386;
     font-size: 15px;
     line-height: 1.6;
 }
@@ -348,6 +423,11 @@
 
 @media (max-width: 1050px) {
 
+    .compare-page {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
     .comparison-section {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -358,7 +438,7 @@
         height: 50px;
     }
 
-    .comparison-factors {
+    .guide-cards {
         grid-template-columns: 1fr 1fr;
     }
 }
@@ -367,7 +447,12 @@
 @media (max-width: 650px) {
 
     .compare-page {
-        padding: 25px 14px 50px;
+        padding: 22px 12px 50px;
+    }
+
+    .compare-header {
+        padding-top: 4px;
+        margin-bottom: 25px;
     }
 
     .compare-header h1 {
@@ -391,16 +476,31 @@
         grid-column: auto;
     }
 
-    .comparison-result {
-        padding: 22px;
+    .comparison-guide {
+        padding: 30px 18px;
+        border-radius: 18px;
     }
 
-    .result-header h2 {
+    .guide-header h2 {
         font-size: 23px;
     }
 
-    .comparison-factors {
+    .guide-cards {
         grid-template-columns: 1fr;
+    }
+
+    .guide-card {
+        min-height: auto;
+        padding: 19px;
+    }
+
+    .guide-card h3 {
+        font-size: 18px;
+    }
+
+    .guide-card p,
+    .guide-tip p {
+        font-size: 14px;
     }
 
     .compare-button {

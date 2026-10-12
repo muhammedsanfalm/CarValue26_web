@@ -7,7 +7,11 @@
 <link rel="stylesheet"
       href="{{ url_for('static', filename='css/market.css') }}">
 
+       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="market-page">
+
+
 
     <!-- =========================================
          PAGE HEADER
@@ -372,6 +376,118 @@
 
 
     <!-- =========================================
+     MARKET VISUAL ANALYSIS
+========================================= -->
+
+<section class="market-visual-analysis">
+
+    <div class="market-visual-heading">
+
+        <span>MARKET VISUAL ANALYSIS</span>
+
+        <h2>Understand the Used-Car Market</h2>
+
+        <p>
+            Explore price trends, fuel-type pricing and brand popularity
+            to understand the market before making a buying decision.
+        </p>
+
+    </div>
+
+
+    <div class="market-chart-grid">
+
+        <!-- =====================================
+             CHART 1
+        ====================================== -->
+
+        <div class="market-chart-card market-chart-wide">
+
+            <div class="market-chart-header">
+
+                <div>
+                    <span class="chart-number">01</span>
+
+                    <div>
+                        <h3>Average Price by Vehicle Age</h3>
+
+                        <p>
+                            See how used-car prices change as vehicles become older.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+                <canvas id="agePriceChart"></canvas>
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             CHART 2
+        ====================================== -->
+
+        <div class="market-chart-card">
+
+            <div class="market-chart-header">
+
+                <div>
+                    <span class="chart-number">02</span>
+
+                    <div>
+                        <h3>Average Price by Fuel Type</h3>
+
+                        <p>
+                            Compare typical prices across different fuel types.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+                <canvas id="fuelPriceChart"></canvas>
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             CHART 3
+        ====================================== -->
+
+        <div class="market-chart-card">
+
+            <div class="market-chart-header">
+
+                <div>
+                    <span class="chart-number">03</span>
+
+                    <div>
+                        <h3>Popular Brands</h3>
+
+                        <p>
+                            Compare the market presence of major car brands.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="chart-container brand-chart-container">
+                <canvas id="brandMarketChart"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- =========================================
          POPULAR BRANDS
     ========================================== -->
 
@@ -583,4 +699,372 @@
 
 </div>
 
+
+<script>
+
+/* =========================================
+   MARKET CHARTS
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =====================================
+       1. PRICE BY VEHICLE AGE
+    ====================================== */
+
+    const agePriceCanvas =
+        document.getElementById("agePriceChart");
+
+    if (agePriceCanvas) {
+
+        new Chart(agePriceCanvas, {
+
+            type: "line",
+
+            data: {
+
+                labels: [
+                    "1–2 Years",
+                    "3–4 Years",
+                    "5–6 Years",
+                    "7–8 Years",
+                    "9+ Years"
+                ],
+
+                datasets: [{
+                    label: "Average Price",
+
+                    data: [
+                        13.8,
+                        11.5,
+                        9.2,
+                        7.1,
+                        5.4
+                    ],
+
+                    borderWidth: 3,
+
+                    tension: 0.35,
+
+                    pointRadius: 5,
+
+                    pointHoverRadius: 7,
+
+                    fill: false
+                }]
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+                        display: true
+                    },
+
+                    tooltip: {
+
+                        callbacks: {
+
+                            label: function (context) {
+
+                                return " ₹" +
+                                    context.parsed.y +
+                                    " Lakh";
+
+                            }
+
+                        }
+
+                    }
+
+                },
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        ticks: {
+
+                            callback: function (value) {
+
+                                return "₹" +
+                                    value +
+                                    "L";
+
+                            }
+
+                        },
+
+                        title: {
+
+                            display: true,
+
+                            text: "Average Price"
+
+                        }
+
+                    },
+
+                    x: {
+
+                        title: {
+
+                            display: true,
+
+                            text: "Vehicle Age"
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================
+       2. PRICE BY FUEL TYPE
+    ====================================== */
+
+    const fuelPriceCanvas =
+        document.getElementById("fuelPriceChart");
+
+    if (fuelPriceCanvas) {
+
+        new Chart(fuelPriceCanvas, {
+
+            type: "bar",
+
+            data: {
+
+                labels: [
+                    "Petrol",
+                    "Diesel",
+                    "CNG",
+                    "Electric"
+                ],
+
+                datasets: [{
+
+                    label: "Average Price",
+
+                    data: [
+                        8.7,
+                        10.2,
+                        7.4,
+                        15.8
+                    ],
+
+                    borderRadius: 7,
+
+                    borderWidth: 0
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+                        display: false
+                    },
+
+                    tooltip: {
+
+                        callbacks: {
+
+                            label: function (context) {
+
+                                return " ₹" +
+                                    context.parsed.y +
+                                    " Lakh";
+
+                            }
+
+                        }
+
+                    }
+
+                },
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        ticks: {
+
+                            callback: function (value) {
+
+                                return "₹" +
+                                    value +
+                                    "L";
+
+                            }
+
+                        },
+
+                        title: {
+
+                            display: true,
+
+                            text: "Average Price"
+
+                        }
+
+                    },
+
+                    x: {
+
+                        title: {
+
+                            display: true,
+
+                            text: "Fuel Type"
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================
+       3. BRAND MARKET PRESENCE
+    ====================================== */
+
+    const brandMarketCanvas =
+        document.getElementById("brandMarketChart");
+
+    if (brandMarketCanvas) {
+
+        new Chart(brandMarketCanvas, {
+
+            type: "bar",
+
+            data: {
+
+                labels: [
+                    "Maruti Suzuki",
+                    "Hyundai",
+                    "Tata",
+                    "Mahindra",
+                    "Toyota",
+                    "Honda"
+                ],
+
+                datasets: [{
+
+                    label: "Market Presence",
+
+                    data: [
+                        28,
+                        20,
+                        14,
+                        12,
+                        10,
+                        8
+                    ],
+
+                    borderRadius: 6,
+
+                    borderWidth: 0
+                }]
+
+            },
+
+            options: {
+
+                indexAxis: "y",
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+                        display: false
+                    },
+
+                    tooltip: {
+
+                        callbacks: {
+
+                            label: function (context) {
+
+                                return context.parsed.x +
+                                    "% market presence";
+
+                            }
+
+                        }
+
+                    }
+
+                },
+
+                scales: {
+
+                    x: {
+
+                        beginAtZero: true,
+
+                        max: 35,
+
+                        ticks: {
+
+                            callback: function (value) {
+
+                                return value + "%";
+
+                            }
+
+                        },
+
+                        title: {
+
+                            display: true,
+
+                            text: "Market Presence"
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    }
+
+});
+
+</script>
 {% endblock %}

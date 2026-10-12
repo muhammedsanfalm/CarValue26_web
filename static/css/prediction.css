@@ -5,7 +5,18 @@
 .prediction-page {
     min-height: calc(100vh - 80px);
     padding: 20px 20px 50px;
-    background: #f5f7fb;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.45),
+            rgba(255, 255, 255, 0.45)
+        ),
+        url("../images/estimate-bg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .prediction-header {
@@ -129,4 +140,52 @@
     font-weight: 700;
     color: #10a65a;
     margin: 0;
+}
+
+/* =========================================
+   SMART CAR VALUATION LABEL
+   ========================================= */
+
+.prediction-page {
+    position: relative;
+}
+
+.prediction-label {
+    display: block;
+    width: fit-content;
+
+    margin: 0 auto;
+    padding: 18px 0 6px;
+
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+
+    color: #08a95b !important;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    position: relative;
+    z-index: 10;
+}
+
+/* Make sure the header stays transparent */
+.prediction-header {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    margin-top: 0 !important;
+}
+
+/* Remove unwanted lines/backgrounds */
+.prediction-label::before,
+.prediction-label::after,
+.prediction-header::before,
+.prediction-header::after {
+    content: none !important;
 }

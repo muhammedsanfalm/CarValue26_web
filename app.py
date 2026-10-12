@@ -1,8 +1,11 @@
 import os
+import requests
 # import joblib
 from simple_predictor import predict_price
 
-from flask import Flask, render_template, redirect, url_for, session, request, flash
+from flask import Flask, render_template, redirect, url_for, session, request, flash, jsonify
+
+
 
 from openai import OpenAI
 
@@ -34,7 +37,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-load_dotenv()
+
 
 mongo_client = MongoClient(
     os.getenv("MONGO_URI"),
@@ -66,6 +69,9 @@ google = oauth.register(
         "scope": "openid email profile"
     }
 )
+
+
+
 
 
 @app.route("/")
@@ -390,14 +396,41 @@ def google_callback():
 
     return redirect(url_for("home"))
 
+
+
+
+def format_indian_currency(amount):
+    amount = int(round(amount))
+
+    if amount < 1000:
+        return str(amount)
+
+    s = str(amount)
+    last_three = s[-3:]
+    remaining = s[:-3]
+
+    parts = []
+
+    while len(remaining) > 2:
+        parts.insert(0, remaining[-2:])
+        remaining = remaining[:-2]
+
+    if remaining:
+        parts.insert(0, remaining)
+
+    return ",".join(parts) + "," + last_three
+
+
+app.jinja_env.filters["indian_currency"] = format_indian_currency
+
+
+
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
 
-    # Show prediction form
     if request.method == "GET":
-        return render_template("predict.html")
+        return render_template("prediction.html")
 
-    # Get values from the form
     brand = request.form.get("brand", "").strip()
     model = request.form.get("model", "").strip()
 
@@ -413,31 +446,47 @@ def predict():
     max_power = float(request.form.get("max_power"))
     seats = int(request.form.get("seats"))
 
-    # Calculate vehicle age
-    vehicle_age = 2026 - year
+    vehicle_age = datetime.now().year - year
 
-    # Prepare data for prediction
     input_data = {
-    "brand": brand,
-    "model": model,
-    "vehicle_age": vehicle_age,
-    "km_driven": kilometers,
-    "seller_type": seller_type,
-    "fuel_type": fuel_type,
-    "transmission_type": transmission_type,
-    "mileage": mileage,
-    "engine": engine,
-    "max_power": max_power,
-    "seats": seats
-}
+        "brand": brand,
+        "model": model,
+        "vehicle_age": vehicle_age,
+        "km_driven": kilometers,
+        "seller_type": seller_type,
+        "fuel_type": fuel_type,
+        "transmission_type": transmission_type,
+        "mileage": mileage,
+        "engine": engine,
+        "max_power": max_power,
+        "seats": seats
+    }
 
-        # Make prediction
     predicted_price = predict_price(input_data)
+    print("PREDICTION INPUT:", input_data)
+    print("RAW MODEL PRICE:", predicted_price)
     predicted_price = round(predicted_price)
 
-        # Save prediction history for logged-in user
-    if session.get("user"):
+    # Indian number format
+    price_str = str(predicted_price)
 
+    if len(price_str) > 3:
+        last_three = price_str[-3:]
+        remaining = price_str[:-3]
+
+        parts = []
+        while len(remaining) > 2:
+            parts.insert(0, remaining[-2:])
+            remaining = remaining[:-2]
+
+        if remaining:
+            parts.insert(0, remaining)
+
+        formatted_price = ",".join(parts) + "," + last_three
+    else:
+        formatted_price = price_str
+
+    if session.get("user"):
         try:
             prediction_history_collection.insert_one({
                 "user_email": session["user"]["email"],
@@ -454,16 +503,16 @@ def predict():
                 "max_power": max_power,
                 "seats": seats,
                 "prediction": predicted_price,
-                "created_at": datetime.now().strftime("%d %b %Y, %I:%M %p")
+                "created_at": datetime.now()
             })
 
         except Exception as error:
             print("Prediction history could not be saved:", error)
 
-    # Show professional result page
     return render_template(
         "prediction_result.html",
         prediction=predicted_price,
+        formatted_price=formatted_price,
         brand=brand,
         model=model,
         year=year,
@@ -477,6 +526,13 @@ def predict():
         max_power=max_power,
         seats=seats
     )
+
+
+  
+
+          
+
+
 
 
 @app.route("/logout")
@@ -570,6 +626,10 @@ def profile():
 def edit_profile():
     return render_template("edit_profile.html")
 
+
+
+
+
 @app.route("/history")
 def history():
 
@@ -582,7 +642,32 @@ def history():
         history_data = list(
             prediction_history_collection.find(
                 {"user_email": user_email}
-            ).sort("created_at", -1)
+            )
+        )
+
+        def get_created_time(item):
+            created_at = item.get("created_at")
+
+            # New records: actual MongoDB/Python datetime
+            if isinstance(created_at, datetime):
+                return created_at
+
+            # Old records: stored as text
+            if isinstance(created_at, str):
+                try:
+                    return datetime.strptime(
+                        created_at,
+                        "%d %b %Y, %I:%M %p"
+                    )
+                except ValueError:
+                    return datetime.min
+
+            return datetime.min
+
+        # Newest prediction first
+        history_data.sort(
+            key=get_created_time,
+            reverse=True
         )
 
     except Exception as error:
@@ -743,8 +828,141 @@ Rules:
             "error": "The AI service is temporarily unavailable. Please try again."
         }, 500
 
+@app.route("/api/ai-chat", methods=["POST"])
+def ai_chat():
+    try:
+        data = request.get_json()
 
+        user_message = data.get("message", "").strip()
 
+        if not user_message:
+            return jsonify({
+                "error": "Please enter a message."
+            }), 400
+
+        OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
+        if not OPENROUTER_API_KEY:
+            return jsonify({
+                "error": "OpenRouter API key is not configured."
+            }), 500
+
+        response = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+
+            headers={
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Content-Type": "application/json",
+                "HTTP-Referer": "http://127.0.0.1:5000",
+                "X-Title": "CarValue26"
+            },
+
+            json={
+                "model": "openrouter/free",
+
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": """
+You are ChatValue AI, the AI assistant for CarValue26.
+
+You specialize in the INDIAN AUTOMOBILE MARKET.
+
+Help users with:
+
+- Used car prices
+- Used car buying advice
+- Car comparison
+- Car specifications
+- Mileage
+- Petrol vs diesel
+- Electric vehicles
+- Fuel types
+- Maintenance
+- Resale value
+- Indian car models
+- Indian car variants
+
+IMPORTANT RULES:
+
+1. Prioritize Indian automobile information.
+
+2. Use Indian Rupees (₹) when discussing prices.
+
+3. Use km/l or km/kg for mileage where appropriate.
+
+4. Prioritize Indian versions and variants of vehicles.
+
+5. Do not automatically use US prices, US mileage,
+US trims, or US market information.
+
+6. When discussing used-car prices, consider:
+   - Model year
+   - Variant
+   - Fuel type
+   - Transmission
+   - Kilometers driven
+   - Vehicle condition
+   - Number of previous owners
+   - Service history
+   - Location/city
+
+7. Never invent specifications, prices, mileage,
+features, or other automobile facts.
+
+8. If exact information is uncertain, clearly say
+that the information is an estimate.
+
+9. Give simple and easy-to-understand answers.
+
+10. When comparing cars, clearly explain the differences.
+
+11. Use Markdown formatting such as headings,
+bullets, bold text, and tables when useful.
+
+12. Remember that used-car prices vary by city,
+condition, year, variant, and market demand.
+
+You are ChatValue AI for the CarValue26 project.
+"""
+                    },
+
+                    {
+                        "role": "user",
+                        "content": user_message
+                    }
+                ],
+
+                "temperature": 0.2
+            },
+
+            timeout=60
+        )
+
+        if response.status_code != 200:
+            print("OpenRouter error:")
+            print(response.status_code)
+            print(response.text)
+
+            return jsonify({
+                "error": "Sorry, the AI service returned an error."
+            }), 500
+
+        result = response.json()
+
+        answer = result["choices"][0]["message"]["content"]
+
+        return jsonify({
+            "reply": answer
+        })
+
+    except Exception as e:
+        print("OpenRouter API error:", e)
+
+        return jsonify({
+            "error": "Sorry, I couldn't connect to the AI right now."
+        }), 500
+     
 
 if __name__ == "__main__":
     app.run(debug=True)

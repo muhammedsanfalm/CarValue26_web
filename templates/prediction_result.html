@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %}Prediction Result - CarValue26{% endblock %}
+
 {% block content %}
 
 <link rel="stylesheet"
@@ -7,289 +9,325 @@
 
 <div class="result-page">
 
-    <!-- TOP RESULT CARD -->
+    <!-- HERO: PRICE RESULT -->
     <section class="result-hero">
 
-        <div class="result-left">
+        <div class="hero-content">
 
-            <div class="success-icon">✓</div>
+            
 
-            <div>
-                <h3>Estimated Car Price</h3>
+            <h1>Your Car <span>Valuation Result</span></h1>
 
-                <div class="price">
-                    ₹{{ "{:,.0f}".format(prediction) }}
-                </div>
+            <p class="hero-subtitle">
+                Based on market trends, vehicle specifications and
+                AI-powered analysis, we've calculated the estimated
+                value of your car.
+            </p>
 
-                <p class="result-description">
-                    This is the estimated market value of your car
-                    based on the information you provided.
-                </p>
-            </div>
+            <div class="price-card">
 
-            <div class="result-features">
+                <div class="price-main">
+                    <div class="rupee-icon">₹</div>
 
-                <div class="feature">
-                    <div class="feature-icon">🛡</div>
-                    <div>
-                        <strong>AI Powered</strong>
-                        <span>Smart Prediction</span>
+                    <div class="price-information">
+                        <span class="price-label">Estimated Car Price</span>
+                        <div class="price-value">₹{{ formatted_price }}</div>
+
+                        <p>
+                            This is the estimated market value of your car
+                            based on the information you provided.
+                        </p>
                     </div>
                 </div>
 
-                <div class="feature">
-                    <div class="feature-icon">📊</div>
-                    <div>
-                        <strong>Based on Real Data</strong>
-                        <span>Market Trends & Features</span>
-                    </div>
-                </div>
+                <div class="price-benefits">
 
-                <div class="feature">
-                    <div class="feature-icon">✓</div>
-                    <div>
-                        <strong>Reliable Estimate</strong>
-                        <span>For Better Decisions</span>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✧</span>
+                        <div>
+                            <strong>AI Powered</strong>
+                            <small>Smart Prediction</small>
+                        </div>
                     </div>
-                </div>
 
+                    <div class="benefit-item">
+                        <span class="benefit-icon">▥</span>
+                        <div>
+                            <strong>Based on Real Data</strong>
+                            <small>Market Trends &amp; Features</small>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <div>
+                            <strong>Reliable Estimate</strong>
+                            <small>For Better Decisions</small>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
 
-        <div class="result-car">
+        <!-- Background image will be added here later using CSS. -->
+        <div class="hero-visual">
+            <div class="visual-glow"></div>
 
-            <!-- Replace this image with your own car image if available -->
-            <img src="{{ url_for('static', filename='images/car-result.png') }}"
-                 alt="Car">
+            <div class="visual-car-placeholder">
+                <span class="car-symbol">🚘</span>
+                <span class="visual-caption">YOUR CAR, YOUR VALUE</span>
+                <strong>{{ brand }} {{ model }}</strong>
+                <small>{{ year }} MODEL</small>
+            </div>
 
-            <div class="true-value">
+            <div class="visual-note">
+                <span>✦</span>
                 Know Your Car's<br>
                 <strong>True Value</strong>
             </div>
-
         </div>
 
     </section>
 
 
-    <!-- PREDICTION HISTORY -->
-<section class="prediction-history-card">
+    <!-- MAIN CONTENT -->
+    <section class="result-content">
 
-    <div class="history-card-icon">
-        🕘
-    </div>
+        <div class="result-left-column">
 
-    <div class="history-card-content">
+            <!-- PREDICTION HISTORY -->
+            <div class="history-card">
 
-        <span class="history-card-label">
-            YOUR PREDICTIONS
-        </span>
+                <div class="history-icon">◷</div>
 
-        <h2>
-            Prediction History
-        </h2>
+                <div class="history-content">
+                    <span class="section-eyebrow">YOUR PREDICTION JOURNEY</span>
 
-        <p>
-            View your previous car price predictions and keep track
-            of the vehicles you have evaluated with CarValue26.
-        </p>
+                    <h2>Your Car Valuation History</h2>
 
-    </div>
+                    <p>
+                        Keep track of the vehicles you have evaluated,
+                        revisit previous estimates and use your saved
+                        predictions when comparing cars or planning
+                        your next purchase.
+                    </p>
 
-    <a href="{{ url_for('history') }}" class="history-card-btn">
-        View Prediction History
-        <span>→</span>
-    </a>
-
-</section>
-
-
-<!-- DETAILS + INSIGHTS -->
-<section class="result-grid">
-
-        <!-- CAR DETAILS -->
-        <div class="details-card">
-
-            <div class="section-heading">
-
-                <div class="heading-icon">🚗</div>
-
-                <div>
-                    <h2>Car Details</h2>
-                    <p>The details you provided for the prediction</p>
+                    <div class="history-benefits">
+                        <span>✓ Review previous estimates</span>
+                        <span>✓ Track evaluated vehicles</span>
+                        <span>✓ Make informed decisions</span>
+                    </div>
                 </div>
+
+                <a href="{{ url_for('history') }}" class="history-button">
+                    View History <span>→</span>
+                </a>
 
             </div>
 
 
-            <div class="details-list">
+            <!-- VEHICLE SPECIFICATIONS -->
+            <div class="specifications-card">
 
-                <div class="detail-row">
-                    <span>🚘 Brand</span>
-                    <strong>{{ brand }}</strong>
+                <div class="card-heading">
+                    <div class="heading-icon blue-icon">🚘</div>
+                    <div>
+                        <h2>Vehicle Specifications</h2>
+                        <p>Details used to calculate this estimate</p>
+                    </div>
                 </div>
 
-                <div class="detail-row">
-                    <span>🚗 Model</span>
-                    <strong>{{ model }}</strong>
-                </div>
+                <div class="specifications-grid">
 
-                <div class="detail-row">
-                    <span>📅 Year / Age</span>
-                    <strong>{{ year }} ({{ vehicle_age }} years)</strong>
-                </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">◆</span>
+                        <div>
+                            <small>Brand</small>
+                            <strong>{{ brand }}</strong>
+                        </div>
+                    </div>
 
-                <div class="detail-row">
-                    <span>🛣 Kilometers Driven</span>
-                    <strong>{{ "{:,}".format(kilometers) }} km</strong>
-                </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">🚘</span>
+                        <div>
+                            <small>Model</small>
+                            <strong>{{ model }}</strong>
+                        </div>
+                    </div>
 
-                <div class="detail-row">
-                    <span>⛽ Fuel Type</span>
-                    <strong>{{ fuel_type }}</strong>
-                </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">▦</span>
+                        <div>
+                            <small>Year</small>
+                            <strong>{{ year }}</strong>
+                        </div>
+                    </div>
 
-                <div class="detail-row">
-                    <span>⚙ Transmission</span>
-                    <strong>{{ transmission_type }}</strong>
-                </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">⛽</span>
+                        <div>
+                            <small>Fuel Type</small>
+                            <strong>{{ fuel_type }}</strong>
+                        </div>
+                    </div>
 
-                <div class="detail-row">
-                    <span>👤 Seller Type</span>
-                    <strong>{{ seller_type }}</strong>
-                </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">⚙</span>
+                        <div>
+                            <small>Transmission</small>
+                            <strong>{{ transmission_type }}</strong>
+                        </div>
+                    </div>
 
-                <div class="detail-row">
-                    <span>📈 Mileage</span>
-                    <strong>{{ mileage }} km/l</strong>
-                </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">◉</span>
+                        <div>
+                            <small>Kilometers Driven</small>
+                            <strong>{{ "{:,}".format(kilometers|int) }} km</strong>
+                        </div>
+                    </div>
 
-                <div class="detail-row">
-                    <span>🔧 Engine</span>
-                    <strong>{{ engine }} cc</strong>
-                </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">⛽</span>
+                        <div>
+                            <small>Mileage</small>
+                            <strong>{{ mileage }} km/l</strong>
+                        </div>
+                    </div>
 
-                <div class="detail-row">
-                    <span>⚡ Max Power</span>
-                    <strong>{{ max_power }} bhp</strong>
-                </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">⚙</span>
+                        <div>
+                            <small>Engine Capacity</small>
+                            <strong>{{ engine }} cc</strong>
+                        </div>
+                    </div>
 
-                <div class="detail-row">
-                    <span>💺 Seats</span>
-                    <strong>{{ seats }}</strong>
-                </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">ϟ</span>
+                        <div>
+                            <small>Max Power</small>
+                            <strong>{{ max_power }} bhp</strong>
+                        </div>
+                    </div>
 
+                    <div class="spec-item">
+                        <span class="spec-icon">♧</span>
+                        <div>
+                            <small>Seating Capacity</small>
+                            <strong>{{ seats }} seats</strong>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
 
 
         <!-- QUICK INSIGHTS -->
-        <div class="insights-card">
+        <aside class="insights-card">
 
-            <div class="insights-header">
-
-                <div class="heading-icon">💡</div>
-
+            <div class="card-heading">
+                <div class="heading-icon green-icon">♧</div>
                 <div>
                     <h2>Quick Insights</h2>
-                    <p>
-                        Here are a few things to keep in mind about
-                        your car's estimated price.
-                    </p>
+                    <p>Key points about your estimate</p>
                 </div>
-
             </div>
 
-
             <div class="insight-item">
-
-                <div class="insight-icon green">↑</div>
-
+                <div class="insight-icon insight-green">₹</div>
                 <div>
                     <h3>Estimated Market Value</h3>
                     <p>
-                        The displayed price is an estimated value
-                        generated from the available car data
+                        Your estimated price is based on the vehicle
+                        information and the prediction model used by
+                        CarValue26.
                     </p>
                 </div>
-
             </div>
 
-
             <div class="insight-item">
-
-                <div class="insight-icon blue">★</div>
-
+                <div class="insight-icon insight-blue">☆</div>
                 <div>
                     <h3>{{ brand }} {{ model }}</h3>
                     <p>
-                        Your prediction is based on the selected
-                        brand, model and vehicle specifications
+                        The selected brand, model, year and specifications
+                        contribute to the estimated value.
                     </p>
                 </div>
-
             </div>
 
-
             <div class="insight-item">
-
-                <div class="insight-icon purple">%</div>
-
+                <div class="insight-icon insight-purple">%</div>
                 <div>
                     <h3>Fuel Efficiency</h3>
                     <p>
-                        With {{ mileage }} km/l mileage, this car's
-                        fuel economy is included in the estimate.
+                        The entered mileage is {{ mileage }} km/l.
+                        Actual fuel economy depends on driving conditions
+                        and vehicle maintenance.
                     </p>
                 </div>
-
             </div>
-
 
             <div class="insight-item">
-
-                <div class="insight-icon orange">👥</div>
-
+                <div class="insight-icon insight-orange">⌁</div>
                 <div>
-                    <h3>Vehicle Information</h3>
+                    <h3>Usage and Ownership</h3>
                     <p>
-                        {{ seats }} seats with {{ transmission_type }}
-                        transmission and {{ fuel_type }} fuel
+                        This vehicle has travelled
+                        {{ "{:,}".format(kilometers|int) }} km and is
+                        listed under the {{ seller_type }} seller category.
                     </p>
                 </div>
-
             </div>
 
-
-            <div class="notice">
-
+            <div class="insight-notice">
                 <span>ⓘ</span>
-
                 <p>
-                    This is an estimated price and may vary based on
-                    actual vehicle condition, location, demand and
-                    other market factors
+                    This is an estimated value, not a guaranteed selling
+                    price. Actual prices can vary with vehicle condition,
+                    service history, location, demand and negotiation.
                 </p>
-
             </div>
 
-
-            <a href="{{ url_for('predict') }}" class="another-car-btn">
-                ↻ &nbsp; Discover More
-            </a>
-
-        </div>
+        </aside>
 
     </section>
 
 
-    <div class="result-footer">
-        ♥ Your Trusted Car Price Predictor
-        <span>|</span>
+    <!-- COMPARE CARS CALL TO ACTION -->
+    <section class="compare-banner">
+
+        <div class="compare-icon">⚖</div>
+
+        <div class="compare-title">
+            <span class="section-eyebrow">YOUR NEXT STEP</span>
+            <h2>Make a Confident Car Decision</h2>
+        </div>
+
+        <p class="compare-description">
+            Use this estimate as a starting point. Compare similar cars,
+            verify their condition and documents, and review local market
+            prices before agreeing on a final price.
+        </p>
+
+        <a href="{{ url_for('compare') }}" class="compare-button">
+            Compare Two Cars <span>→</span>
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="result-footer">
+        <span>♡ Your Trusted Car Price Predictor</span>
+        <span class="footer-divider">|</span>
         <strong>CarValue26</strong>
-    </div>
+    </footer>
 
 </div>
 

@@ -767,3 +767,262 @@
         align-self: flex-start;
     }
 }
+
+/* =========================================
+   MARKET VISUAL ANALYSIS
+========================================= */
+
+.market-visual-analysis {
+
+    width: min(1250px, 92%);
+
+    margin: 50px auto 65px;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.market-visual-heading {
+
+    margin-bottom: 28px;
+}
+
+.market-visual-heading > span {
+
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #08a95b;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.market-visual-heading h2 {
+
+    margin: 0 0 8px;
+
+    color: #172033;
+
+    font-size: 29px;
+
+    font-weight: 800;
+
+    line-height: 1.25;
+}
+
+.market-visual-heading p {
+
+    max-width: 760px;
+
+    margin: 0;
+
+    color: #687386;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================
+   CHART GRID
+========================================= */
+
+.market-chart-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   CHART CARD
+========================================= */
+
+.market-chart-card {
+
+    min-width: 0;
+
+    padding: 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ebe6;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 6px 22px rgba(25, 45, 35, 0.06);
+}
+
+
+/* First chart takes full width */
+
+.market-chart-wide {
+
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================
+   CHART HEADER
+========================================= */
+
+.market-chart-header {
+
+    margin-bottom: 20px;
+}
+
+.market-chart-header > div {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+}
+
+.chart-number {
+
+    width: 38px;
+
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #eaf8f0;
+
+    color: #08a95b;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+.market-chart-header h3 {
+
+    margin: 0 0 5px;
+
+    color: #172033;
+
+    font-size: 19px;
+
+    font-weight: 750;
+
+    line-height: 1.35;
+}
+
+.market-chart-header p {
+
+    margin: 0;
+
+    color: #7a8596;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   CHART AREA
+========================================= */
+
+.chart-container {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 310px;
+}
+
+
+/* Wide chart */
+
+.market-chart-wide .chart-container {
+
+    height: 330px;
+}
+
+
+/* Brand chart */
+
+.brand-chart-container {
+
+    height: 320px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .market-chart-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .market-chart-wide {
+
+        grid-column: auto;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .market-visual-analysis {
+
+        width: 94%;
+
+        margin-top: 35px;
+    }
+
+    .market-visual-heading h2 {
+
+        font-size: 24px;
+    }
+
+    .market-chart-card {
+
+        padding: 18px;
+    }
+
+    .market-chart-header h3 {
+
+        font-size: 17px;
+    }
+
+    .chart-container {
+
+        height: 270px;
+    }
+
+    .market-chart-wide .chart-container {
+
+        height: 280px;
+    }
+
+}
