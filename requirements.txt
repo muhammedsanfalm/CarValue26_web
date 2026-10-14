@@ -2,3 +2,10 @@ Flask
 Authlib
 python-dotenv
 requests
+gunicorn
+openai
+pymongo
+certifi
+pandas
+scikit-learn
+joblib
