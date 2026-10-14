@@ -88,6 +88,7 @@
                 <strong>True Value</strong>
             </div>
         </div>
+        
 
     </section>
 
@@ -245,7 +246,7 @@
                     <p>
                         Your estimated price is based on the vehicle
                         information and the prediction model used by
-                        CarValue26.
+                        CarValue26
                     </p>
                 </div>
             </div>
@@ -256,7 +257,7 @@
                     <h3>{{ brand }} {{ model }}</h3>
                     <p>
                         The selected brand, model, year and specifications
-                        contribute to the estimated value.
+                        contribute to the estimated value
                     </p>
                 </div>
             </div>
@@ -268,7 +269,7 @@
                     <p>
                         The entered mileage is {{ mileage }} km/l.
                         Actual fuel economy depends on driving conditions
-                        and vehicle maintenance.
+                        and vehicle maintenance
                     </p>
                 </div>
             </div>
@@ -280,7 +281,7 @@
                     <p>
                         This vehicle has travelled
                         {{ "{:,}".format(kilometers|int) }} km and is
-                        listed under the {{ seller_type }} seller category.
+                        listed under the {{ seller_type }} seller category
                     </p>
                 </div>
             </div>
@@ -290,7 +291,7 @@
                 <p>
                     This is an estimated value, not a guaranteed selling
                     price. Actual prices can vary with vehicle condition,
-                    service history, location, demand and negotiation.
+                    service history, location, demand and negotiation
                 </p>
             </div>
 
@@ -312,7 +313,7 @@
         <p class="compare-description">
             Use this estimate as a starting point. Compare similar cars,
             verify their condition and documents, and review local market
-            prices before agreeing on a final price.
+            prices before agreeing on a final price
         </p>
 
         <a href="{{ url_for('compare') }}" class="compare-button">

@@ -219,3 +219,10 @@
     width: auto;
     display: block;
 }
+
+
+/* Make the navbar logo round */
+.logo img {
+    border-radius: 50%;
+    object-fit: cover;
+}
