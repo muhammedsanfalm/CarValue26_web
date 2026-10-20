@@ -23,9 +23,9 @@ from authlib.integrations.flask_client import OAuth
 from dotenv import load_dotenv
 
 import secrets
-import smtplib
+import requests
 from datetime import datetime, timedelta
-from email.message import EmailMessage
+
 
 from flask import redirect, url_for, session
 
@@ -185,35 +185,50 @@ def forgot_password():
 
 
 
+
 def send_reset_code(recipient_email, verification_code):
-    message = EmailMessage()
+    api_key = os.getenv("BREVO_API_KEY")
+    sender_email = os.getenv("MAIL_DEFAULT_SENDER")
 
-    message["Subject"] = "CarValue26 Password Reset Code"
-    message["From"] = os.getenv("MAIL_DEFAULT_SENDER")
-    message["To"] = recipient_email
+    if not api_key or not sender_email:
+        raise RuntimeError(
+            "BREVO_API_KEY or MAIL_DEFAULT_SENDER is missing."
+        )
 
-    message.set_content(
-        f"""Hello,
+    payload = {
+        "sender": {
+            "name": "CarValue26",
+            "email": sender_email
+        },
+        "to": [
+            {"email": recipient_email}
+        ],
+        "subject": "CarValue26 Password Reset Code",
+        "textContent": (
+            f"Your CarValue26 password reset code is "
+            f"{verification_code}.\n\n"
+            "This code expires in 10 minutes. "
+            "If you did not request this, ignore this email."
+        )
+    }
 
-Your CarValue26 password reset verification code is:
-
-{verification_code}
-
-This code will expire in 10 minutes.
-
-If you did not request a password reset, you can ignore this email.
-
-CarValue26
-"""
+    response = requests.post(
+        "https://api.brevo.com/v3/smtp/email",
+        headers={
+            "accept": "application/json",
+            "api-key": api_key,
+            "content-type": "application/json"
+        },
+        json=payload,
+        timeout=15
     )
 
-    with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
-        smtp.starttls()
-        smtp.login(
-            os.getenv("MAIL_USERNAME"),
-            os.getenv("MAIL_APP_PASSWORD")
+    if not response.ok:
+        raise RuntimeError(
+            f"Brevo email API failed: "
+            f"{response.status_code} {response.text}"
         )
-        smtp.send_message(message)
+
 
 
 @app.route("/forgot-password/verify", methods=["POST"])
