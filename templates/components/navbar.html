@@ -8,6 +8,17 @@
 
     <!-- Navigation Links -->
 
+    
+<button
+    class="nav-menu-toggle"
+    id="navMenuToggle"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-expanded="false">
+    ☰
+</button>
+
+
 <ul class="nav-links">
 
     <li>
@@ -91,3 +102,33 @@
     </div>
 
 </nav>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("navMenuToggle");
+    const links = document.querySelector(".nav-links");
+
+    if (!toggle || !links) return;
+
+    toggle.addEventListener("click", function () {
+        const isOpen = links.classList.toggle("mobile-open");
+
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        toggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+        toggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    links.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            links.classList.remove("mobile-open");
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open navigation menu");
+            toggle.textContent = "☰";
+        });
+    });
+});
+</script>
